@@ -417,8 +417,141 @@ textarea{
 }
 
 @media (max-width:640px){
-  .hero-title{font-size:22px;}
-  .thumb-grid{grid-template-columns:repeat(2,1fr);}
+  body{
+    font-size:14px;
+  }
+
+  .container{
+    padding:12px 10px 26px;
+  }
+
+  .hero{
+    padding:18px 14px;
+    border-radius:20px;
+  }
+
+  .hero-badge{
+    font-size:11px;
+    padding:6px 10px;
+  }
+
+  .hero-title{
+    font-size:21px;
+    line-height:1.4;
+  }
+
+  .hero-desc{
+    font-size:13px;
+    line-height:1.75;
+  }
+
+  .card{
+    padding:13px;
+    border-radius:18px;
+    margin-bottom:12px;
+  }
+
+  .title,
+  summary{
+    font-size:16px;
+  }
+
+  .section-sub,
+  .info-text,
+  .notice,
+  .slot-notice{
+    font-size:12px;
+  }
+
+  .slot,
+  .price-list,
+  .desc-box,
+  textarea{
+    font-size:13px;
+  }
+
+  .slot,
+  .price-box,
+  .desc-box,
+  .notice,
+  .slot-notice{
+    border-radius:14px;
+  }
+
+  .thumb-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:7px;
+  }
+
+  .thumb-label{
+    font-size:11px;
+    padding:5px 6px;
+  }
+
+  .nav-btn{
+    padding:11px;
+    font-size:13px;
+    border-radius:12px;
+  }
+
+  .circle-nav{
+    width:34px;
+    height:34px;
+    font-size:16px;
+  }
+
+  .circle-nav.left{
+    left:8px;
+  }
+
+  .circle-nav.right{
+    right:8px;
+  }
+
+  textarea{
+    height:440px;
+    padding:12px;
+    line-height:1.7;
+  }
+
+  .copy-btn{
+    padding:12px;
+    font-size:13px;
+    border-radius:12px;
+  }
+
+  #modal{
+    padding:12px;
+  }
+
+  #modal img{
+    max-width:96%;
+    max-height:88%;
+    border-radius:12px;
+  }
+}
+
+@media (max-width:390px){
+  .container{
+    padding:10px 8px 22px;
+  }
+
+  .hero-title{
+    font-size:19px;
+  }
+
+  .thumb-grid{
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+  }
+
+  .thumb-item img{
+    border-radius:10px;
+  }
+
+  .desc-box{
+    padding:10px;
+  }
 }
 </style>
 </head>

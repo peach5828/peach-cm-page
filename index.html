@@ -236,10 +236,29 @@ textarea {
   </div>
 </details>
 
-  <details class="card">
-    <summary>🙂 기본 표정</summary>
-    <img src="face1.jpg" alt="기본 표정 샘플">
-  </details>
+<details class="card">
+<summary>🙂 표정 샘플</summary>
+
+<div style="margin-top:10px;">
+
+<div class="info-text">버튼을 눌러 다른 표정을 확인할 수 있습니다.</div>
+
+<img id="faceGallery" src="face1.png" style="transition:opacity 0.25s ease;">
+
+<div id="faceDesc" class="desc-box" style="display:block;">
+기본 표정 샘플
+</div>
+
+<div id="faceDots" class="dots">● ○ ○</div>
+
+<div class="nav-wrap">
+<button class="nav-btn" onclick="prevFace()">◀</button>
+<button class="nav-btn" onclick="nextFace()">▶</button>
+</div>
+
+</div>
+
+</details>
 
   <details class="card">
     <summary>🤝 협업 작가</summary>
@@ -311,6 +330,7 @@ function copyText() {
   alert("복사 완료! 문의란에 붙여넣어 주세요 ( ◜ᴗ◝ )♡");
 }
 
+/* 실제 커미션 샘플 */
 let current = 0;
 
 const images = [
@@ -319,14 +339,6 @@ const images = [
   "sample3.png",
   "sample4.png",
   "sample5.png"
-];
-
-const faceImages = [
-  "face1.png",
-  "face2.png",
-  "face3.png",
-  "face4.png",
-  "face5.png"
 ];
 
 const descriptions = [
@@ -340,20 +352,15 @@ const descriptions = [
 function updateGallery(){
   const img = document.getElementById("galleryImg");
   const desc = document.getElementById("desc");
-  const face = document.getElementById("facePreview");
 
   img.style.opacity = 0;
-  face.style.opacity = 0;
 
   setTimeout(() => {
     img.src = images[current];
-    face.src = faceImages[current];
     desc.innerHTML = descriptions[current];
     desc.style.display = "none";
     updateDots();
-
     img.style.opacity = 1;
-    face.style.opacity = 1;
   }, 200);
 }
 
@@ -388,5 +395,52 @@ function openModal(){
 
 function closeModal(){
   document.getElementById("modal").style.display = "none";
+}
+
+/* 표정 샘플 */
+let faceCurrent = 0;
+
+const faceImages = [
+  "face1.png",
+  "face2.png",
+  "face3.png"
+];
+
+const faceDescriptions = [
+  "기본 표정 샘플",
+  "기타 표정 샘플",
+  "기타 표정 샘플"
+];
+
+function updateFace(){
+  const img = document.getElementById("faceGallery");
+  const desc = document.getElementById("faceDesc");
+
+  img.style.opacity = 0;
+
+  setTimeout(() => {
+    img.src = faceImages[faceCurrent];
+    desc.innerHTML = faceDescriptions[faceCurrent];
+    updateFaceDots();
+    img.style.opacity = 1;
+  }, 200);
+}
+
+function nextFace(){
+  faceCurrent = (faceCurrent + 1) % faceImages.length;
+  updateFace();
+}
+
+function prevFace(){
+  faceCurrent = (faceCurrent - 1 + faceImages.length) % faceImages.length;
+  updateFace();
+}
+
+function updateFaceDots(){
+  let dots = "";
+  for(let i = 0; i < faceImages.length; i++){
+    dots += (i === faceCurrent) ? "● " : "○ ";
+  }
+  document.getElementById("faceDots").innerText = dots.trim();
 }
 </script>

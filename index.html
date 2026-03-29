@@ -208,23 +208,23 @@ textarea {
   <summary>🖼 실제 커미션 샘플</summary>
 
   <div style="margin-top:10px;">
-   <div class="info-text">
-이미지를 클릭하면 크게 볼수 있습니다!<br>
-뒤로 갈수록 예전 작업물입니다.
-</div>
+    <div class="info-text">
+      이미지를 클릭하면 크게 볼 수 있습니다!<br>
+      뒤로 갈수록 예전 작업물입니다.
+    </div>
 
     <img id="galleryImg" src="rararu_sample_collage.png" onclick="showInfo(); openModal();" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;">
 
     <div id="desc" class="desc-box">
-      방송용 전신 모델<br>
-      기본 파츠 분리 / 기본 표정 포함
+      샘플 1<br>라라루님 의뢰작
     </div>
 
-    <div id="dots" class="dots">● ○ ○ ○ ○</div>
-
-    <div class="nav-wrap">
-      <button class="nav-btn" onclick="prevImg()">◀</button>
-      <button class="nav-btn" onclick="nextImg()">▶</button>
+    <div class="thumb-grid" style="display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-top:12px;">
+      <img src="rararu_sample_collage.png" onclick="selectSample(0)" style="cursor:pointer; aspect-ratio:1/1; object-fit:cover; border:2px solid #ff8fa3;">
+      <img src="koya_sample_collage.png" onclick="selectSample(1)" style="cursor:pointer; aspect-ratio:1/1; object-fit:cover;">
+      <img src="raruka_sample_collage.png" onclick="selectSample(2)" style="cursor:pointer; aspect-ratio:1/1; object-fit:cover;">
+      <img src="B_sample_collage.png" onclick="selectSample(3)" style="cursor:pointer; aspect-ratio:1/1; object-fit:cover;">
+      <img src="sia_sample_collage.png" onclick="selectSample(4)" style="cursor:pointer; aspect-ratio:1/1; object-fit:cover;">
     </div>
   </div>
 </details>
@@ -349,18 +349,13 @@ function updateGallery(){
     img.src = images[current];
     desc.innerHTML = descriptions[current];
     desc.style.display = "none";
-    updateDots();
+    updateThumbBorder();
     img.style.opacity = 1;
   }, 200);
 }
 
-function nextImg(){
-  current = (current + 1) % images.length;
-  updateGallery();
-}
-
-function prevImg(){
-  current = (current - 1 + images.length) % images.length;
+function selectSample(index){
+  current = index;
   updateGallery();
 }
 
@@ -368,12 +363,15 @@ function showInfo(){
   document.getElementById("desc").style.display = "block";
 }
 
-function updateDots(){
-  let dots = "";
-  for(let i = 0; i < images.length; i++){
-    dots += (i === current) ? "● " : "○ ";
-  }
-  document.getElementById("dots").innerText = dots.trim();
+function updateThumbBorder(){
+  const thumbs = document.querySelectorAll(".thumb-grid img");
+  thumbs.forEach((thumb, index) => {
+    if(index === current){
+      thumb.style.border = "2px solid #ff8fa3";
+    } else {
+      thumb.style.border = "2px solid transparent";
+    }
+  });
 }
 
 function openModal(){
@@ -433,4 +431,8 @@ function updateFaceDots(){
   }
   document.getElementById("faceDots").innerText = dots.trim();
 }
+
+window.onload = function() {
+  updateThumbBorder();
+};
 </script>

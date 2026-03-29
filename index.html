@@ -324,7 +324,7 @@ summary::-webkit-details-marker{display:none;}
 
 textarea{
   width:100%;
-  height:360px;
+  height:390px;
   padding:14px;
   border-radius:16px;
   border:1px solid var(--line);
@@ -364,6 +364,11 @@ textarea{
   margin-top:12px;
 }
 
+.collab-link{
+  text-decoration:none;
+  color:inherit;
+}
+
 .collab-item{
   background:var(--pink-bg);
   border:1px solid var(--line);
@@ -371,11 +376,23 @@ textarea{
   padding:12px;
   line-height:1.75;
   font-size:14px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.collab-link:hover .collab-item{
+  transform:translateY(-2px);
+  box-shadow:0 8px 16px rgba(247,131,199,0.18);
+  border-color:var(--pink);
 }
 
 .collab-name{
   color:var(--pink);
   font-weight:700;
+}
+
+.collab-arrow{
+  font-size:12px;
+  color:#b68a9d;
 }
 
 #modal{
@@ -452,7 +469,8 @@ textarea{
       <div class="price-box">
         <div class="price-head">포함 사항</div>
         <div class="price-list">
-          - 기본 파츠 분리<br>
+          - 기본 파츠분리 일러스트<br>
+          - 캐릭터 디자인<br>
           - 기본 표정 (눈물+초롱초롱, 당황눈, 반짝눈, 하트눈, 빙글눈, 화남마크, 얼굴 그림자)<br>
           - PSD 파일 제공
         </div>
@@ -505,10 +523,6 @@ textarea{
         <img id="galleryImg" src="rararu_sample_collage.png" onclick="openModal('sample')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;">
       </div>
 
-      <div id="desc" class="desc-box">
-        샘플 1<br>라라루님 의뢰작
-      </div>
-
       <div class="thumb-grid" id="sampleThumbGrid">
         <div class="thumb-item">
           <img src="rararu_sample_collage.png" onclick="selectSample(0)">
@@ -531,7 +545,7 @@ textarea{
   </details>
 
   <details class="card">
-    <summary>🙂 표정 샘플</summary>
+    <summary>💖 표정 샘플</summary>
 
     <div style="margin-top:10px;">
       <div class="info-text">이미지를 클릭하면 크게 볼 수 있습니다!</div>
@@ -597,15 +611,15 @@ textarea{
   <details class="card">
     <summary>🤝 협업 작가</summary>
     <div class="collab-grid">
-      <div class="collab-item"><span class="collab-name">다종 작가님</span><br>일러 5만원 + 리깅 5만원 할인</div>
-      <div class="collab-item"><span class="collab-name">ROPON 작가님</span><br>리깅 5만원 할인</div>
-      <div class="collab-item"><span class="collab-name">마가린 작가님</span><br>일러 3만원 + 리깅 3만원 할인</div>
-      <div class="collab-item"><span class="collab-name">하예나 작가님</span><br>리깅 10만원 할인</div>
-      <div class="collab-item"><span class="collab-name">세르팡 작가님</span></div>
-      <div class="collab-item"><span class="collab-name">리아 작가님</span></div>
-      <div class="collab-item"><span class="collab-name">네코노바 작가님</span><br>일러 5만원 + 리깅 10만원 할인 + 표정 3종 리깅 무료</div>
-      <div class="collab-item"><span class="collab-name">감자야 작가님</span><br>일러 5만원 + 리깅 10만원 할인</div>
-      <div class="collab-item"><span class="collab-name">Eryn 작가님</span><br>일러 5만원 + 리깅 5만원 할인</div>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=42826" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">다중 작가님</span><br>일러 5만원 + 리깅 5만원 할인<br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=26980" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">ROPON 작가님</span><br>리깅 5만원 할인<br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=42853" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">마가린 작가님</span><br>일러 3만원 + 리깅 3만원 할인<br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=26603" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">하예나 작가님</span><br>리깅 10만원 할인<br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=25829" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">세르팡 작가님</span><br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=31127" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">꽃무 작가님</span><br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=51824" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">네코노바 작가님</span><br>일러 5만원 + 리깅 10만원 할인 + 표정 3종 리깅 무료<br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=49415" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">감자야 작가님</span><br>일러 5만원 + 리깅 10만원 할인<br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
+      <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=51881" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">Eryn 작가님</span><br>일러 5만원 + 리깅 5만원 할인<br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
     </div>
   </details>
 
@@ -641,16 +655,18 @@ textarea{
 
 3. 사용 목적 : 
 
-4. 캐릭터 자료 : (키워드, 메인 컬러, 키, 체형, 분위기, 성격, 특징, 레퍼런스 이미지)
+4. 가장 마음에 드는 샘플 : 
+
+5. 캐릭터 자료 : (키워드, 메인 컬러, 키, 체형, 분위기, 성격, 특징, 레퍼런스 이미지)
 (+구체적이지 않아도 괜찮습니다! 같이 상담하며 조율해서 의뢰자님께 가장 어울리는 모델을 만들어 드립니다 ♡)
 
-5. 협업 리깅 작가 : (선택사항입니다! 다른 리깅작가가 있다면 작가명을 기재해 주세요.)
+6. 협업 리깅 작가 : (선택사항입니다! 다른 리깅작가가 있다면 작가명을 기재해 주세요.)
 
-6. 추가 옵션 :
+7. 추가 옵션 :
 
-7. 표정 변경 : (기본 표정에서 변경하고 싶은 표정이 있다면 적어주세요.)
+8. 표정 변경 : (기본 표정에서 변경하고 싶은 표정이 있다면 적어주세요.)
 
-8. 작가에게 전할 말 : (기타 문의 및 요청)</textarea>
+9. 작가에게 전할 말 : (기타 문의 및 요청)</textarea>
 
     <button class="copy-btn" onclick="copyText()">📋 작성한 양식 복사하기</button>
   </details>
@@ -675,20 +691,12 @@ const images = [
   "raruka_sample_collage.png",
   "B_sample_collage.png"
 ];
-const descriptions = [
-  "샘플 1<br>라라루님 의뢰작",
-  "샘플 2<br>네무키 코야님 의뢰작",
-  "샘플 3<br>라루카님 의뢰작",
-  "샘플 4<br>양 수인 판매모델 (판매완료)"
-];
 
 function updateGallery(){
   const img = document.getElementById("galleryImg");
-  const desc = document.getElementById("desc");
   img.style.opacity = 0;
   setTimeout(() => {
     img.src = images[current];
-    desc.innerHTML = descriptions[current];
     updateSampleThumbBorder();
     img.style.opacity = 1;
   }, 180);

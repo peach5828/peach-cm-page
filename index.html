@@ -25,13 +25,13 @@
 }
 
 :root{
-  --pink:#ffb3c6;
-  --pink-deep:#ff8fab;
-  --pink-soft:#fff0f4;
-  --pink-bg:#fff7fa;
+  --pink:#f783c7;
+  --pink-deep:#ec6ab6;
+  --pink-soft:#fff0f8;
+  --pink-bg:#fff8fc;
   --text:#55474d;
-  --line:#ffe1ea;
-  --shadow:0 10px 25px rgba(255, 179, 198, 0.18);
+  --line:#ffd8ef;
+  --shadow:0 10px 25px rgba(247, 131, 199, 0.16);
 }
 
 *{box-sizing:border-box;}
@@ -39,8 +39,7 @@
 body{
   margin:0;
   font-family:'Paperozi',sans-serif;
-  background:
-    radial-gradient(circle at top left, #fff8fb 0%, #fff6f9 30%, #fff9fb 60%, #fff7fa 100%);
+  background:radial-gradient(circle at top left, #fff9fd 0%, #fff7fb 35%, #fff9fc 100%);
   color:var(--text);
 }
 
@@ -51,7 +50,7 @@ body{
 }
 
 .hero{
-  background:linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
+  background:linear-gradient(180deg, #ffffff 0%, #fff8fc 100%);
   border:1px solid var(--line);
   border-radius:24px;
   padding:22px 18px;
@@ -68,7 +67,7 @@ body{
   top:-30px;
   width:120px;
   height:120px;
-  background:radial-gradient(circle, rgba(255,179,198,0.25) 0%, rgba(255,179,198,0) 70%);
+  background:radial-gradient(circle, rgba(247,131,199,0.22) 0%, rgba(247,131,199,0) 70%);
   border-radius:999px;
 }
 
@@ -97,7 +96,6 @@ body{
   margin:0;
 }
 
-.section-card,
 .card{
   background:white;
   border-radius:20px;
@@ -146,7 +144,7 @@ summary::-webkit-details-marker{display:none;}
 
 .slot-notice{
   margin-top:12px;
-  background:linear-gradient(180deg, #fffafd 0%, #fff3f7 100%);
+  background:linear-gradient(180deg, #fffafd 0%, #fff3fa 100%);
   border:1px dashed var(--pink);
   border-radius:16px;
   padding:12px;
@@ -202,7 +200,7 @@ summary::-webkit-details-marker{display:none;}
 
 .thumb-grid{
   display:grid;
-  grid-template-columns:repeat(5, 1fr);
+  grid-template-columns:repeat(4, 1fr);
   gap:8px;
   margin-top:12px;
 }
@@ -225,7 +223,7 @@ summary::-webkit-details-marker{display:none;}
 
 .thumb-item img:hover{
   transform:translateY(-2px);
-  box-shadow:0 6px 14px rgba(255, 179, 198, 0.25);
+  box-shadow:0 6px 14px rgba(247,131,199,0.25);
 }
 
 .thumb-label{
@@ -239,19 +237,12 @@ summary::-webkit-details-marker{display:none;}
   word-break:keep-all;
 }
 
-.desc-box{
-  display:block;
+.face-viewer,.style-viewer{
+  position:relative;
   margin-top:10px;
-  background:var(--pink-bg);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:12px;
-  font-size:14px;
-  line-height:1.8;
 }
 
-.face-nav,
-.style-nav{
+.face-nav{
   display:flex;
   gap:8px;
   margin-top:10px;
@@ -286,11 +277,6 @@ summary::-webkit-details-marker{display:none;}
   letter-spacing:1px;
 }
 
-.style-viewer{
-  position:relative;
-  margin-top:10px;
-}
-
 .circle-nav{
   position:absolute;
   top:50%;
@@ -299,7 +285,7 @@ summary::-webkit-details-marker{display:none;}
   height:40px;
   border-radius:999px;
   border:none;
-  background:rgba(255, 179, 198, 0.95);
+  background:rgba(247,131,199,0.95);
   color:white;
   font-size:18px;
   font-weight:700;
@@ -307,12 +293,23 @@ summary::-webkit-details-marker{display:none;}
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  box-shadow:0 8px 18px rgba(255,179,198,0.28);
+  box-shadow:0 8px 18px rgba(247,131,199,0.28);
   padding:0;
 }
 
 .circle-nav.left{left:10px;}
 .circle-nav.right{right:10px;}
+
+.desc-box{
+  display:block;
+  margin-top:10px;
+  background:var(--pink-bg);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+  font-size:14px;
+  line-height:1.8;
+}
 
 .notice{
   margin-top:10px;
@@ -360,6 +357,27 @@ textarea{
   font-weight:700;
 }
 
+.collab-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin-top:12px;
+}
+
+.collab-item{
+  background:var(--pink-bg);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+  line-height:1.75;
+  font-size:14px;
+}
+
+.collab-name{
+  color:var(--pink);
+  font-weight:700;
+}
+
 #modal{
   display:none;
   position:fixed;
@@ -383,7 +401,7 @@ textarea{
 
 @media (max-width:640px){
   .hero-title{font-size:22px;}
-  .thumb-grid{grid-template-columns:repeat(3,1fr);}
+  .thumb-grid{grid-template-columns:repeat(2,1fr);}
 }
 </style>
 </head>
@@ -456,6 +474,21 @@ textarea{
           - 고가동 파츠 분리 : +10만원~
         </div>
       </div>
+
+      <div class="price-box">
+        <div class="price-head">삼면도</div>
+        <div class="price-list">
+          - 캐릭터 시트(삼면도) : 11만원
+        </div>
+      </div>
+
+      <div class="price-box">
+        <div class="price-head">작업물 공개</div>
+        <div class="price-list">
+          - 작업과정 비공개 : 4만원<br>
+          - 1개월 작업물 비공개 : 2만원
+        </div>
+      </div>
     </div>
   </details>
 
@@ -493,10 +526,6 @@ textarea{
           <img src="B_sample_collage.png" onclick="selectSample(3)">
           <div class="thumb-label">양 수인</div>
         </div>
-        <div class="thumb-item">
-          <img src="sia_sample_collage.png" onclick="selectSample(4)">
-          <div class="thumb-label">시로유키 시아</div>
-        </div>
       </div>
     </div>
   </details>
@@ -532,15 +561,11 @@ textarea{
       기존 캐릭터 리뉴얼부터 새로운 캐릭터 디자인까지 가능합니다.<br><br>
 
       ❥ 디자인은<br>
-      <span class="highlight">
-      상담 ➟ 시안 3장 ➟ 컨펌 ➟ 시안 3장 ➟ 마지막 컨펌 ➟ 최종 디자인 결정
-      </span><br>
+      <span class="highlight">상담 ➟ 시안 3장 ➟ 컨펌 ➟ 시안 3장 ➟ 마지막 컨펌 ➟ 최종 디자인 결정</span><br>
       과정으로 진행됩니다.<br><br>
 
       ❥ 본작업은<br>
-      <span class="highlight">
-      파츠분리 및 일러스트 제작 ➟ 50% 완성 1차 컨펌 ➟ 90% 완성 2차 컨펌 ➟ 마지막 3차 컨펌 ➟ 완성
-      </span><br>
+      <span class="highlight">파츠분리 및 일러스트 제작 ➟ 50% 완성 1차 컨펌 ➟ 90% 완성 2차 컨펌 ➟ 마지막 3차 컨펌 ➟ 완성</span><br>
       과정으로 진행됩니다.<br><br>
 
       ❥ 캐릭터마다의 다양한 개성을 위해 <span class="highlight">바디 파츠부터 새로 제작</span>합니다.<br>
@@ -552,6 +577,8 @@ textarea{
 
       ❥ 작업물 및 작업 과정은 작가의 개인 SNS 등에 <span class="highlight">포트폴리오로 업로드</span>될 수 있습니다.<br>
       추가금 지불 시 업로드 날짜 조정이 가능합니다.<br><br>
+
+      ❥ <span class="highlight">러프 스케치를 합의 없이 공개적인 곳에 게시하는 것을 금지합니다.</span><br><br>
 
       ❥ 기재된 가격은 <span class="highlight">겉옷을 제외한 상의 / 하의 조합 가격</span>입니다.<br>
       겉옷이 있는 디자인의 경우 추가금이 발생합니다.<br><br>
@@ -569,10 +596,16 @@ textarea{
 
   <details class="card">
     <summary>🤝 협업 작가</summary>
-    <div style="margin-top:10px; line-height:1.8; font-size:14px;">
-      본 작업은 <span class="highlight">Live2D 모델용 일러스트만 제작</span>됩니다.<br><br>
-      리깅은 포함되어 있지 않으며 협업 리깅 작가님께 별도로 의뢰해 주세요.<br>
-      이미 작업 예정인 리깅 작가님이 있으시다면 신청 양식에 작성해 주세요.
+    <div class="collab-grid">
+      <div class="collab-item"><span class="collab-name">다종 작가님</span><br>일러 5만원 + 리깅 5만원 할인</div>
+      <div class="collab-item"><span class="collab-name">ROPON 작가님</span><br>리깅 5만원 할인</div>
+      <div class="collab-item"><span class="collab-name">마가린 작가님</span><br>일러 3만원 + 리깅 3만원 할인</div>
+      <div class="collab-item"><span class="collab-name">하예나 작가님</span><br>리깅 10만원 할인</div>
+      <div class="collab-item"><span class="collab-name">세르팡 작가님</span></div>
+      <div class="collab-item"><span class="collab-name">리아 작가님</span></div>
+      <div class="collab-item"><span class="collab-name">네코노바 작가님</span><br>일러 5만원 + 리깅 10만원 할인 + 표정 3종 리깅 무료</div>
+      <div class="collab-item"><span class="collab-name">감자야 작가님</span><br>일러 5만원 + 리깅 10만원 할인</div>
+      <div class="collab-item"><span class="collab-name">Eryn 작가님</span><br>일러 5만원 + 리깅 5만원 할인</div>
     </div>
   </details>
 
@@ -588,7 +621,6 @@ textarea{
       </div>
 
       <div id="styleDesc" class="desc-box">그림체 참고 1</div>
-
       <div id="styleDots" class="dots">● ○ ○ ○</div>
     </div>
   </details>
@@ -641,15 +673,13 @@ const images = [
   "rararu_sample_collage.png",
   "koya_sample_collage.png",
   "raruka_sample_collage.png",
-  "B_sample_collage.png",
-  "sia_sample_collage.png"
+  "B_sample_collage.png"
 ];
 const descriptions = [
   "샘플 1<br>라라루님 의뢰작",
   "샘플 2<br>네무키 코야님 의뢰작",
   "샘플 3<br>라루카님 의뢰작",
-  "샘플 4<br>양 수인 판매모델 (판매완료)",
-  "샘플 5<br>시로유키 시아님 의뢰작 (리뉴얼 예정)"
+  "샘플 4<br>양 수인 판매모델 (판매완료)"
 ];
 
 function updateGallery(){

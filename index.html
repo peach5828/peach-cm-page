@@ -25,13 +25,13 @@
 }
 
 :root{
-  --pink:#f783c7;
-  --pink-deep:#ec6ab6;
-  --pink-soft:#fff0f8;
-  --pink-bg:#fff8fc;
+  --pink:#e396b0;
+  --pink-deep:#d97e9c;
+  --pink-soft:#fff4f8;
+  --pink-bg:#fff9fb;
   --text:#55474d;
-  --line:#ffd8ef;
-  --shadow:0 10px 25px rgba(247, 131, 199, 0.16);
+  --line:#f1d8e0;
+  --shadow:0 10px 25px rgba(227, 150, 176, 0.16);
 }
 
 *{box-sizing:border-box;}
@@ -50,7 +50,7 @@ body{
 }
 
 .hero{
-  background:linear-gradient(180deg, #ffffff 0%, #fff8fc 100%);
+  background:linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
   border:1px solid var(--line);
   border-radius:24px;
   padding:22px 18px;
@@ -67,7 +67,7 @@ body{
   top:-30px;
   width:120px;
   height:120px;
-  background:radial-gradient(circle, rgba(247,131,199,0.22) 0%, rgba(247,131,199,0) 70%);
+  background:radial-gradient(circle, rgba(227,150,176,0.22) 0%, rgba(227,150,176,0) 70%);
   border-radius:999px;
 }
 
@@ -91,9 +91,19 @@ body{
 }
 
 .hero-desc{
-  line-height:1.8;
+  line-height:1.85;
   font-size:14px;
   margin:0;
+}
+
+.hero-desc .soft{
+  color:#8f7d83;
+  font-size:13px;
+}
+
+.hero-desc .em{
+  color:var(--pink);
+  font-weight:700;
 }
 
 .card{
@@ -144,12 +154,29 @@ summary::-webkit-details-marker{display:none;}
 
 .slot-notice{
   margin-top:12px;
-  background:linear-gradient(180deg, #fffafd 0%, #fff3fa 100%);
+  background:linear-gradient(180deg, #fffafd 0%, #fff3f7 100%);
   border:1px dashed var(--pink);
   border-radius:16px;
   padding:12px;
   font-size:13px;
   line-height:1.85;
+}
+
+.slot-notice strong{
+  color:var(--pink);
+  font-size:14px;
+}
+
+.slot-notice .start-em{
+  color:var(--pink);
+  font-weight:700;
+}
+
+.slot-note-soft{
+  margin-top:8px;
+  font-size:11px;
+  color:#baa7ae;
+  line-height:1.6;
 }
 
 .price-grid{
@@ -159,11 +186,22 @@ summary::-webkit-details-marker{display:none;}
   margin-top:12px;
 }
 
+.price-group{
+  background:var(--pink-soft);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:12px;
+}
+
 .price-box{
-  background:var(--pink-bg);
+  background:white;
   border:1px solid var(--line);
   border-radius:16px;
   padding:12px;
+}
+
+.price-group .price-box + .price-box{
+  margin-top:10px;
 }
 
 .price-head{
@@ -176,6 +214,17 @@ summary::-webkit-details-marker{display:none;}
 .price-list{
   font-size:14px;
   line-height:1.9;
+}
+
+details.option-box{
+  background:var(--pink-bg);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+}
+
+details.option-box summary{
+  font-size:15px;
 }
 
 .info-text{
@@ -191,12 +240,15 @@ summary::-webkit-details-marker{display:none;}
   margin-top:10px;
 }
 
-.viewer img,
-.style-viewer img{
+.viewer img{
   width:100%;
   max-height:600px;
   object-fit:contain;
+  border-radius:16px;
+  display:block;
+  background:#fff;
 }
+
 .thumb-grid{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
@@ -222,7 +274,7 @@ summary::-webkit-details-marker{display:none;}
 
 .thumb-item img:hover{
   transform:translateY(-2px);
-  box-shadow:0 6px 14px rgba(247,131,199,0.25);
+  box-shadow:0 6px 14px rgba(227,150,176,0.25);
 }
 
 .thumb-label{
@@ -249,7 +301,7 @@ summary::-webkit-details-marker{display:none;}
   height:40px;
   border-radius:999px;
   border:none;
-  background:rgba(247,131,199,0.95);
+  background:rgba(227,150,176,0.95);
   color:white;
   font-size:18px;
   font-weight:700;
@@ -257,7 +309,7 @@ summary::-webkit-details-marker{display:none;}
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  box-shadow:0 8px 18px rgba(247,131,199,0.28);
+  box-shadow:0 8px 18px rgba(227,150,176,0.28);
   padding:0;
   z-index:2;
 }
@@ -282,6 +334,9 @@ summary::-webkit-details-marker{display:none;}
   padding:12px;
   font-size:14px;
   line-height:1.8;
+  color:var(--pink);
+  font-weight:600;
+  text-align:center;
 }
 
 .notice{
@@ -293,6 +348,13 @@ summary::-webkit-details-marker{display:none;}
   border:1px solid var(--line);
   border-radius:14px;
   padding:10px;
+}
+
+.form-top-note{
+  margin-top:10px;
+  font-size:13px;
+  color:#8b7c81;
+  line-height:1.7;
 }
 
 textarea{
@@ -354,7 +416,7 @@ textarea{
 
 .collab-link:hover .collab-item{
   transform:translateY(-2px);
-  box-shadow:0 8px 16px rgba(247,131,199,0.18);
+  box-shadow:0 8px 16px rgba(227,150,176,0.18);
   border-color:var(--pink);
 }
 
@@ -371,10 +433,7 @@ textarea{
 #modal{
   display:none;
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:rgba(0,0,0,0.82);
   justify-content:center;
   align-items:center;
@@ -387,18 +446,6 @@ textarea{
   max-height:90%;
   border-radius:16px;
   box-shadow:0 10px 24px rgba(0,0,0,0.25);
-}
-
-.iframe-code{
-  margin-top:12px;
-  background:#fff8fc;
-  border:1px dashed var(--line);
-  border-radius:16px;
-  padding:12px;
-  font-size:12px;
-  line-height:1.7;
-  white-space:pre-wrap;
-  word-break:break-all;
 }
 
 @media (max-width:640px){
@@ -415,13 +462,14 @@ textarea{
 <div class="container">
 
   <div class="hero">
-    <div class="hero-badge">Live2D Model Illustration Commission</div>
-    <h1 class="hero-title">💗 Live2D 버츄얼 모델 일러스트</h1>
+    <div class="hero-badge">Live2D Illustration Commission</div>
+    <h1 class="hero-title">💗 피치 Live2D 버츄얼 일러스트</h1>
     <p class="hero-desc">
-      Live2D 버츄얼 모델 일러스트 커미션 페이지입니다.<br><br>
-      본 커미션은 <span class="highlight">Live2D 모델용 일러스트 제작</span>을 받는 페이지이며,
-      <span class="highlight">리깅 작업은 포함되어 있지 않습니다.</span><br>
-      리깅이 필요하신 경우 협업 리깅 작가님께 별도로 의뢰해 주세요.
+      귀엽고 아기자기한 스타일에 특화된 일러스트레이터 피치입니다.<br>
+      <span class="em">단순 공장식으로 일러스트를 뽑아내는 작업방식 NO!!</span><br>
+      마마로서의 책임감으로 하나하나 애정을 담아 섬세하게 작업합니다 ♡<br><br>
+      <span class="soft">본 커미션은 Live2D 모델용 일러스트 제작을 받는 페이지이며, 리깅 작업은 포함되어 있지 않습니다.<br>
+      리깅이 필요하신 경우 협업 리깅 작가님께 별도로 의뢰해 주세요.</span>
     </p>
   </div>
 
@@ -429,54 +477,41 @@ textarea{
     <div class="title">📅 작업 슬롯 현황</div>
     <div class="section-sub">현재 예약 가능 상태 안내</div>
     <div class="slot">
-      4월 : <span class="closed">마감</span> / <span class="closed">마감</span><br>
+      4월 : 중간고사 ( 작업 x )<br>
       5월 : <span class="closed">마감</span> / <span class="closed">마감</span><br>
-      6월 : <span class="closed">마감</span> / <span class="closed">마감</span><br>
+      6월 : 기말고사 ( 작업 x )<br>
       7월 : <span class="closed">마감</span> / <span class="closed">마감</span><br>
       8월 : <span class="closed">마감</span> / <span class="closed">마감</span><br>
-      9월 : <span class="closed">마감</span> / <span class="available">가능 (하반기에 신청 가능)</span>
+      9월 : <span class="closed">첫번째 슬롯 마감</span> / <span class="available">두번째 슬롯 가능 (하반기에 신청 가능)</span>
     </div>
     <div class="slot-notice">
-      2026년 상반기 예약이 마감되었습니다. (~9월 첫번째 슬롯까지)<br>
-      하반기에는 패키지 구성이나 가격 및 퀄리티에 변동이 있을 수 있어, 7월부터 하반기 (9월 첫번째 슬롯~12월 두번째 슬롯) 예약을 받습니다!
+      <strong>2026년 상반기 예약이 마감되었습니다.</strong><br>
+      (~9월 첫번째 슬롯까지)<br><br>
+      하반기에는 패키지 구성이나 가격 및 퀄리티에 변동이 있을 수 있어, <span class="start-em">7월 1일부터</span> 하반기 (9월 첫번째 슬롯~12월 두번째 슬롯) 예약을 받습니다!
+      <div class="slot-note-soft">※ 작업 펑크가 발생할 경우 빈 슬롯이 생길 수 있습니다.</div>
     </div>
   </div>
 
   <details class="card">
     <summary>💰 가격표</summary>
     <div class="price-grid">
-      <div class="price-box">
-        <div class="price-head">기본 모델</div>
-        <div class="price-list">
-          Live2D 파츠분리 전신 + 디자인 + 표정 7종 패키지 : 60만원<br>
-          Live2D 파츠분리 반신 (허리까지) + 디자인 + 표정 3종 패키지 : 50만원
+      <div class="price-group">
+        <div class="price-box">
+          <div class="price-head">기본 모델</div>
+          <div class="price-list">
+            Live2D 파츠분리 전신 + 디자인 + 표정 7종 패키지 : 60만원<br>
+            Live2D 파츠분리 반신 (허리까지) + 디자인 + 표정 3종 패키지 : 50만원
+          </div>
         </div>
-      </div>
 
-      <div class="price-box">
-        <div class="price-head">포함 사항</div>
-        <div class="price-list">
-          - 기본 파츠분리 일러스트<br>
-          - 캐릭터 디자인<br>
-          - 기본 표정 (눈물+초롱초롱, 당황눈, 반짝눈, 하트눈, 빙글눈, 화남마크, 얼굴 그림자)<br>
-          - PSD 파일 제공
-        </div>
-      </div>
-
-      <div class="price-box">
-        <div class="price-head">추가 옵션</div>
-        <div class="price-list">
-          - 표정 추가 : +5천원<br>
-          - 인형 안은 팔 on, off 추가 : +8만원<br>
-          - 간단 펫 추가 : +3만원<br>
-          - on, off 소품 추가 (안대, 마스크 등 착용/미착용) : +3만원<br>
-          - 손 소품 추가 (마이크, 게임기 등) : +3만원~<br>
-          - 손가락 파츠 추가 (브이, 하트 등) : +1만5천원<br>
-          - 신의상 추가 : +10만원<br>
-          - 겉옷 추가 (on, off) : +8만원<br>
-          - 겉옷 후드모자 (on, off) : +4만원<br>
-          - 헤어스타일 바리에이션 추가 (묶기, 풀기, 장발, 단발 등) : +5만원<br>
-          - 고가동 파츠 분리 : +10만원~
+        <div class="price-box">
+          <div class="price-head">포함 사항</div>
+          <div class="price-list">
+            - 기본 파츠분리 일러스트<br>
+            - 캐릭터 디자인<br>
+            - 기본 표정 (눈물+초롱초롱, 당황눈, 반짝눈, 하트눈, 빙글눈, 화남마크, 얼굴 그림자)<br>
+            - PSD 파일 제공
+          </div>
         </div>
       </div>
 
@@ -491,9 +526,26 @@ textarea{
         <div class="price-head">작업물 공개</div>
         <div class="price-list">
           - 작업과정 비공개 : 4만원<br>
-          - 1개월 작업물 비공개 : 2만원
+          - 1개월 작업물 비공개 : 2만원 (최대 4개월 가능)
         </div>
       </div>
+
+      <details class="option-box">
+        <summary>추가 옵션</summary>
+        <div class="price-list" style="margin-top:8px;">
+          - 표정 추가 : +5천원<br>
+          - 인형 안은 팔 on, off 추가 : +8만원<br>
+          - 간단 펫 추가 : +3만원<br>
+          - on, off 소품 추가 (안대, 마스크 등 착용/미착용) : +3만원<br>
+          - 손 소품 추가 (마이크, 게임기 등) : +3만원~<br>
+          - 손가락 파츠 추가 (브이, 하트 등) : +1만5천원<br>
+          - 신의상 추가 : +10만원<br>
+          - 겉옷 추가 (on, off) : +8만원<br>
+          - 겉옷 후드모자 (on, off) : +4만원<br>
+          - 헤어스타일 바리에이션 추가 (묶기, 풀기, 장발, 단발 등) : +5만원<br>
+          - 고가동 파츠 분리 : +10만원~
+        </div>
+      </details>
     </div>
   </details>
 
@@ -612,12 +664,11 @@ textarea{
       <div class="info-text">좌우 버튼으로 그림체 참고 이미지를 넘길 수 있습니다.</div>
 
       <div class="style-viewer">
-        <img id="styleGallery" src="style_01.png" onclick="openModal('style')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;" onerror="this.onerror=null; this.src='style_1.png';">
+        <img id="styleGallery" src="style_01.png" onclick="openModal('style')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
         <button type="button" class="circle-nav left" onclick="prevStyle()">❮</button>
         <button type="button" class="circle-nav right" onclick="nextStyle()">❯</button>
       </div>
 
-      <div id="styleDesc" class="desc-box">그림체 참고 1</div>
       <div id="styleDots" class="dots">● ○ ○ ○</div>
     </div>
   </details>
@@ -630,9 +681,11 @@ textarea{
       작성 후 복사해서 문의란에 붙여넣어 주시면 됩니다.
     </div>
 
-    <textarea id="inputText">해당하는 부분만 적어주시면 됩니다. 괄호 안의 글씨는 삭제하고 작성해 주세요!
+    <div class="form-top-note">
+      해당하는 부분만 적어주시면 됩니다. 괄호 안의 글씨는 삭제하고 작성해 주세요!
+    </div>
 
-1. 신청자명 / 활동명 : 
+    <textarea id="inputText">1. 신청자명 / 활동명 : 
 
 2. 채널 / 방송국 : 
 
@@ -741,20 +794,12 @@ const styleImages = [
   "style_03.png",
   "style_04.png"
 ];
-const styleDescriptions = [
-  "그림체 참고 1",
-  "그림체 참고 2",
-  "그림체 참고 3",
-  "그림체 참고 4"
-];
 
 function updateStyle(){
   const img = document.getElementById("styleGallery");
-  const desc = document.getElementById("styleDesc");
   img.style.opacity = 0;
   setTimeout(() => {
     img.src = styleImages[styleCurrent];
-    desc.innerHTML = styleDescriptions[styleCurrent];
     updateStyleDots();
     img.style.opacity = 1;
   }, 180);
@@ -778,18 +823,22 @@ function updateStyleDots(){
 function openModal(type){
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImg");
-  modal.style.display = "flex";
+  let src = "";
 
   if(type === "sample"){
-    modalImg.src = images[current];
+    src = document.getElementById("galleryImg").src;
   } else if(type === "face"){
-    modalImg.src = faceImages[faceCurrent];
+    src = document.getElementById("faceGallery").src;
   } else if(type === "style"){
-    modalImg.src = styleImages[styleCurrent];
+    src = document.getElementById("styleGallery").src;
   }
+
+  modalImg.src = src;
+  modal.style.display = "flex";
 }
 function closeModal(){
   document.getElementById("modal").style.display = "none";
+  document.getElementById("modalImg").src = "";
 }
 
 window.onload = function(){

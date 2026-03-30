@@ -587,7 +587,6 @@ textarea{
   <details class="card">
     <summary>🖌️ 실제 커미션 샘플</summary>
     <div class="sample-intro">
-      귀엽고 아기자기한 스타일에 특화된 일러스트레이터 피치입니다.<br>
       <span class="highlight">단순 공장식으로 일러스트를 뽑아내는 작업방식 NO!!</span><br>
       마마로서의 책임감으로 하나하나 애정을 담아 섬세하게 작업합니다 ♡
     </div>
@@ -863,22 +862,37 @@ function updateStyleDots(){
 function openModal(type){
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImg");
-  let src = "";
+  let targetImg = null;
 
   if(type === "sample"){
-    src = document.getElementById("galleryImg").src;
+    targetImg = document.getElementById("galleryImg");
   } else if(type === "face"){
-    src = document.getElementById("faceGallery").src;
+    targetImg = document.getElementById("faceGallery");
   } else if(type === "style"){
-    src = document.getElementById("styleGallery").src;
+    targetImg = document.getElementById("styleGallery");
   }
 
+  if(!targetImg || !targetImg.getAttribute("src") || targetImg.naturalWidth === 0){
+    return;
+  }
+
+  const src = targetImg.getAttribute("src");
+  modalImg.onload = function(){
+    modal.style.display = "flex";
+  };
+  modalImg.onerror = function(){
+    modal.style.display = "none";
+    modalImg.src = "";
+  };
   modalImg.src = src;
-  modal.style.display = "flex";
 }
 function closeModal(){
-  document.getElementById("modal").style.display = "none";
-  document.getElementById("modalImg").src = "";
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  modal.style.display = "none";
+  modalImg.onload = null;
+  modalImg.onerror = null;
+  modalImg.src = "";
 }
 
 window.onload = function(){

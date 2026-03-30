@@ -50,12 +50,12 @@ body{
 }
 
 .hero{
-  background:linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:22px 18px;
+  background:#f5f3f4;
+  border:1px solid #f0bfd1;
+  border-radius:36px;
+  padding:34px 28px 36px;
   margin-bottom:16px;
-  box-shadow:var(--shadow);
+  box-shadow:0 18px 36px rgba(227, 150, 176, 0.10);
   position:relative;
   overflow:hidden;
 }
@@ -63,37 +63,44 @@ body{
 .hero::after{
   content:"";
   position:absolute;
-  right:-30px;
-  top:-30px;
-  width:120px;
-  height:120px;
-  background:radial-gradient(circle, rgba(227,150,176,0.22) 0%, rgba(227,150,176,0) 70%);
+  right:-70px;
+  top:-40px;
+  width:220px;
+  height:220px;
+  background:radial-gradient(circle, rgba(227,150,176,0.18) 0%, rgba(227,150,176,0.04) 42%, rgba(227,150,176,0) 72%);
   border-radius:999px;
 }
 
 .hero-badge{
   display:inline-block;
-  font-size:12px;
+  font-size:13px;
   font-weight:700;
   color:white;
-  background:var(--pink);
+  background:linear-gradient(180deg, #f08bc4 0%, #e67eb7 100%);
   border-radius:999px;
-  padding:7px 12px;
-  margin-bottom:12px;
+  padding:10px 18px;
+  margin-bottom:18px;
 }
 
 .hero-title{
-  font-size:25px;
+  font-size:46px;
   font-weight:700;
-  color:var(--pink);
-  margin:0 0 8px;
-  line-height:1.35;
+  color:#ef8ac2;
+  margin:0 0 20px;
+  line-height:1.2;
+  letter-spacing:-0.02em;
 }
 
 .hero-desc{
-  line-height:1.85;
-  font-size:14px;
+  line-height:1.95;
+  font-size:19px;
   margin:0;
+  color:#4f4450;
+}
+
+.hero-main-copy .em{
+  color:#ef8ac2;
+  font-weight:700;
 }
 
 .hero-desc .soft{
@@ -130,6 +137,21 @@ summary::-webkit-details-marker{display:none;}
   margin-top:6px;
   font-size:12px;
   color:#9a848c;
+}
+
+.sample-intro{
+  margin-top:12px;
+  background:linear-gradient(180deg, #fffafd 0%, #fff4f8 100%);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+  font-size:14px;
+  line-height:1.9;
+  color:#7e6972;
+}
+
+.price-card-open .title{
+  cursor:default;
 }
 
 .slot{
@@ -242,7 +264,7 @@ details.option-box summary{
 
 .viewer img{
   width:100%;
-  max-height:600px;
+  max-height:560px;
   object-fit:contain;
   border-radius:16px;
   display:block;
@@ -291,6 +313,9 @@ details.option-box summary{
 .style-viewer{
   position:relative;
   margin-top:10px;
+  max-width:520px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .circle-nav{
@@ -323,6 +348,13 @@ details.option-box summary{
   color:var(--pink-deep);
   text-align:center;
   letter-spacing:1px;
+}
+
+#faceGallery,
+#styleGallery{
+  width:100%;
+  max-height:420px;
+  object-fit:contain;
 }
 
 .desc-box{
@@ -449,10 +481,14 @@ textarea{
 }
 
 @media (max-width:640px){
-  .hero-title{font-size:22px;}
+  .hero{padding:24px 18px 26px;border-radius:28px;}
+  .hero-title{font-size:28px;margin-bottom:14px;}
+  .hero-desc{font-size:15px;line-height:1.85;}
+  .hero-badge{font-size:11px;padding:8px 14px;margin-bottom:14px;}
   .thumb-grid{grid-template-columns:repeat(2,1fr);}
   .circle-nav{width:34px;height:34px;font-size:16px;}
   .container{padding:12px 10px 24px;}
+  .style-viewer{max-width:100%;}
 }
 </style>
 </head>
@@ -462,14 +498,12 @@ textarea{
 <div class="container">
 
   <div class="hero">
-    <div class="hero-badge">Live2D Illustration Commission</div>
-    <h1 class="hero-title">💗 피치 Live2D 버츄얼 일러스트</h1>
-    <p class="hero-desc">
-      귀엽고 아기자기한 스타일에 특화된 일러스트레이터 피치입니다.<br>
-      <span class="em">단순 공장식으로 일러스트를 뽑아내는 작업방식 NO!!</span><br>
-      마마로서의 책임감으로 하나하나 애정을 담아 섬세하게 작업합니다 ♡<br><br>
-      <span class="soft">본 커미션은 Live2D 모델용 일러스트 제작을 받는 페이지이며, 리깅 작업은 포함되어 있지 않습니다.<br>
-      리깅이 필요하신 경우 협업 리깅 작가님께 별도로 의뢰해 주세요.</span>
+    <div class="hero-badge">Live2D Model Illustration Commission</div>
+    <h1 class="hero-title">💗 Live2D 버츄얼 모델 일러스트</h1>
+    <p class="hero-desc hero-main-copy">
+      Live2D 버츄얼 모델 일러스트 커미션 페이지입니다.<br><br>
+      본 커미션은 <span class="em">Live2D 모델용 일러스트 제작</span>을 받는 페이지이며, <span class="em">리깅 작업은 포함되어 있지 않습니다.</span><br>
+      리깅이 필요하신 경우 협업 리깅 작가님께 별도로 의뢰해 주세요.
     </p>
   </div>
 
@@ -492,8 +526,9 @@ textarea{
     </div>
   </div>
 
-  <details class="card">
-    <summary>💰 가격표</summary>
+  <div class="card price-card-open">
+    <div class="title">💰 가격표</div>
+    <div class="section-sub">기본 패키지 및 추가 옵션 안내</div>
     <div class="price-grid">
       <div class="price-group">
         <div class="price-box">
@@ -547,10 +582,15 @@ textarea{
         </div>
       </details>
     </div>
-  </details>
+  </div>
 
   <details class="card">
     <summary>🖌️ 실제 커미션 샘플</summary>
+    <div class="sample-intro">
+      귀엽고 아기자기한 스타일에 특화된 일러스트레이터 피치입니다.<br>
+      <span class="highlight">단순 공장식으로 일러스트를 뽑아내는 작업방식 NO!!</span><br>
+      마마로서의 책임감으로 하나하나 애정을 담아 섬세하게 작업합니다 ♡
+    </div>
 
     <div style="margin-top:10px;">
       <div class="info-text">

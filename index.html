@@ -599,7 +599,10 @@ textarea{
       </div>
 
       <div class="viewer">
-       <img id="galleryImg" onclick="openModal('sample')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;">
+      <img id="galleryImg"
+     src="sina_sample_collage.png"
+     onclick="openModal('sample')"
+     style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;">
       </div>
         <div class="thumb-item">
   <img src="sina_sample_collage.png" onclick="selectSample(0)">
@@ -887,28 +890,23 @@ function openModal(입력){
     return;
   }
 
-  // ⭐ 추가
-  window.scrollTo({ top: 0, behavior: "instant" });
-
   const src = targetImg.getAttribute("src");
+
   modalImg.onload = function(){
     modal.style.display = "flex";
+    document.body.style.overflow = "hidden"; // ⭐ 추가
   };
-  modalImg.onerror = function(){
-    modal.style.display = "none";
-    modalImg.src = "";
-  };
+
   modalImg.src = src;
 }
 function closeModal(){
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImg");
-  modal.style.display = "none";
-  modalImg.onload = null;
-  modalImg.onerror = null;
-  modalImg.src = "";
-}
 
+  modal.style.display = "none";
+  modalImg.src = "";
+  document.body.style.overflow = "auto"; // ⭐ 추가
+}
 window.onload = function(){
   preloadImages(images);
   preloadImages(faceImages);

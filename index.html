@@ -151,7 +151,7 @@ summary::-webkit-details-marker{display:none;}
 }
 
 .price-card-open .title{
-  cursor:default;
+  cursor:기본;
 }
 
 .slot{
@@ -502,8 +502,8 @@ textarea{
     <div class="hero-badge">Live2D Model Illustration Commission</div>
     <h1 class="hero-title">💗 Live2D 버츄얼 모델 일러스트</h1>
     <p class="hero-desc hero-main-copy">
-      Live2D 버츄얼 모델 일러스트 커미션 페이지입니다.<br><br>
-      본 커미션은 <span class="em">Live2D 모델용 일러스트 제작</span>을 받는 페이지이며, <span class="em">리깅 작업은 포함되어 있지 않습니다.</span><br>
+      Live2D 버츄얼 모델 일러스트 커미션 입니다.<br><br>
+     <span class="em">Live2D 모델용 일러스트(psd) 제작</span>을 하고 있으며, <span class="em">리깅 작업은 포함되어 있지 않습니다.</span><br>
       리깅이 필요하신 경우 협업 리깅 작가님께 별도로 의뢰해 주세요.
     </p>
   </div>
@@ -599,24 +599,27 @@ textarea{
       </div>
 
       <div class="viewer">
-        <img id="galleryImg" src="rararu_sample_collage.png" onclick="openModal('sample')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;">
+       <img id="galleryImg" onclick="openModal('sample')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;">
       </div>
-
+        <div class="thumb-item">
+  <img src="sina_sample_collage.png" onclick="selectSample(0)">
+  <div class="thumb-label">시나</div>
+</div>
       <div class="thumb-grid" id="sampleThumbGrid">
         <div class="thumb-item">
-          <img src="rararu_sample_collage.png" onclick="selectSample(0)">
+          <img src="rararu_sample_collage.png" onclick="selectSample(1)">
           <div class="thumb-label">라라루</div>
         </div>
         <div class="thumb-item">
-          <img src="koya_sample_collage.png" onclick="selectSample(1)">
+          <img src="koya_sample_collage.png" onclick="selectSample(2)">
           <div class="thumb-label">네무키 코야</div>
         </div>
         <div class="thumb-item">
-          <img src="raruka_sample_collage.png" onclick="selectSample(2)">
+          <img src="raruka_sample_collage.png" onclick="selectSample(3)">
           <div class="thumb-label">라루카</div>
         </div>
         <div class="thumb-item">
-          <img src="B_sample_collage.png" onclick="selectSample(3)">
+          <img src="B_sample_collage.png" onclick="selectSample(4)">
           <div class="thumb-label">양 수인</div>
         </div>
       </div>
@@ -631,8 +634,8 @@ textarea{
 
       <div class="style-viewer">
         <img id="faceGallery" src="raruka_face_types.png" onclick="openModal('face')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;">
-        <button type="button" class="circle-nav left" onclick="prevFace()">❮</button>
-        <button type="button" class="circle-nav right" onclick="nextFace()">❯</button>
+        <button 입력="button" class="circle-nav left" onclick="prevFace()">❮</button>
+        <button 입력="button" class="circle-nav right" onclick="nextFace()">❯</button>
       </div>
 
       <div id="faceDesc" class="desc-box">라루카님 표정 샘플</div>
@@ -705,8 +708,8 @@ textarea{
 
       <div class="style-viewer">
         <img id="styleGallery" src="style_01.png" onclick="openModal('style')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
-        <button type="button" class="circle-nav left" onclick="prevStyle()">❮</button>
-        <button type="button" class="circle-nav right" onclick="nextStyle()">❯</button>
+        <button 입력="button" class="circle-nav left" onclick="prevStyle()">❮</button>
+        <button 입력="button" class="circle-nav right" onclick="nextStyle()">❯</button>
       </div>
 
       <div id="styleDots" class="dots">● ○ ○ ○</div>
@@ -754,6 +757,12 @@ textarea{
 </div>
 
 <script>
+    function preloadImages(arr){
+  arr.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+}
 function copyText() {
   const text = document.getElementById("inputText").value;
   navigator.clipboard.writeText(text);
@@ -762,6 +771,7 @@ function copyText() {
 
 let current = 0;
 const images = [
+  "sina_sample_collage.png",
   "rararu_sample_collage.png",
   "koya_sample_collage.png",
   "raruka_sample_collage.png",
@@ -860,22 +870,25 @@ function updateStyleDots(){
   document.getElementById("styleDots").innerText = dots.trim();
 }
 
-function openModal(type){
+function openModal(입력){
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImg");
   let targetImg = null;
 
-  if(type === "sample"){
+  if(입력 === "sample"){
     targetImg = document.getElementById("galleryImg");
-  } else if(type === "face"){
+  } else if(입력 === "face"){
     targetImg = document.getElementById("faceGallery");
-  } else if(type === "style"){
+  } else if(입력 === "style"){
     targetImg = document.getElementById("styleGallery");
   }
 
   if(!targetImg || !targetImg.getAttribute("src") || targetImg.naturalWidth === 0){
     return;
   }
+
+  // ⭐ 추가
+  window.scrollTo({ top: 0, behavior: "instant" });
 
   const src = targetImg.getAttribute("src");
   modalImg.onload = function(){
@@ -897,6 +910,10 @@ function closeModal(){
 }
 
 window.onload = function(){
+  preloadImages(images);
+  preloadImages(faceImages);
+  preloadImages(styleImages);
+
   updateGallery();
   updateFace();
   updateStyle();

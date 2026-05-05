@@ -256,15 +256,20 @@ summary::-webkit-details-marker{display:none;}
   font-weight:700;
 }
 
-.included-box{
-  background:linear-gradient(180deg, #fffdfd 0%, #fff9fb 100%);
+.basic-included{
+  margin-top:12px;
+  padding:12px;
+  border-radius:14px;
+  background:#fffdfd;
   border:1px solid #f4e8ec;
-  opacity:.78;
 }
-.included-box .price-head{
+.basic-included-title{
   color:#b899a4;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px;
 }
-.included-box .price-list{
+.basic-included-text{
   color:#8b7c81;
   font-size:13px;
   line-height:1.85;
@@ -281,14 +286,15 @@ details.option-box summary{
   font-size:15px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:10px;
+  justify-content:flex-start;
+  gap:6px;
 }
 
 .summary-caret{
-  font-size:12px;
+  font-size:20px;
   line-height:1;
   color:var(--pink-deep);
+  font-weight:700;
 }
 
 .option-guide{
@@ -553,35 +559,167 @@ textarea{
   box-shadow:0 10px 24px rgba(0,0,0,0.25);
 }
 
-.floating-total{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:1000;
-  background:linear-gradient(180deg, var(--pink) 0%, var(--pink-deep) 100%);
-  color:#fff;
-  border-radius:16px;
-  padding:12px 14px;
-  box-shadow:0 12px 28px rgba(235,131,159,0.28);
-  min-width:180px;
-  text-align:left;
+.addon-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
 }
-.floating-total .label{
-  display:block;
-  font-size:12px;
-  opacity:.88;
-  margin-bottom:4px;
+.addon-label{
+  flex:1;
+  min-width:0;
 }
-.floating-total .amount{
-  font-size:18px;
+.qty-controls{
+  display:none;
+  align-items:center;
+  gap:6px;
+  flex:0 0 auto;
+}
+.addon-item.active .qty-controls{
+  display:flex;
+}
+.qty-controls button{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.45);
+  background:rgba(255,255,255,0.22);
+  color:inherit;
   font-weight:700;
-  letter-spacing:-0.02em;
+  cursor:pointer;
+  line-height:1;
 }
-.floating-total .sub{
-  margin-top:4px;
-  font-size:11px;
-  opacity:.88;
-  line-height:1.4;
+.price-item.active .qty-controls button{
+  border-color:rgba(255,255,255,0.75);
+}
+.qty-value{
+  min-width:22px;
+  text-align:center;
+  font-size:13px;
+  font-weight:700;
+}
+
+.selection-summary{
+  margin-top:16px;
+  background:linear-gradient(180deg, #fffef9 0%, #fffaf4 100%);
+  border:1px solid #dedbc6;
+  border-radius:28px;
+  padding:22px 20px 18px;
+  box-shadow:0 10px 25px rgba(131, 118, 86, 0.10);
+}
+.selection-summary-title{
+  font-size:26px;
+  font-weight:700;
+  color:#5b634a;
+  letter-spacing:-0.03em;
+  margin-bottom:18px;
+}
+.selection-summary-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.selection-summary-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:16px;
+  line-height:1.5;
+  color:#69705b;
+}
+.selection-summary-item .left{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:0;
+}
+.selection-summary-item .name{
+  font-size:17px;
+  font-weight:700;
+  color:#667053;
+}
+.selection-summary-item .sub{
+  font-size:14px;
+  color:#908d78;
+}
+.selection-summary-item .right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+  font-size:16px;
+  color:#7f846d;
+}
+.selection-summary-item .remove-btn{
+  width:48px;
+  height:48px;
+  border-radius:999px;
+  border:1px solid #d7d4be;
+  background:#fff;
+  color:#8b8f7a;
+  font-size:28px;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.4);
+}
+.selection-summary-divider{
+  height:2px;
+  background:#d5d2bd;
+  margin:18px 0 14px;
+}
+.selection-summary-totals{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.selection-summary-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:18px;
+  color:#5c624d;
+}
+.selection-summary-row span{
+  font-size:20px;
+}
+.selection-summary-row strong{
+  font-size:20px;
+  font-weight:700;
+}
+.selection-summary-row.total span,
+.selection-summary-row.total strong{
+  font-size:24px;
+  font-weight:700;
+}
+.copy-btn-large{
+  margin-top:16px;
+  height:84px;
+  border-radius:999px;
+  background:#fff;
+  color:#5b634a;
+  border:2px solid #d6d3bc;
+  box-shadow:0 8px 18px rgba(131, 118, 86, 0.10);
+  font-size:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+}
+.copy-btn-large:hover{
+  background:#fffdfa;
+}
+.plain-note{
+  font-weight:400;
+  color:#8f7d83;
+  font-size:13px;
+}
+.copy-emoji{
+  font-size:28px;
 }
 
 @media (max-width:640px){
@@ -594,13 +732,9 @@ textarea{
   .circle-nav{width:34px;height:34px;font-size:16px;}
   .container{padding:12px 10px 24px;}
   .style-viewer{max-width:100%;}
-  .floating-total{
-    left:50%;
-    right:auto;
-    bottom:12px;
-    transform:translateX(-50%);
-    width:min(92vw, 360px);
-  }
+  .selection-summary-title{font-size:22px;}
+  .copy-btn-large{height:74px;font-size:20px;}
+  .copy-emoji{font-size:24px;}
 }
 </style>
 </head>
@@ -676,48 +810,160 @@ textarea{
         <div class="price-group">
 
           <div class="price-box">
-            <div class="price-head">✨ 표정 <span style="font-weight:400;color:#8f7d83;">(맞춤형 표정은 의뢰자님만을 위한 주문제작 파츠입니다!)</span></div>
+            <div class="price-head">✨ 표정 <span class="plain-note">(맞춤형 표정은 의뢰자님만을 위한 주문제작 파츠입니다!)</span></div>
             <div class="price-list">
-              <div class="price-item" onclick="toggleAddonOption(this, '기본 표정 추가', 5000)">기본 표정 추가 +5,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '맞춤형 표정', 10000)">맞춤형 표정 +10,000원~</div>
+              <div class="price-item addon-item" data-addon-name="기본 표정 추가" onclick="toggleAddonOption(this, '기본 표정 추가', 5000)">
+                <span class="addon-label">기본 표정 추가 +5,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('기본 표정 추가', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="기본 표정 추가">1</span>
+                  <button type="button" onclick="changeAddonQty('기본 표정 추가', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="맞춤형 표정" onclick="toggleAddonOption(this, '맞춤형 표정', 10000)">
+                <span class="addon-label">맞춤형 표정 +10,000원~</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('맞춤형 표정', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="맞춤형 표정">1</span>
+                  <button type="button" onclick="changeAddonQty('맞춤형 표정', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
             </div>
           </div>
 
           <div class="price-box">
             <div class="price-head">✨ 팔 / 포즈</div>
             <div class="price-list">
-              <div class="price-item" onclick="toggleAddonOption(this, '접힌팔 (소매X)', 20000)">접힌팔 (소매X) +20,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '접힌팔 (소매O)', 30000)">접힌팔 (소매O) +30,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '인형 안기', 30000)">인형 안기 +30,000원</div>
+              <div class="price-item addon-item" data-addon-name="접힌팔 (소매X)" onclick="toggleAddonOption(this, '접힌팔 (소매X)', 20000)">
+                <span class="addon-label">접힌팔 (소매X) +20,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('접힌팔 (소매X)', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="접힌팔 (소매X)">1</span>
+                  <button type="button" onclick="changeAddonQty('접힌팔 (소매X)', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="접힌팔 (소매O)" onclick="toggleAddonOption(this, '접힌팔 (소매O)', 30000)">
+                <span class="addon-label">접힌팔 (소매O) +30,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('접힌팔 (소매O)', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="접힌팔 (소매O)">1</span>
+                  <button type="button" onclick="changeAddonQty('접힌팔 (소매O)', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="인형 안기" onclick="toggleAddonOption(this, '인형 안기', 30000)">
+                <span class="addon-label">인형 안기 +30,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('인형 안기', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="인형 안기">1</span>
+                  <button type="button" onclick="changeAddonQty('인형 안기', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
             </div>
           </div>
 
           <div class="price-box">
             <div class="price-head">✨ 소품</div>
             <div class="price-list">
-              <div class="price-item" onclick="toggleAddonOption(this, '마이크, 게임기 등', 20000)">마이크, 게임기 등 +20,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '소품을 잡는 손 파츠', 15000)">소품을 잡는 손 파츠 +15,000원</div>
+              <div class="price-item addon-item" data-addon-name="마이크, 게임기 등" onclick="toggleAddonOption(this, '마이크, 게임기 등', 20000)">
+                <span class="addon-label">마이크, 게임기 등 +20,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('마이크, 게임기 등', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="마이크, 게임기 등">1</span>
+                  <button type="button" onclick="changeAddonQty('마이크, 게임기 등', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="소품을 잡는 손 파츠" onclick="toggleAddonOption(this, '소품을 잡는 손 파츠', 15000)">
+                <span class="addon-label">소품을 잡는 손 파츠 +15,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('소품을 잡는 손 파츠', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="소품을 잡는 손 파츠">1</span>
+                  <button type="button" onclick="changeAddonQty('소품을 잡는 손 파츠', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
             </div>
           </div>
 
           <div class="price-box">
             <div class="price-head">✨ 의상 / 헤어</div>
             <div class="price-list">
-              <div class="price-item" onclick="toggleAddonOption(this, '신의상', 100000)">신의상 +100,000원~</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '겉옷', 80000)">겉옷 (on/off) +80,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '후드', 40000)">후드 모자 +40,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '헤어 바리에이션', 50000)">헤어 바리에이션 +50,000원~</div>
+              <div class="price-item addon-item" data-addon-name="신의상" onclick="toggleAddonOption(this, '신의상', 100000)">
+                <span class="addon-label">신의상 +100,000원~</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('신의상', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="신의상">1</span>
+                  <button type="button" onclick="changeAddonQty('신의상', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="겉옷" onclick="toggleAddonOption(this, '겉옷', 80000)">
+                <span class="addon-label">겉옷 (on/off) +80,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('겉옷', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="겉옷">1</span>
+                  <button type="button" onclick="changeAddonQty('겉옷', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="후드 모자" onclick="toggleAddonOption(this, '후드 모자', 40000)">
+                <span class="addon-label">후드 모자 +40,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('후드 모자', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="후드 모자">1</span>
+                  <button type="button" onclick="changeAddonQty('후드 모자', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="헤어 바리에이션" onclick="toggleAddonOption(this, '헤어 바리에이션', 50000)">
+                <span class="addon-label">헤어 바리에이션 +50,000원~</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('헤어 바리에이션', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="헤어 바리에이션">1</span>
+                  <button type="button" onclick="changeAddonQty('헤어 바리에이션', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
             </div>
           </div>
 
           <div class="price-box">
             <div class="price-head">✨ 기타</div>
             <div class="price-list">
-              <div class="price-item" onclick="toggleAddonOption(this, '간단 펫', 30000)">간단 펫 +30,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '고가동 파츠분리', 100000)">고가동 파츠 분리 +100,000원~</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '삼면도', 110000)">캐릭터 시트(삼면도) +110,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '작업과정 비공개', 40000)">작업과정 비공개 +40,000원</div>
-              <div class="price-item" onclick="toggleAddonOption(this, '작업물 비공개 1개월', 20000)">작업물 비공개 (1개월) +20,000원</div>
+              <div class="price-item addon-item" data-addon-name="간단 펫" onclick="toggleAddonOption(this, '간단 펫', 30000)">
+                <span class="addon-label">간단 펫 +30,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('간단 펫', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="간단 펫">1</span>
+                  <button type="button" onclick="changeAddonQty('간단 펫', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="고가동 파츠분리" onclick="toggleAddonOption(this, '고가동 파츠분리', 100000)">
+                <span class="addon-label">고가동 파츠 분리 +100,000원~</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('고가동 파츠분리', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="고가동 파츠분리">1</span>
+                  <button type="button" onclick="changeAddonQty('고가동 파츠분리', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="삼면도" onclick="toggleAddonOption(this, '삼면도', 110000)">
+                <span class="addon-label">캐릭터 시트(삼면도) +110,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('삼면도', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="삼면도">1</span>
+                  <button type="button" onclick="changeAddonQty('삼면도', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="작업과정 비공개" onclick="toggleAddonOption(this, '작업과정 비공개', 40000)">
+                <span class="addon-label">작업과정 비공개 +40,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('작업과정 비공개', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="작업과정 비공개">1</span>
+                  <button type="button" onclick="changeAddonQty('작업과정 비공개', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item" data-addon-name="작업물 비공개 1개월" onclick="toggleAddonOption(this, '작업물 비공개 1개월', 20000)">
+                <span class="addon-label">작업물 비공개 (1개월) +20,000원</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('작업물 비공개 1개월', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="작업물 비공개 1개월">1</span>
+                  <button type="button" onclick="changeAddonQty('작업물 비공개 1개월', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -887,7 +1133,27 @@ textarea{
 
 9. 작가에게 전할 말 : (기타 문의 및 요청)</textarea>
 
-    <button class="copy-btn" onclick="copyText()">📋 작성한 양식 복사하기</button>
+    <div class="selection-summary" id="selectionSummary">
+      <div class="selection-summary-title">선택 내역</div>
+      <div class="selection-summary-list" id="selectionSummaryList"></div>
+      <div class="selection-summary-divider"></div>
+      <div class="selection-summary-totals">
+        <div class="selection-summary-row">
+          <span>기본 패키지</span>
+          <strong id="summaryBasePrice">미선택</strong>
+        </div>
+        <div class="selection-summary-row">
+          <span>옵션 합계</span>
+          <strong id="summaryAddonPrice">0원</strong>
+        </div>
+        <div class="selection-summary-row total">
+          <span>예상 합계</span>
+          <strong id="summaryTotalPrice">0원</strong>
+        </div>
+      </div>
+    </div>
+
+    <button class="copy-btn copy-btn-large" onclick="copyText()"><span class="copy-emoji">📋</span><span>작성한 양식 복사하기</span></button>
   </details>
 
 </div>
@@ -896,10 +1162,6 @@ textarea{
   <img id="modalImg" alt="확대 이미지">
 </div>
 
-<div class="floating-total" id="floatingTotal">
-  <span class="label">총 가격</span>
-  <span class="amount">0원</span>
-  <div class="sub">선택한 기본 패키지와 추가 옵션이 자동 반영됩니다.</div>
 </div>
 
 <script>
@@ -925,38 +1187,97 @@ function replaceLineByPrefix(lines, prefix, newLine){
 let selectedBaseOption = null;
 let selectedAddonOptions = [];
 
-function updateFloatingTotal(){
-  const total = (selectedBaseOption ? selectedBaseOption.price : 0) +
-                selectedAddonOptions.reduce((sum, item) => sum + item.price, 0);
-  document.querySelector('#floatingTotal .amount').textContent = `${formatPrice(total)}원`;
+function getBaseOptionItems(){
+  return Array.from(document.querySelectorAll('.base-option-item'));
+}
+
+function findAddonElement(name){
+  return document.querySelector(`.addon-item[data-addon-name="${CSS.escape(name)}"]`);
+}
+
+function setQtyValue(name, qty){
+  const el = document.querySelector(`[data-qty-for="${CSS.escape(name)}"]`);
+  if(el) el.textContent = String(qty);
+}
+
+function updateSelectionSummary(){
+  const list = document.getElementById('selectionSummaryList');
+  const basePriceEl = document.getElementById('summaryBasePrice');
+  const addonPriceEl = document.getElementById('summaryAddonPrice');
+  const totalPriceEl = document.getElementById('summaryTotalPrice');
+
+  list.innerHTML = '';
+
+  const baseTotal = selectedBaseOption ? selectedBaseOption.price : 0;
+  let addonTotal = 0;
+
+  if(selectedBaseOption){
+    const item = document.createElement('div');
+    item.className = 'selection-summary-item';
+    item.innerHTML = `
+      <div class="left">
+        <div class="name">패키지</div>
+        <div class="sub">${selectedBaseOption.name}</div>
+      </div>
+      <div class="right">
+        <strong>${formatPrice(selectedBaseOption.price)}원</strong>
+      </div>
+    `;
+    list.appendChild(item);
+    basePriceEl.textContent = `${formatPrice(selectedBaseOption.price)}원`;
+  }else{
+    basePriceEl.textContent = '미선택';
+  }
+
+  selectedAddonOptions.forEach(option => {
+    const subtotal = option.price * option.qty;
+    addonTotal += subtotal;
+
+    const item = document.createElement('div');
+    item.className = 'selection-summary-item';
+    item.innerHTML = `
+      <div class="left">
+        <div class="name">${option.name}</div>
+        <div class="sub">${option.qty}개 (+${formatPrice(option.price)}원)</div>
+      </div>
+      <div class="right">
+        <strong>${formatPrice(subtotal)}원</strong>
+        <button type="button" class="remove-btn" data-remove="${option.name}">×</button>
+      </div>
+    `;
+    list.appendChild(item);
+  });
+
+  addonPriceEl.textContent = `${formatPrice(addonTotal)}원`;
+  totalPriceEl.textContent = `${formatPrice(baseTotal + addonTotal)}원`;
 }
 
 function updateFormText(){
   const textarea = document.getElementById('inputText');
-  const lines = textarea.value.split('\n');
+  const lines = textarea.value.split('\\n');
 
   const baseText = selectedBaseOption
     ? `7. 버츄얼 패키지 : ${selectedBaseOption.name} (+${formatPrice(selectedBaseOption.price)}원)`
     : '7. 버츄얼 패키지 : ';
 
   const addonText = selectedAddonOptions.length
-    ? `8. 추가 옵션 : ${selectedAddonOptions.map(o => `${o.name} (+${formatPrice(o.price)}원)`).join(', ')}`
+    ? `8. 추가 옵션 : ${selectedAddonOptions.map(o => `${o.name} x${o.qty} (+${formatPrice(o.price * o.qty)}원)`).join(', ')}`
     : '8. 추가 옵션 : ';
 
   replaceLineByPrefix(lines, '7. 버츄얼 패키지', baseText);
   replaceLineByPrefix(lines, '8. 추가 옵션', addonText);
-  textarea.value = lines.join('\n');
+  textarea.value = lines.join('\\n');
+}
+
+function updateUI(){
+  updateSelectionSummary();
+  updateFormText();
 }
 
 function toggleBaseOption(el, name, price){
   const isSame = selectedBaseOption && selectedBaseOption.name === name;
 
-  document.querySelectorAll('.price-card-open .price-group .price-box .price-list .price-item').forEach(item => {
-    const boxTitle = item.closest('.price-box')?.querySelector('.price-head')?.textContent?.trim();
-    if(boxTitle === '기본 모델'){
-      item.classList.remove('active');
-    }
-  });
+  getBaseOptionItems().forEach(item => item.classList.remove('active'));
 
   if(isSame){
     selectedBaseOption = null;
@@ -966,23 +1287,46 @@ function toggleBaseOption(el, name, price){
     el.classList.add('active');
   }
 
-  updateFloatingTotal();
-  updateFormText();
+  updateUI();
 }
 
 function toggleAddonOption(el, name, price){
   const idx = selectedAddonOptions.findIndex(o => o.name === name);
-
   if(idx > -1){
     selectedAddonOptions.splice(idx, 1);
     el.classList.remove('active');
   }else{
-    selectedAddonOptions.push({ name, price });
+    selectedAddonOptions.push({ name, price, qty: 1 });
     el.classList.add('active');
+    setQtyValue(name, 1);
+  }
+  updateUI();
+}
+
+function changeAddonQty(name, delta){
+  const option = selectedAddonOptions.find(o => o.name === name);
+  if(!option){
+    return;
   }
 
-  updateFloatingTotal();
-  updateFormText();
+  option.qty += delta;
+  if(option.qty <= 0){
+    selectedAddonOptions = selectedAddonOptions.filter(o => o.name !== name);
+    const item = findAddonElement(name);
+    if(item) item.classList.remove('active');
+  }else{
+    setQtyValue(name, option.qty);
+    const item = findAddonElement(name);
+    if(item) item.classList.add('active');
+  }
+  updateUI();
+}
+
+function removeAddon(name){
+  selectedAddonOptions = selectedAddonOptions.filter(o => o.name !== name);
+  const item = findAddonElement(name);
+  if(item) item.classList.remove('active');
+  updateUI();
 }
 
 function copyText() {
@@ -1080,12 +1424,18 @@ preloadImages(images);
 preloadImages(faceImages);
 preloadImages(styleImages);
 
+document.addEventListener('click', (event) => {
+  const btn = event.target.closest('.remove-btn');
+  if(btn){
+    removeAddon(btn.dataset.remove);
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   showGallery(0);
   showFace(0);
   showStyle(0);
-  updateFloatingTotal();
-  updateFormText();
+  updateUI();
 });
 </script>
 

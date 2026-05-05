@@ -1010,6 +1010,131 @@ details.option-box > summary{
   font-size:28px;
 }
 
+
+/* === v5 overrides === */
+details:not([open]) > *:not(summary){
+  display:none !important;
+}
+
+details.option-box:not([open]){
+  padding-bottom:0 !important;
+}
+
+details.option-box summary{
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:8px;
+}
+
+.summary-caret{
+  font-size:28px;
+  line-height:1;
+  color:var(--pink-deep);
+  font-weight:700;
+}
+
+.selection-summary{
+  margin-top:14px;
+  background:linear-gradient(180deg, #fff4f8 0%, #fffafd 100%);
+  border:1px solid #f1c9d7;
+  border-radius:22px;
+  padding:14px 14px 12px;
+  box-shadow:0 8px 16px rgba(235, 131, 159, 0.10);
+}
+
+.selection-summary-title{
+  text-align:center;
+  font-size:22px;
+  font-weight:700;
+  color:var(--pink);
+  letter-spacing:-0.03em;
+  margin-bottom:12px;
+}
+
+.selection-summary-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.selection-summary-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-size:14px;
+  line-height:1.45;
+  color:#6e5c64;
+}
+
+.selection-summary-item .name{
+  font-size:15px;
+}
+
+.selection-summary-item .sub{
+  font-size:12px;
+}
+
+.selection-summary-item .right{
+  font-size:14px;
+}
+
+.selection-summary-item .remove-btn{
+  width:36px;
+  height:36px;
+  font-size:22px;
+}
+
+.selection-summary-divider{
+  margin:12px 0 10px;
+  height:1px;
+  background:#ebd1db;
+}
+
+.selection-summary-row{
+  font-size:15px;
+}
+
+.selection-summary-row span,
+.selection-summary-row strong{
+  font-size:15px;
+}
+
+.selection-summary-row.total span,
+.selection-summary-row.total strong{
+  font-size:18px;
+  color:var(--pink);
+}
+
+.copy-btn-large{
+  margin-top:12px;
+  height:60px;
+  border-radius:20px;
+  background:linear-gradient(180deg, #eb839f 0%, #d86c89 100%);
+  color:white;
+  border:1px solid #d86c89;
+  box-shadow:0 8px 18px rgba(235, 131, 159, 0.16);
+  font-size:18px;
+  gap:10px;
+}
+
+.copy-btn-large:hover{
+  background:linear-gradient(180deg, #f08ba7 0%, #d86c89 100%);
+}
+
+.copy-emoji{
+  font-size:22px;
+}
+
+textarea{
+  min-height:520px !important;
+  height:520px;
+  overflow:hidden;
+  resize:none;
+}
+
 </style>
 </head>
 
@@ -1108,20 +1233,20 @@ details.option-box > summary{
           <div class="price-box">
             <div class="price-head">✨ 팔 / 포즈</div>
             <div class="price-list">
-              <div class="price-item addon-item" data-addon-name="접힌팔 (소매X)" onclick="toggleAddonOption(this, '접힌팔 (소매X)', 20000)">
-                <span class="addon-label">접힌팔 (소매X) +20,000원</span>
+              <div class="price-item addon-item" data-addon-name="추가 팔 파츠" onclick="toggleAddonOption(this, '추가 팔 파츠', 20000)">
+                <span class="addon-label">추가 팔 파츠 +20,000</span>
                 <span class="qty-controls" onclick="event.stopPropagation()">
-                  <button type="button" onclick="changeAddonQty('접힌팔 (소매X)', -1);event.stopPropagation();">−</button>
-                  <span class="qty-value" data-qty-for="접힌팔 (소매X)">1</span>
-                  <button type="button" onclick="changeAddonQty('접힌팔 (소매X)', 1);event.stopPropagation();">+</button>
+                  <button type="button" onclick="changeAddonQty('추가 팔 파츠', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="추가 팔 파츠">1</span>
+                  <button type="button" onclick="changeAddonQty('추가 팔 파츠', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
-              <div class="price-item addon-item" data-addon-name="접힌팔 (소매O)" onclick="toggleAddonOption(this, '접힌팔 (소매O)', 30000)">
-                <span class="addon-label">접힌팔 (소매O) +30,000원</span>
+              <div class="price-item addon-item" data-addon-name="추가 소매 파츠" onclick="toggleAddonOption(this, '추가 소매 파츠', 10000)">
+                <span class="addon-label">추가 소매 파츠 +10,000</span>
                 <span class="qty-controls" onclick="event.stopPropagation()">
-                  <button type="button" onclick="changeAddonQty('접힌팔 (소매O)', -1);event.stopPropagation();">−</button>
-                  <span class="qty-value" data-qty-for="접힌팔 (소매O)">1</span>
-                  <button type="button" onclick="changeAddonQty('접힌팔 (소매O)', 1);event.stopPropagation();">+</button>
+                  <button type="button" onclick="changeAddonQty('추가 소매 파츠', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="추가 소매 파츠">1</span>
+                  <button type="button" onclick="changeAddonQty('추가 소매 파츠', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
               <div class="price-item addon-item" data-addon-name="인형 안기" onclick="toggleAddonOption(this, '인형 안기', 30000)">
@@ -1377,12 +1502,7 @@ details.option-box > summary{
   </details>
 
   <details class="card">
-    <summary>📄 신청 양식</summary>
-
-    <div class="notice">
-      신청 전 가격표와 샘플을 꼭 확인해 주세요.<br>
-      작성 후 복사해서 문의란에 붙여넣어 주시면 됩니다.
-    </div>
+    <summary>📄 신청서</summary>
 
     <div class="form-top-note">
       해당하는 부분만 적어주시면 됩니다. 괄호 안의 글씨는 삭제하고 작성해 주세요!
@@ -1472,7 +1592,7 @@ function setQtyValue(name, qty){
 }
 
 function hasFoldedArmSelected(){
-  return selectedAddonOptions.some(o => o.name === '접힌팔 (소매X)' || o.name === '접힌팔 (소매O)');
+  return selectedAddonOptions.some(o => o.name === '추가 팔 파츠' || o.name === '추가 소매 파츠');
 }
 
 function requiresFoldedArm(name){
@@ -1550,6 +1670,13 @@ function updateSelectionSummary(){
   totalPriceEl.textContent = `${formatPrice(baseTotal + addonTotal)}원`;
 }
 
+function autoResizeTextarea(){
+  const textarea = document.getElementById('inputText');
+  if(!textarea) return;
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+}
+
 function updateFormText(){
   const textarea = document.getElementById('inputText');
   const lines = textarea.value.split('\n');
@@ -1565,6 +1692,7 @@ function updateFormText(){
   replaceLineByPrefix(lines, '7. 버츄얼 패키지', baseText);
   replaceLineByPrefix(lines, '8. 추가 옵션', addonText);
   textarea.value = lines.join('\n');
+  autoResizeTextarea();
 }
 
 function updateUI(){
@@ -1776,6 +1904,12 @@ document.addEventListener('DOMContentLoaded', () => {
   showFace(0);
   showStyle(0);
   updateUI();
+
+  const textarea = document.getElementById('inputText');
+  if(textarea){
+    autoResizeTextarea();
+    textarea.addEventListener('input', autoResizeTextarea);
+  }
 });
 </script>
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -137,6 +138,41 @@ summary::-webkit-details-marker{display:none;}
   margin-top:6px;
   font-size:12px;
   color:#9a848c;
+  line-height:1.6;
+}
+
+.section-sub .inline-note{
+  display:block;
+  margin-top:4px;
+  color:var(--pink);
+  font-weight:700;
+  font-size:12px;
+}
+
+.total-price-box{
+  margin-top:12px;
+  background:linear-gradient(180deg, #fffafc 0%, #fff2f6 100%);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  font-size:14px;
+  color:#7c6670;
+}
+
+.total-price-box strong{
+  color:var(--pink);
+  font-size:16px;
+  font-weight:700;
+}
+
+.price-head .subtle{
+  font-weight:400;
+  color:#8d7980;
+  font-size:13px;
 }
 
 .sample-intro{
@@ -151,7 +187,7 @@ summary::-webkit-details-marker{display:none;}
 }
 
 .price-card-open .title{
-  cursor:기본;
+  cursor:default;
 }
 
 .slot{
@@ -237,6 +273,27 @@ summary::-webkit-details-marker{display:none;}
   font-size:14px;
   line-height:1.9;
 }
+.price-item{
+  cursor:pointer;
+  padding:7px 8px;
+  border-radius:10px;
+  transition:background .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  border:2px solid transparent;
+  margin:2px 0;
+}
+
+.price-item:hover{
+  background:#ffe5ec;
+  transform:translateY(-1px);
+}
+
+.price-item.active{
+  background:var(--pink);
+  color:white;
+  border-color:var(--pink-deep);
+  box-shadow:0 8px 16px rgba(235,131,159,0.18);
+}
+
 
 details.option-box{
   background:var(--pink-bg);
@@ -247,6 +304,21 @@ details.option-box{
 
 details.option-box summary{
   font-size:15px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.summary-note{
+  font-size:12px;
+  color:#8d7980;
+  font-weight:400;
+  line-height:1.45;
+}
+
+details.option-box > .price-box + .price-box{
+  margin-top:10px;
 }
 
 .info-text{
@@ -524,10 +596,16 @@ textarea{
     </div>
   </div>
 
-  </div>
 <div class="card price-card-open">
   <div class="title">💰 가격표</div>
-  <div class="section-sub">기본 패키지 및 추가 옵션 안내</div>
+  <div class="section-sub">기본 패키지 및 추가 옵션 안내
+    <span class="inline-note">옵션 클릭시 신청양식에 적용됩니다!</span>
+  </div>
+
+  <div class="total-price-box">
+    <span>총 가격</span>
+    <strong id="totalPriceText">0원</strong>
+  </div>
 
   <div class="price-grid">
 
@@ -561,12 +639,10 @@ textarea{
 
     <!-- 추가 옵션 -->
     <details class="option-box">
-      <summary>추가 옵션</summary>
-
-      <div class="price-group">
+      <summary>추가 옵션 <span class="summary-note">옵션 구성이 어려운 경우, 선택 전 문의 주시면 상세히 안내해 드릴게요!</span></summary>
 
         <div class="price-box">
-          <div class="price-head">✨ 표정 (맞춤형 표정은 의뢰자님만을 위한 주문제작 파츠입니다!) </div>
+          <div class="price-head">✨ 표정 <span class="subtle">(맞춤형 표정은 의뢰자님만을 위한 주문제작 파츠입니다!)</span></div>
           <div class="price-list">
             <div class="price-item" onclick="toggleOption(this, '표정 추가', 5000)">기본 표정 추가 +5,000원</div>
             <div class="price-item" onclick="toggleOption(this, '맞춤형 표정', 10000)">맞춤형 표정 +10,000원~</div>
@@ -605,26 +681,18 @@ textarea{
           <div class="price-list">
             <div class="price-item" onclick="toggleOption(this, '간단 펫', 30000)">간단 펫 +30,000원</div>
             <div class="price-item" onclick="toggleOption(this, '고가동 파츠분리', 100000)">고가동 파츠 분리 +100,000원~</div>
-              
-        <div class="price-item" onclick="toggleOption(this, '삼면도', 110000)">
-          캐릭터 시트(삼면도) +110,000원
+            <div class="price-item" onclick="toggleOption(this, '삼면도', 110000)">캐릭터 시트(삼면도) +110,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '작업과정 비공개', 40000)">작업과정 비공개 +40,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '작업물 비공개 1개월', 20000)">작업물 비공개 (1개월) +20,000원</div>
+          </div>
         </div>
 
-        <div class="price-item" onclick="toggleOption(this, '작업과정 비공개', 40000)">
-          작업과정 비공개 +40,000원
-        </div>
-
-        <div class="price-item" onclick="toggleOption(this, '작업물 비공개 1개월', 20000)">
-          작업물 비공개 (1개월) +20,000원
-           </div>
-         </div>
-      </div>
     </details>
 
   </div>
 </div>
 
-  <details class="card">
+<details class="card">
     <summary>🖌️ 실제 커미션 샘플</summary>
     <div class="sample-intro">
       <span class="highlight">단순 공장식으로 일러스트를 뽑아내는 작업방식 NO!!</span><br>
@@ -636,32 +704,34 @@ textarea{
         뒤로 갈수록 예전 작업물입니다.
       </div>
 
-     <div class="viewer">
-  <img id="galleryImg"
-       src="sina_sample_collage.png"
-       style="cursor:기본;" transition:opacity 0.25s ease; opacity:1;">
-</div>
+      <div class="viewer">
+        <img id="galleryImg"
+             src="sina_sample_collage.png"
+             style="cursor:default; transition:opacity 0.18s ease; opacity:1;"
+             loading="eager"
+             decoding="async"
+             alt="실제 커미션 샘플">
+      </div>
 
-<div class="thumb-grid" id="sampleThumbGrid">
-  <div class="thumb-item">
-    <img src="sina_sample_collage.png" onclick="selectSample(0)">
-    <div class="thumb-label">시나</div>
-  </div>
       <div class="thumb-grid" id="sampleThumbGrid">
         <div class="thumb-item">
-          <img src="rararu_sample_collage.png" onclick="selectSample(1)">
+          <img src="sina_sample_collage.png" alt="시나 샘플" onclick="selectSample(0)">
+          <div class="thumb-label">시나</div>
+        </div>
+        <div class="thumb-item">
+          <img src="rararu_sample_collage.png" alt="라라루 샘플" onclick="selectSample(1)">
           <div class="thumb-label">라라루</div>
         </div>
         <div class="thumb-item">
-          <img src="koya_sample_collage.png" onclick="selectSample(2)">
+          <img src="koya_sample_collage.png" alt="네무키 코야 샘플" onclick="selectSample(2)">
           <div class="thumb-label">네무키 코야</div>
         </div>
         <div class="thumb-item">
-          <img src="raruka_sample_collage.png" onclick="selectSample(3)">
+          <img src="raruka_sample_collage.png" alt="라루카 샘플" onclick="selectSample(3)">
           <div class="thumb-label">라루카</div>
         </div>
         <div class="thumb-item">
-          <img src="B_sample_collage.png" onclick="selectSample(4)">
+          <img src="B_sample_collage.png" alt="양 수인 샘플" onclick="selectSample(4)">
           <div class="thumb-label">양 수인</div>
         </div>
       </div>
@@ -675,9 +745,14 @@ textarea{
       <div class="info-text">이미지를 클릭하면 크게 볼 수 있습니다!</div>
 
       <div class="style-viewer">
-        <img id="faceGallery" src="raruka_face_types.png" style="cursor:기본;" transition:opacity 0.25s ease; opacity:1;">
-        <button 입력="button" class="circle-nav left" onclick="prevFace()">❮</button>
-        <button 입력="button" class="circle-nav right" onclick="nextFace()">❯</button>
+        <img id="faceGallery"
+             src="raruka_face_types.png"
+             style="cursor:default; transition:opacity 0.18s ease; opacity:1;"
+             loading="eager"
+             decoding="async"
+             alt="표정 샘플">
+        <button type="button" class="circle-nav left" onclick="prevFace()">❮</button>
+        <button type="button" class="circle-nav right" onclick="nextFace()">❯</button>
       </div>
 
       <div id="faceDesc" class="desc-box">라루카님 표정 샘플</div>
@@ -685,8 +760,7 @@ textarea{
     </div>
   </details>
 
-  <details class="card">
-    <summary>⚠️ 주의사항</summary>
+
     <div style="margin-top:10px; line-height:1.9; font-size:14px;">
       ❥ 일러스트 <span class="highlight">출처 표기는 필수</span>입니다.<br>
       (작가의 SNS 계정 아이디로, 완성 후 전달드립니다.)<br><br>
@@ -749,9 +823,14 @@ textarea{
       <div class="info-text">좌우 버튼으로 그림체 참고 이미지를 넘길 수 있습니다.</div>
 
       <div class="style-viewer">
-        <img id="styleGallery" src="style_01.png" style="cursor:기본;" transition:opacity 0.25s ease; opacity:1;" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
-        <button 입력="button" class="circle-nav left" onclick="prevStyle()">❮</button>
-        <button 입력="button" class="circle-nav right" onclick="nextStyle()">❯</button>
+        <img id="styleGallery"
+             src="style_01.png"
+             style="cursor:default; transition:opacity 0.18s ease; opacity:1;"
+             loading="eager"
+             decoding="async"
+             alt="그림체 참고">
+        <button type="button" class="circle-nav left" onclick="prevStyle()">❮</button>
+        <button type="button" class="circle-nav right" onclick="nextStyle()">❯</button>
       </div>
 
       <div id="styleDots" class="dots">● ○ ○ ○</div>
@@ -760,6 +839,7 @@ textarea{
 
   <details class="card">
     <summary>📄 신청 양식</summary>
+
 
     <div class="notice">
       신청 전 가격표와 샘플을 꼭 확인해 주세요.<br>
@@ -799,17 +879,48 @@ textarea{
 </div>
 
 <script>
+function preloadImages(arr){
+  arr.forEach(src => {
+    const img = new Image();
+    img.decoding = 'async';
+    img.src = src;
+  });
+}
+
+function setFadingImage(img, src){
+  if(!img) return;
+  img.style.opacity = '0';
+
+  const token = String(Date.now()) + Math.random().toString(36).slice(2);
+  img.dataset.swapToken = token;
+
+  const loader = new Image();
+  loader.decoding = 'async';
+  loader.onload = () => {
+    if(img.dataset.swapToken !== token) return;
+    img.src = src;
+    requestAnimationFrame(() => {
+      if(img.dataset.swapToken === token){
+        img.style.opacity = '1';
+      }
+    });
+  };
+  loader.onerror = () => {
+    if(img.dataset.swapToken !== token) return;
+    img.src = src;
+    requestAnimationFrame(() => {
+      if(img.dataset.swapToken === token){
+        img.style.opacity = '1';
+      }
+    });
+  };
+  loader.src = src;
+}
+
 function copyText() {
+  updateFormOption();
   const baseText = document.getElementById("inputText").value;
-
-  let optionText = "";
-  if(selectedOptions.length > 0){
-    optionText = "\n\n[선택 옵션]\n" + selectedOptions.join("\n");
-  }
-
-  const finalText = baseText + optionText;
-
-  navigator.clipboard.writeText(finalText);
+  navigator.clipboard.writeText(baseText);
   alert("복사 완료! 문의란에 붙여넣어 주세요 ( ◜ᴗ◝ )♡");
 }
 
@@ -821,26 +932,6 @@ const images = [
   "raruka_sample_collage.png",
   "B_sample_collage.png"
 ];
-
-function updateGallery(){
-  const img = document.getElementById("galleryImg");
-  img.style.opacity = 0;
-  setTimeout(() => {
-    img.src = images[current];
-    updateSampleThumbBorder();
-    img.style.opacity = 1;
-  }, 180);
-}
-function selectSample(index){
-  current = index;
-  updateGallery();
-}
-function updateSampleThumbBorder(){
-  const thumbs = document.querySelectorAll("#sampleThumbGrid img");
-  thumbs.forEach((thumb, index) => {
-    thumb.style.border = index === current ? "2px solid var(--pink-deep)" : "2px solid transparent";
-  });
-}
 
 let faceCurrent = 0;
 const faceImages = [
@@ -854,33 +945,6 @@ const faceDescriptions = [
   "시로유키 시아님 1.0 표정 샘플"
 ];
 
-function updateFace(){
-  const img = document.getElementById("faceGallery");
-  const desc = document.getElementById("faceDesc");
-  img.style.opacity = 0;
-  setTimeout(() => {
-    img.src = faceImages[faceCurrent];
-    desc.innerHTML = faceDescriptions[faceCurrent];
-    updateFaceDots();
-    img.style.opacity = 1;
-  }, 180);
-}
-function nextFace(){
-  faceCurrent = (faceCurrent + 1) % faceImages.length;
-  updateFace();
-}
-function prevFace(){
-  faceCurrent = (faceCurrent - 1 + faceImages.length) % faceImages.length;
-  updateFace();
-}
-function updateFaceDots(){
-  let dots = "";
-  for(let i=0;i<faceImages.length;i++){
-    dots += (i===faceCurrent) ? "● " : "○ ";
-  }
-  document.getElementById("faceDots").innerText = dots.trim();
-}
-
 let styleCurrent = 0;
 const styleImages = [
   "style_01.png",
@@ -889,49 +953,159 @@ const styleImages = [
   "style_04.png"
 ];
 
+let selectedOptions = [];
+let totalPrice = 0;
+const basePackageNames = ['전신 패키지', '반신 패키지'];
+
+function updateGallery(){
+  const img = document.getElementById("galleryImg");
+  setFadingImage(img, images[current]);
+  updateSampleThumbBorder();
+}
+
+function selectSample(index){
+  current = index;
+  updateGallery();
+}
+
+function updateSampleThumbBorder(){
+  const thumbs = document.querySelectorAll("#sampleThumbGrid img");
+  thumbs.forEach((thumb, index) => {
+    thumb.style.border = index === current ? "2px solid var(--pink-deep)" : "2px solid transparent";
+    thumb.style.boxSizing = "border-box";
+  });
+}
+
+function updateFace(){
+  const img = document.getElementById("faceGallery");
+  const desc = document.getElementById("faceDesc");
+  setFadingImage(img, faceImages[faceCurrent]);
+  desc.innerHTML = faceDescriptions[faceCurrent];
+  updateFaceDots();
+}
+
+function nextFace(){
+  faceCurrent = (faceCurrent + 1) % faceImages.length;
+  updateFace();
+}
+
+function prevFace(){
+  faceCurrent = (faceCurrent - 1 + faceImages.length) % faceImages.length;
+  updateFace();
+}
+
+function updateFaceDots(){
+  let dots = "";
+  for(let i = 0; i < faceImages.length; i++){
+    dots += (i === faceCurrent) ? "● " : "○ ";
+  }
+  document.getElementById("faceDots").innerText = dots.trim();
+}
+
 function updateStyle(){
   const img = document.getElementById("styleGallery");
-  img.style.opacity = 0;
-  setTimeout(() => {
-    img.src = styleImages[styleCurrent];
-    updateStyleDots();
-    img.style.opacity = 1;
-  }, 180);
+  setFadingImage(img, styleImages[styleCurrent]);
+  updateStyleDots();
 }
+
 function nextStyle(){
   styleCurrent = (styleCurrent + 1) % styleImages.length;
   updateStyle();
 }
+
 function prevStyle(){
   styleCurrent = (styleCurrent - 1 + styleImages.length) % styleImages.length;
   updateStyle();
 }
+
 function updateStyleDots(){
   let dots = "";
-  for(let i=0;i<styleImages.length;i++){
-    dots += (i===styleCurrent) ? "● " : "○ ";
+  for(let i = 0; i < styleImages.length; i++){
+    dots += (i === styleCurrent) ? "● " : "○ ";
   }
   document.getElementById("styleDots").innerText = dots.trim();
 }
-    let selectedOptions = [];
-let totalPrice = 0;
+
+function updateTotalPrice(){
+  totalPrice = selectedOptions.reduce((sum, item) => sum + item.price, 0);
+  document.getElementById("totalPriceText").innerText = totalPrice.toLocaleString() + "원";
+}
+
+function updateFormOption(){
+  const textarea = document.getElementById("inputText");
+  const lines = textarea.value.split("\n");
+  const optionText = selectedOptions
+    .map(o => `${o.name} (+${o.price.toLocaleString()}원)`)
+    .join(", ");
+
+  let found = false;
+  for(let i = 0; i < lines.length; i++){
+    if(lines[i].startsWith("7. 추가 옵션")){
+      lines[i] = "7. 추가 옵션 : " + optionText;
+      found = true;
+      break;
+    }
+  }
+
+  if(!found){
+    lines.push("");
+    lines.push("7. 추가 옵션 : " + optionText);
+  }
+
+  textarea.value = lines.join("\n");
+  updateTotalPrice();
+}
+
+function setActiveOptionState(name, active){
+  document.querySelectorAll('.price-item').forEach(el => {
+    const text = el.getAttribute('onclick') || '';
+    if(text.includes(`'${name}'`)){
+      el.classList.toggle('active', active);
+    }
+  });
+}
 
 function toggleOption(el, name, price){
   const index = selectedOptions.findIndex(o => o.name === name);
+  const isBase = basePackageNames.includes(name);
 
   if(index > -1){
     selectedOptions.splice(index, 1);
-    totalPrice -= price;
     el.classList.remove("active");
   } else {
+    if(isBase){
+      selectedOptions = selectedOptions.filter(o => !basePackageNames.includes(o.name));
+      document.querySelectorAll('.price-item.active').forEach(activeEl => {
+        const onclick = activeEl.getAttribute('onclick') || '';
+        if(onclick.includes("'전신 패키지'") || onclick.includes("'반신 패키지'")){
+          activeEl.classList.remove('active');
+        }
+      });
+    }
     selectedOptions.push({name, price});
-    totalPrice += price;
     el.classList.add("active");
   }
 
+  updateFormOption();
+  updateTotalPrice();
   console.log("총 가격:", totalPrice);
 }
-</script>
 
-</body>
-</html>
+function initPage(){
+  preloadImages(images);
+  preloadImages(faceImages);
+  preloadImages(styleImages);
+
+  updateGallery();
+  updateFaceDots();
+  updateStyleDots();
+  updateFormOption();
+  updateTotalPrice();
+
+  setTimeout(() => {
+    updateSampleThumbBorder();
+  }, 0);
+}
+
+initPage();
+</script>

@@ -523,72 +523,222 @@ textarea{
     </div>
   </div>
 
-  <div class="card price-card-open">
-    <div class="title">💰 가격표</div>
-    <div class="section-sub">기본 패키지 및 추가 옵션 안내</div>
-    <div class="price-grid">
-      <div class="price-group">
-        <div class="price-box">
-          <div class="price-head">기본 모델</div>
-          <div class="price-list">
-            <div class="price-item" onclick="toggleOption('Live2D 파츠분리 전신 + 디자인 + 표정 7종 패키지')">
-Live2D 파츠분리 전신 + 디자인 + 표정 7종 패키지 +600,000원<br>
-              <div class="price-item" onclick="toggleOption('Live2D 파츠분리 반신 (배꼽 위까지) + 디자인 + 표정 3종 패키지')">
-Live2D 파츠분리 반신 (허리까지) + 디자인 + 표정 3종 패키지 : +500,000원
-            </div>
-      </div>
-</div>
+<div class="card price-card-open">
+  <div class="title">💰 가격표</div>
+  <div class="section-sub">기본 패키지 및 추가 옵션 안내</div>
 
-        <div class="price-box">
-          <div class="price-head">포함 사항</div>
-          <div class="price-list">
-            - 기본 파츠분리 일러스트<br>
-            - 캐릭터 디자인 시안<br>
-            - 기본 표정 (눈물+초롱초롱, 당황눈, 반짝눈, 하트눈, 빙글눈, 화남마크, 얼굴 그림자 등)<br>
-            - PSD 파일 제공
+  <div class="price-grid">
+
+    <!-- 기본 모델 -->
+    <div class="price-group">
+      <div class="price-box">
+        <div class="price-head">기본 모델</div>
+        <div class="price-list">
+
+          <div class="price-item" onclick="toggleOption(this, '전신 패키지', 600000)">
+            Live2D 전신 패키지 +600,000원
           </div>
+
+          <div class="price-item" onclick="toggleOption(this, '반신 패키지', 500000)">
+            Live2D 반신 패키지 +500,000원
+          </div>
+
         </div>
       </div>
 
       <div class="price-box">
-        <div class="price-head">삼면도</div>
-<div class="price-item" onclick="toggleOption('캐릭터 시트(삼면도)')">
-캐릭터 시트(삼면도) +110,000원
-</div>
+        <div class="price-head">포함 사항</div>
+        <div class="price-list">
+          - 기본 파츠분리 일러스트<br>
+          - 캐릭터 디자인 시안<br>
+          - 기본 표정 7종<br>
+          - PSD 파일 제공
+        </div>
+      </div>
+    </div>
+
+    <!-- 기타 -->
+    <div class="price-box">
+      <div class="price-head">기타</div>
+      <div class="price-list">
+
+        <div class="price-item" onclick="toggleOption(this, '삼면도', 110000)">
+          캐릭터 시트(삼면도) +110,000원
+        </div>
+
+        <div class="price-item" onclick="toggleOption(this, '작업과정 비공개', 40000)">
+          작업과정 비공개 +40,000원
+        </div>
+
+        <div class="price-item" onclick="toggleOption(this, '작업물 비공개 1개월', 20000)">
+          작업물 비공개 (1개월) +20,000원
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 추가 옵션 -->
+    <details class="option-box">
+      <summary>추가 옵션</summary>
+
+      <div class="price-group">
+
+        <div class="price-box">
+          <div class="price-head">✨ 표정</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '표정 추가', 5000)">표정 추가 +5,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '맞춤형 표정', 10000)">맞춤형 표정 +10,000원~</div>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-head">✨ 팔 / 포즈</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '접힌팔 (소매X)', 20000)">접힌팔 (소매X) +20,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '접힌팔 (소매O)', 30000)">접힌팔 (소매O) +30,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '인형 안기', 30000)">인형 안기 +30,000원</div>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-head">✨ 소품</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '얼굴 소품', 5000)">얼굴 소품 +5,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '소품 잡기', 20000)">소품 잡기 +20,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '손파츠 추가', 15000)">손파츠 추가 +15,000원</div>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-head">✨ 의상 / 헤어</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '신의상', 100000)">신의상 +100,000원~</div>
+            <div class="price-item" onclick="toggleOption(this, '겉옷', 80000)">겉옷 (on/off) +80,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '후드', 40000)">후드 모자 +40,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '헤어 바리에이션', 50000)">헤어 바리에이션 +50,000원~</div>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-head">✨ 기타</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '간단 펫', 30000)">간단 펫 +30,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '고가동 파츠', 100000)">고가동 파츠 분리 +100,000원~</div>
+          </div>
+        </div>
+
+      </div>
+    </details>
+
+  </div>
+</div><div class="card price-card-open">
+  <div class="title">💰 가격표</div>
+  <div class="section-sub">기본 패키지 및 추가 옵션 안내</div>
+
+  <div class="price-grid">
+
+    <!-- 기본 모델 -->
+    <div class="price-group">
+      <div class="price-box">
+        <div class="price-head">기본 모델</div>
+        <div class="price-list">
+
+          <div class="price-item" onclick="toggleOption(this, '전신 패키지', 600000)">
+            Live2D 전신 패키지 +600,000원
+          </div>
+
+          <div class="price-item" onclick="toggleOption(this, '반신 패키지', 500000)">
+            Live2D 반신 패키지 +500,000원
+          </div>
+
         </div>
       </div>
 
-            <div class="price-box">
-        <div class="price-head">작업물 공개</div>
-<div class="price-item" onclick="toggleOption('작업과정 비공개')">
-작업과정 비공개 +40,000
-</div>
-
-<div class="price-item" onclick="toggleOption('1개월 작업물 비공개')">
-1개월 작업물 비공개 (최대 4개월 가능) : +20,000
-</div>
-    
-
-      <details class="option-box">
-        <summary>추가 옵션</summary>
-        <div class="price-list" style="margin-top:8px;">
-          - 표정 추가 (위치, 색상 조정 가능) : 5천원<br> 
-          - 맞춤형 표정 추가 (타 모델 재사용 없이 오직 한 분만을 위해 제작합니다!) : 1만원~<br>
-          - 접힌팔 : 소매 X = 2만원, 소매 O = 3만원, 겉옷추가 = +3만원<br>
-          - 인형 안기 (접힌팔 필수) : 3만원
-          - 간단 펫 추가 (주변을 돌거나 표정을 따라합니다.) : 3만원<br>
-          - 얼굴 소품 (안경, 안대, 마스크 등) : 5천원, 맞춤형 디자인 = +2만원<br>
-          - 소품 잡기 (접힌팔, 손파츠 필수 / 마이크, 게임기 등) : 2만원, 맞춤형 디자인 = +2만원 <br>
-          - 손파츠 추가 (게임기 잡은 손, 마이크 잡은 손 등) : 1만5천원<br>
-          - 신의상 추가 : 10만원~<br>
-          - 겉옷 추가 (on, off) : 8만원<br>
-          - 겉옷 후드모자 (on, off) : 4만원<br>
-          - 헤어스타일 바리에이션 추가 (묶기, 풀기, 장발, 단발 등) : 5만원~<br>
-          - 고가동 파츠 분리 : 10만원~
+      <div class="price-box">
+        <div class="price-head">포함 사항</div>
+        <div class="price-list">
+          - 기본 파츠분리 일러스트<br>
+          - 캐릭터 디자인 시안<br>
+          - 기본 표정 (전신 5종, 반신 3종)<br>
+          - PSD 파일 제공
         </div>
-      </details>
+      </div>
     </div>
+
+    <!-- 기타 -->
+    <div class="price-box">
+      <div class="price-head">기타</div>
+      <div class="price-list">
+
+        <div class="price-item" onclick="toggleOption(this, '삼면도', 110000)">
+          캐릭터 시트(삼면도) +110,000원
+        </div>
+
+        <div class="price-item" onclick="toggleOption(this, '작업과정 비공개', 40000)">
+          작업과정 비공개 +40,000원
+        </div>
+
+        <div class="price-item" onclick="toggleOption(this, '작업물 비공개 1개월', 20000)">
+          작업물 비공개 (1개월) +20,000원
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 추가 옵션 -->
+    <details class="option-box">
+      <summary>추가 옵션</summary>
+
+      <div class="price-group">
+
+        <div class="price-box">
+          <div class="price-head">✨ 표정 (맞춤형 표정은 의뢰자님만을 위한 주문제작 파츠입니다!) </div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '표정 추가', 5000)">기본 표정 추가 +5,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '맞춤형 표정', 10000)">맞춤형 표정 +10,000원~</div>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-head">✨ 팔 / 포즈</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '접힌팔 (소매X)', 20000)">접힌팔 (소매X) +20,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '접힌팔 (소매O)', 30000)">접힌팔 (소매O) +30,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '인형 안기', 30000)">인형 안기 +30,000원</div>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-head">✨ 소품</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '마이크, 게임기 등', 20000)">마이크, 게임기 등 +20,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '소품을 잡는 손 파츠', 15000)">소품을 잡는 손 파츠 +15,000원</div>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-head">✨ 의상 / 헤어</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '신의상', 100000)">신의상 +100,000원~</div>
+            <div class="price-item" onclick="toggleOption(this, '겉옷', 80000)">겉옷 (on/off) +80,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '후드', 40000)">후드 모자 +40,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '헤어 바리에이션', 50000)">헤어 바리에이션 +50,000원~</div>
+          </div>
+        </div>
+
+        <div class="price-box">
+          <div class="price-head">✨ 기타</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleOption(this, '간단 펫', 30000)">간단 펫 +30,000원</div>
+            <div class="price-item" onclick="toggleOption(this, '고가동 파츠분리', 100000)">고가동 파츠 분리 +100,000원~</div>
+          </div>
+        </div>
+
+      </div>
+    </details>
+
   </div>
+</div>
 
   <details class="card">
     <summary>🖌️ 실제 커미션 샘플</summary>
@@ -751,7 +901,7 @@ Live2D 파츠분리 반신 (허리까지) + 디자인 + 표정 3종 패키지 : 
 
 7. 추가 옵션 :
 
-8. 표정 변경 : (기본 표정에서 변경하고 싶은 표정이 있다면 적어주세요.)
+8. 기본 표정 (전신 5종 / 반신 3종) : 
 
 9. 작가에게 전할 말 : (기타 문의 및 요청)</textarea>
 

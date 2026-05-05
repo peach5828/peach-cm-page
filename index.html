@@ -284,14 +284,10 @@ details.option-box summary{
 
 .thumb-item img{
   width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border:2px solid transparent;
+  height:80px;      
+  object-fit:contain;
   border-radius:12px;
-  cursor:pointer;
-  margin-top:0;
   background:#fff;
-  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 
 .thumb-item img:hover{
@@ -602,7 +598,7 @@ textarea{
      <div class="viewer">
   <img id="galleryImg"
        src="sina_sample_collage.png"
-       style="cursor:기본; transition:opacity 0.25s ease; opacity:1;">
+       style="cursor:기본;" transition:opacity 0.25s ease; opacity:1;">
 </div>
 
 <div class="thumb-grid" id="sampleThumbGrid">
@@ -638,7 +634,7 @@ textarea{
       <div class="info-text">이미지를 클릭하면 크게 볼 수 있습니다!</div>
 
       <div class="style-viewer">
-        <img id="faceGallery" src="raruka_face_types.png" onclick="openModal('face')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;">
+        <img id="faceGallery" src="raruka_face_types.png" style="cursor:기본;" transition:opacity 0.25s ease; opacity:1;">
         <button 입력="button" class="circle-nav left" onclick="prevFace()">❮</button>
         <button 입력="button" class="circle-nav right" onclick="nextFace()">❯</button>
       </div>
@@ -712,7 +708,7 @@ textarea{
       <div class="info-text">좌우 버튼으로 그림체 참고 이미지를 넘길 수 있습니다.</div>
 
       <div class="style-viewer">
-        <img id="styleGallery" src="style_01.png" onclick="openModal('style')" style="cursor:pointer; transition:opacity 0.25s ease; opacity:1;" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
+        <img id="styleGallery" src="style_01.png" style="cursor:default;" transition:opacity 0.25s ease; opacity:1;" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
         <button 입력="button" class="circle-nav left" onclick="prevStyle()">❮</button>
         <button 입력="button" class="circle-nav right" onclick="nextStyle()">❯</button>
       </div>
@@ -874,50 +870,6 @@ function updateStyleDots(){
   }
   document.getElementById("styleDots").innerText = dots.trim();
 }
-
-function openModal(입력){
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modalImg");
-  let targetImg = null;
-
-  if(입력 === "sample"){
-    targetImg = document.getElementById("galleryImg");
-  } else if(입력 === "face"){
-    targetImg = document.getElementById("faceGallery");
-  } else if(입력 === "style"){
-    targetImg = document.getElementById("styleGallery");
-  }
-
-  if(!targetImg || !targetImg.getAttribute("src") || targetImg.naturalWidth === 0){
-    return;
-  }
-
-  const src = targetImg.getAttribute("src");
-
-  modalImg.onload = function(){
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden"; // ⭐ 추가
-  };
-
-  modalImg.src = src;
-}
-function closeModal(){
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modalImg");
-
-  modal.style.display = "none";
-  modalImg.src = "";
-  document.body.style.overflow = "auto"; // ⭐ 추가
-}
-window.onload = function(){
-  preloadImages(images);
-  preloadImages(faceImages);
-  preloadImages(styleImages);
-
-  updateGallery();
-  updateFace();
-  updateStyle();
-};
 </script>
 
 </body>

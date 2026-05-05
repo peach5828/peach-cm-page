@@ -922,6 +922,24 @@ function updateStyleDots(){
   }
   document.getElementById("styleDots").innerText = dots.trim();
 }
+    let selectedOptions = [];
+let totalPrice = 0;
+
+function toggleOption(el, name, price){
+  const index = selectedOptions.findIndex(o => o.name === name);
+
+  if(index > -1){
+    selectedOptions.splice(index, 1);
+    totalPrice -= price;
+    el.classList.remove("active");
+  } else {
+    selectedOptions.push({name, price});
+    totalPrice += price;
+    el.classList.add("active");
+  }
+
+  console.log("총 가격:", totalPrice);
+}
 </script>
 
 </body>

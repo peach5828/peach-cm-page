@@ -138,41 +138,6 @@ summary::-webkit-details-marker{display:none;}
   margin-top:6px;
   font-size:12px;
   color:#9a848c;
-  line-height:1.6;
-}
-
-.section-sub .inline-note{
-  display:block;
-  margin-top:4px;
-  color:var(--pink);
-  font-weight:700;
-  font-size:12px;
-}
-
-.total-price-box{
-  margin-top:12px;
-  background:linear-gradient(180deg, #fffafc 0%, #fff2f6 100%);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:12px 14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  font-size:14px;
-  color:#7c6670;
-}
-
-.total-price-box strong{
-  color:var(--pink);
-  font-size:16px;
-  font-weight:700;
-}
-
-.price-head .subtle{
-  font-weight:400;
-  color:#8d7980;
-  font-size:13px;
 }
 
 .sample-intro{
@@ -187,7 +152,7 @@ summary::-webkit-details-marker{display:none;}
 }
 
 .price-card-open .title{
-  cursor:default;
+  cursor:기본;
 }
 
 .slot{
@@ -273,27 +238,37 @@ summary::-webkit-details-marker{display:none;}
   font-size:14px;
   line-height:1.9;
 }
+
 .price-item{
   cursor:pointer;
-  padding:7px 8px;
+  padding:6px 8px;
   border-radius:10px;
-  transition:background .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  border:2px solid transparent;
-  margin:2px 0;
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+  user-select:none;
 }
-
 .price-item:hover{
-  background:#ffe5ec;
   transform:translateY(-1px);
+  background:#ffe3ec;
 }
-
 .price-item.active{
   background:var(--pink);
-  color:white;
-  border-color:var(--pink-deep);
-  box-shadow:0 8px 16px rgba(235,131,159,0.18);
+  color:#fff;
+  font-weight:700;
 }
 
+.included-box{
+  background:linear-gradient(180deg, #fffdfd 0%, #fff9fb 100%);
+  border:1px solid #f4e8ec;
+  opacity:.78;
+}
+.included-box .price-head{
+  color:#b899a4;
+}
+.included-box .price-list{
+  color:#8b7c81;
+  font-size:13px;
+  line-height:1.85;
+}
 
 details.option-box{
   background:var(--pink-bg);
@@ -306,19 +281,30 @@ details.option-box summary{
   font-size:15px;
   display:flex;
   align-items:center;
-  gap:8px;
-  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:10px;
 }
 
-.summary-note{
+.summary-caret{
   font-size:12px;
-  color:#8d7980;
-  font-weight:400;
-  line-height:1.45;
+  line-height:1;
+  color:var(--pink-deep);
 }
 
-details.option-box > .price-box + .price-box{
+.option-guide{
+  display:none;
   margin-top:10px;
+  background:#fff;
+  border:1px dashed var(--line);
+  color:#8b7c81;
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:12px;
+  line-height:1.7;
+}
+
+details.option-box[open] .option-guide{
+  display:block;
 }
 
 .info-text{
@@ -341,6 +327,8 @@ details.option-box > .price-box + .price-box{
   border-radius:16px;
   display:block;
   background:#fff;
+  transition: opacity 0.18s ease;
+  opacity:1;
 }
 
 .thumb-grid{
@@ -356,10 +344,12 @@ details.option-box > .price-box + .price-box{
 
 .thumb-item img{
   width:100%;
-  height:80px;      
+  height:80px;
   object-fit:contain;
   border-radius:12px;
   background:#fff;
+  cursor:pointer;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
 
 .thumb-item img:hover{
@@ -448,6 +438,21 @@ details.option-box > .price-box + .price-box{
   border:1px solid var(--line);
   border-radius:14px;
   padding:10px;
+}
+
+.notice-box{
+  margin-top:10px;
+  background:linear-gradient(180deg, #fffafb 0%, #fff3f7 100%);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px 14px 12px;
+  font-size:14px;
+  line-height:1.9;
+  color:var(--text);
+}
+
+.notice-box .highlight{
+  font-weight:700;
 }
 
 .form-top-note{
@@ -548,6 +553,37 @@ textarea{
   box-shadow:0 10px 24px rgba(0,0,0,0.25);
 }
 
+.floating-total{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:1000;
+  background:linear-gradient(180deg, var(--pink) 0%, var(--pink-deep) 100%);
+  color:#fff;
+  border-radius:16px;
+  padding:12px 14px;
+  box-shadow:0 12px 28px rgba(235,131,159,0.28);
+  min-width:180px;
+  text-align:left;
+}
+.floating-total .label{
+  display:block;
+  font-size:12px;
+  opacity:.88;
+  margin-bottom:4px;
+}
+.floating-total .amount{
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:-0.02em;
+}
+.floating-total .sub{
+  margin-top:4px;
+  font-size:11px;
+  opacity:.88;
+  line-height:1.4;
+}
+
 @media (max-width:640px){
   .collab-grid{grid-template-columns:1fr;}
   .hero{padding:24px 18px 26px;border-radius:28px;}
@@ -558,6 +594,13 @@ textarea{
   .circle-nav{width:34px;height:34px;font-size:16px;}
   .container{padding:12px 10px 24px;}
   .style-viewer{max-width:100%;}
+  .floating-total{
+    left:50%;
+    right:auto;
+    bottom:12px;
+    transform:translateX(-50%);
+    width:min(92vw, 360px);
+  }
 }
 </style>
 </head>
@@ -571,7 +614,7 @@ textarea{
     <h1 class="hero-title">💗 Live2D 버츄얼 모델 일러스트</h1>
     <p class="hero-desc hero-main-copy">
       Live2D 버츄얼 모델 일러스트 커미션 입니다.<br><br>
-     <span class="em">Live2D 모델용 일러스트(psd) 제작</span>을 하고 있으며, <span class="em">리깅 작업은 포함되어 있지 않습니다.</span><br>
+      <span class="em">Live2D 모델용 일러스트(psd) 제작</span>을 하고 있으며, <span class="em">리깅 작업은 포함되어 있지 않습니다.</span><br>
       리깅이 필요하신 경우 협업 리깅 작가님께 별도로 의뢰해 주세요.
     </p>
   </div>
@@ -587,112 +630,104 @@ textarea{
       8월 : <span class="closed">마감</span> / <span class="closed">마감</span><br>
       9월 : <span class="available">♥</span> / <span class="available">♥</span>
     </div>
-      <div class="slot-notice">
+    <div class="slot-notice">
       <strong>2026년 상반기 예약이 마감되었습니다.</strong><br>
-     9월 첫번째 슬롯부터 예약 가능합니다.<br><br>
-      하반기에는 패키지 구성이나 가격 및 퀄리티에 변동이 있을 수 있어,<br> 
-          <span class="start-em">7월 1일부터</span> 하반기 (9월 첫번째 슬롯~12월 두번째 슬롯) 예약을 받습니다!
+      9월 첫번째 슬롯부터 예약 가능합니다.<br><br>
+      하반기에는 패키지 구성이나 가격 및 퀄리티에 변동이 있을 수 있어,<br>
+      <span class="start-em">7월 1일부터</span> 하반기 (9월 첫번째 슬롯~12월 두번째 슬롯) 예약을 받습니다!
       <div class="slot-note-soft">※ 작업 펑크가 발생할 경우 빈 슬롯이 생길 수 있습니다.</div>
     </div>
   </div>
 
-<div class="card price-card-open">
-  <div class="title">💰 가격표</div>
-  <div class="section-sub">기본 패키지 및 추가 옵션 안내
-    <span class="inline-note">옵션 클릭시 신청양식에 적용됩니다!</span>
-  </div>
+  <div class="card price-card-open">
+    <div class="title">💰 가격표</div>
+    <div class="section-sub">기본 패키지 및 추가 옵션 안내</div>
 
-  <div class="total-price-box">
-    <span>총 가격</span>
-    <strong id="totalPriceText">0원</strong>
-  </div>
+    <div class="price-grid">
 
-  <div class="price-grid">
-
-    <!-- 기본 모델 -->
-    <div class="price-group">
-      <div class="price-box">
-        <div class="price-head">기본 모델</div>
-        <div class="price-list">
-
-          <div class="price-item" onclick="toggleOption(this, '전신 패키지', 600000)">
-            Live2D 전신 패키지 +600,000원
+      <div class="price-group">
+        <div class="price-box">
+          <div class="price-head">기본 모델</div>
+          <div class="price-list">
+            <div class="price-item" onclick="toggleBaseOption(this, '전신 패키지', 600000)">
+              Live2D 전신 패키지 +600,000원
+            </div>
+            <div class="price-item" onclick="toggleBaseOption(this, '반신 패키지', 500000)">
+              Live2D 반신 패키지 +500,000원
+            </div>
           </div>
+        </div>
 
-          <div class="price-item" onclick="toggleOption(this, '반신 패키지', 500000)">
-            Live2D 반신 패키지 +500,000원
+        <div class="price-box included-box">
+          <div class="price-head">포함 사항</div>
+          <div class="price-list">
+            - 기본 파츠분리 일러스트<br>
+            - 캐릭터 디자인 시안<br>
+            - 기본 표정 (전신 5종, 반신 3종)<br>
+            - PSD 파일 제공
           </div>
-
         </div>
       </div>
 
-      <div class="price-box">
-        <div class="price-head">포함 사항</div>
-        <div class="price-list">
-          - 기본 파츠분리 일러스트<br>
-          - 캐릭터 디자인 시안<br>
-          - 기본 표정 (전신 5종, 반신 3종)<br>
-          - PSD 파일 제공
+      <details class="option-box">
+        <summary><span>추가 옵션</span><span class="summary-caret">▼</span></summary>
+        <div class="option-guide">옵션 구성이 어려운 경우, 선택 전 문의 주시면 상세히 안내해 드릴게요!</div>
+
+        <div class="price-group">
+
+          <div class="price-box">
+            <div class="price-head">✨ 표정 <span style="font-weight:400;color:#8f7d83;">(맞춤형 표정은 의뢰자님만을 위한 주문제작 파츠입니다!)</span></div>
+            <div class="price-list">
+              <div class="price-item" onclick="toggleAddonOption(this, '기본 표정 추가', 5000)">기본 표정 추가 +5,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '맞춤형 표정', 10000)">맞춤형 표정 +10,000원~</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <div class="price-head">✨ 팔 / 포즈</div>
+            <div class="price-list">
+              <div class="price-item" onclick="toggleAddonOption(this, '접힌팔 (소매X)', 20000)">접힌팔 (소매X) +20,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '접힌팔 (소매O)', 30000)">접힌팔 (소매O) +30,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '인형 안기', 30000)">인형 안기 +30,000원</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <div class="price-head">✨ 소품</div>
+            <div class="price-list">
+              <div class="price-item" onclick="toggleAddonOption(this, '마이크, 게임기 등', 20000)">마이크, 게임기 등 +20,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '소품을 잡는 손 파츠', 15000)">소품을 잡는 손 파츠 +15,000원</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <div class="price-head">✨ 의상 / 헤어</div>
+            <div class="price-list">
+              <div class="price-item" onclick="toggleAddonOption(this, '신의상', 100000)">신의상 +100,000원~</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '겉옷', 80000)">겉옷 (on/off) +80,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '후드', 40000)">후드 모자 +40,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '헤어 바리에이션', 50000)">헤어 바리에이션 +50,000원~</div>
+            </div>
+          </div>
+
+          <div class="price-box">
+            <div class="price-head">✨ 기타</div>
+            <div class="price-list">
+              <div class="price-item" onclick="toggleAddonOption(this, '간단 펫', 30000)">간단 펫 +30,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '고가동 파츠분리', 100000)">고가동 파츠 분리 +100,000원~</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '삼면도', 110000)">캐릭터 시트(삼면도) +110,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '작업과정 비공개', 40000)">작업과정 비공개 +40,000원</div>
+              <div class="price-item" onclick="toggleAddonOption(this, '작업물 비공개 1개월', 20000)">작업물 비공개 (1개월) +20,000원</div>
+            </div>
+          </div>
+
         </div>
-      </div>
+      </details>
+
     </div>
-
-    <!-- 추가 옵션 -->
-    <details class="option-box">
-      <summary>추가 옵션 <span class="summary-note">옵션 구성이 어려운 경우, 선택 전 문의 주시면 상세히 안내해 드릴게요!</span></summary>
-
-        <div class="price-box">
-          <div class="price-head">✨ 표정 <span class="subtle">(맞춤형 표정은 의뢰자님만을 위한 주문제작 파츠입니다!)</span></div>
-          <div class="price-list">
-            <div class="price-item" onclick="toggleOption(this, '표정 추가', 5000)">기본 표정 추가 +5,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '맞춤형 표정', 10000)">맞춤형 표정 +10,000원~</div>
-          </div>
-        </div>
-
-        <div class="price-box">
-          <div class="price-head">✨ 팔 / 포즈</div>
-          <div class="price-list">
-            <div class="price-item" onclick="toggleOption(this, '접힌팔 (소매X)', 20000)">접힌팔 (소매X) +20,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '접힌팔 (소매O)', 30000)">접힌팔 (소매O) +30,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '인형 안기', 30000)">인형 안기 +30,000원</div>
-          </div>
-        </div>
-
-        <div class="price-box">
-          <div class="price-head">✨ 소품</div>
-          <div class="price-list">
-            <div class="price-item" onclick="toggleOption(this, '마이크, 게임기 등', 20000)">마이크, 게임기 등 +20,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '소품을 잡는 손 파츠', 15000)">소품을 잡는 손 파츠 +15,000원</div>
-          </div>
-        </div>
-
-        <div class="price-box">
-          <div class="price-head">✨ 의상 / 헤어</div>
-          <div class="price-list">
-            <div class="price-item" onclick="toggleOption(this, '신의상', 100000)">신의상 +100,000원~</div>
-            <div class="price-item" onclick="toggleOption(this, '겉옷', 80000)">겉옷 (on/off) +80,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '후드', 40000)">후드 모자 +40,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '헤어 바리에이션', 50000)">헤어 바리에이션 +50,000원~</div>
-          </div>
-        </div>
-
-        <div class="price-box">
-          <div class="price-head">✨ 기타</div>
-          <div class="price-list">
-            <div class="price-item" onclick="toggleOption(this, '간단 펫', 30000)">간단 펫 +30,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '고가동 파츠분리', 100000)">고가동 파츠 분리 +100,000원~</div>
-            <div class="price-item" onclick="toggleOption(this, '삼면도', 110000)">캐릭터 시트(삼면도) +110,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '작업과정 비공개', 40000)">작업과정 비공개 +40,000원</div>
-            <div class="price-item" onclick="toggleOption(this, '작업물 비공개 1개월', 20000)">작업물 비공개 (1개월) +20,000원</div>
-          </div>
-        </div>
-
-    </details>
-
   </div>
-</div>
 
-<details class="card">
+  <details class="card">
     <summary>🖌️ 실제 커미션 샘플</summary>
     <div class="sample-intro">
       <span class="highlight">단순 공장식으로 일러스트를 뽑아내는 작업방식 NO!!</span><br>
@@ -705,33 +740,28 @@ textarea{
       </div>
 
       <div class="viewer">
-        <img id="galleryImg"
-             src="sina_sample_collage.png"
-             style="cursor:default; transition:opacity 0.18s ease; opacity:1;"
-             loading="eager"
-             decoding="async"
-             alt="실제 커미션 샘플">
+        <img id="galleryImg" src="sina_sample_collage.png" alt="실제 커미션 샘플" loading="eager" decoding="async" onclick="openModal(this.src)">
       </div>
 
       <div class="thumb-grid" id="sampleThumbGrid">
         <div class="thumb-item">
-          <img src="sina_sample_collage.png" alt="시나 샘플" onclick="selectSample(0)">
+          <img src="sina_sample_collage.png" alt="시나" loading="eager" decoding="async" onclick="selectSample(0)">
           <div class="thumb-label">시나</div>
         </div>
         <div class="thumb-item">
-          <img src="rararu_sample_collage.png" alt="라라루 샘플" onclick="selectSample(1)">
+          <img src="rararu_sample_collage.png" alt="라라루" loading="eager" decoding="async" onclick="selectSample(1)">
           <div class="thumb-label">라라루</div>
         </div>
         <div class="thumb-item">
-          <img src="koya_sample_collage.png" alt="네무키 코야 샘플" onclick="selectSample(2)">
+          <img src="koya_sample_collage.png" alt="네무키 코야" loading="eager" decoding="async" onclick="selectSample(2)">
           <div class="thumb-label">네무키 코야</div>
         </div>
         <div class="thumb-item">
-          <img src="raruka_sample_collage.png" alt="라루카 샘플" onclick="selectSample(3)">
+          <img src="raruka_sample_collage.png" alt="라루카" loading="eager" decoding="async" onclick="selectSample(3)">
           <div class="thumb-label">라루카</div>
         </div>
         <div class="thumb-item">
-          <img src="B_sample_collage.png" alt="양 수인 샘플" onclick="selectSample(4)">
+          <img src="B_sample_collage.png" alt="양 수인" loading="eager" decoding="async" onclick="selectSample(4)">
           <div class="thumb-label">양 수인</div>
         </div>
       </div>
@@ -742,15 +772,8 @@ textarea{
     <summary>💖 표정 샘플</summary>
 
     <div style="margin-top:10px;">
-      <div class="info-text">이미지를 클릭하면 크게 볼 수 있습니다!</div>
-
       <div class="style-viewer">
-        <img id="faceGallery"
-             src="raruka_face_types.png"
-             style="cursor:default; transition:opacity 0.18s ease; opacity:1;"
-             loading="eager"
-             decoding="async"
-             alt="표정 샘플">
+        <img id="faceGallery" src="raruka_face_types.png" alt="표정 샘플" loading="eager" decoding="async" onclick="openModal(this.src)">
         <button type="button" class="circle-nav left" onclick="prevFace()">❮</button>
         <button type="button" class="circle-nav right" onclick="nextFace()">❯</button>
       </div>
@@ -760,9 +783,10 @@ textarea{
     </div>
   </details>
 
-
-    <div style="margin-top:10px; line-height:1.9; font-size:14px;">
-      ❥ 일러스트 <span class="highlight">출처 표기는 필수</span>입니다.<br>
+  <details class="card">
+    <summary>⚠️ 주의사항</summary>
+    <div class="notice-box">
+      ❥ 일러스트 출처 표기는 필수입니다.<br>
       (작가의 SNS 계정 아이디로, 완성 후 전달드립니다.)<br><br>
 
       ❥ 캐릭터 디자인이 포함된 가격입니다.<br>
@@ -823,12 +847,7 @@ textarea{
       <div class="info-text">좌우 버튼으로 그림체 참고 이미지를 넘길 수 있습니다.</div>
 
       <div class="style-viewer">
-        <img id="styleGallery"
-             src="style_01.png"
-             style="cursor:default; transition:opacity 0.18s ease; opacity:1;"
-             loading="eager"
-             decoding="async"
-             alt="그림체 참고">
+        <img id="styleGallery" src="style_01.png" alt="그림체 참고" loading="eager" decoding="async" onclick="openModal(this.src)" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
         <button type="button" class="circle-nav left" onclick="prevStyle()">❮</button>
         <button type="button" class="circle-nav right" onclick="nextStyle()">❯</button>
       </div>
@@ -839,7 +858,6 @@ textarea{
 
   <details class="card">
     <summary>📄 신청 양식</summary>
-
 
     <div class="notice">
       신청 전 가격표와 샘플을 꼭 확인해 주세요.<br>
@@ -863,9 +881,9 @@ textarea{
 
 6. 협업 리깅 작가 : (선택사항입니다! 다른 리깅작가가 있다면 작가명을 기재해 주세요.)
 
-7. 추가 옵션 :
+7. 버츄얼 패키지 : 
 
-8. 기본 표정 (전신 5종 / 반신 3종) : 
+8. 추가 옵션 : 
 
 9. 작가에게 전할 말 : (기타 문의 및 요청)</textarea>
 
@@ -878,234 +896,198 @@ textarea{
   <img id="modalImg" alt="확대 이미지">
 </div>
 
+<div class="floating-total" id="floatingTotal">
+  <span class="label">총 가격</span>
+  <span class="amount">0원</span>
+  <div class="sub">선택한 기본 패키지와 추가 옵션이 자동 반영됩니다.</div>
+</div>
+
 <script>
-function preloadImages(arr){
-  arr.forEach(src => {
+function preloadImages(list){
+  list.forEach(src => {
     const img = new Image();
-    img.decoding = 'async';
     img.src = src;
   });
 }
 
-function setFadingImage(img, src){
-  if(!img) return;
-  img.style.opacity = '0';
+function formatPrice(price){
+  return price.toLocaleString('ko-KR');
+}
 
-  const token = String(Date.now()) + Math.random().toString(36).slice(2);
-  img.dataset.swapToken = token;
+function replaceLineByPrefix(lines, prefix, newLine){
+  const idx = lines.findIndex(line => line.trimStart().startsWith(prefix));
+  if(idx !== -1){
+    lines[idx] = newLine;
+  }
+  return lines;
+}
 
-  const loader = new Image();
-  loader.decoding = 'async';
-  loader.onload = () => {
-    if(img.dataset.swapToken !== token) return;
-    img.src = src;
-    requestAnimationFrame(() => {
-      if(img.dataset.swapToken === token){
-        img.style.opacity = '1';
-      }
-    });
-  };
-  loader.onerror = () => {
-    if(img.dataset.swapToken !== token) return;
-    img.src = src;
-    requestAnimationFrame(() => {
-      if(img.dataset.swapToken === token){
-        img.style.opacity = '1';
-      }
-    });
-  };
-  loader.src = src;
+let selectedBaseOption = null;
+let selectedAddonOptions = [];
+
+function updateFloatingTotal(){
+  const total = (selectedBaseOption ? selectedBaseOption.price : 0) +
+                selectedAddonOptions.reduce((sum, item) => sum + item.price, 0);
+  document.querySelector('#floatingTotal .amount').textContent = `${formatPrice(total)}원`;
+}
+
+function updateFormText(){
+  const textarea = document.getElementById('inputText');
+  const lines = textarea.value.split('\n');
+
+  const baseText = selectedBaseOption
+    ? `7. 버츄얼 패키지 : ${selectedBaseOption.name} (+${formatPrice(selectedBaseOption.price)}원)`
+    : '7. 버츄얼 패키지 : ';
+
+  const addonText = selectedAddonOptions.length
+    ? `8. 추가 옵션 : ${selectedAddonOptions.map(o => `${o.name} (+${formatPrice(o.price)}원)`).join(', ')}`
+    : '8. 추가 옵션 : ';
+
+  replaceLineByPrefix(lines, '7. 버츄얼 패키지', baseText);
+  replaceLineByPrefix(lines, '8. 추가 옵션', addonText);
+  textarea.value = lines.join('\n');
+}
+
+function toggleBaseOption(el, name, price){
+  const isSame = selectedBaseOption && selectedBaseOption.name === name;
+
+  document.querySelectorAll('.price-card-open .price-group .price-box .price-list .price-item').forEach(item => {
+    const boxTitle = item.closest('.price-box')?.querySelector('.price-head')?.textContent?.trim();
+    if(boxTitle === '기본 모델'){
+      item.classList.remove('active');
+    }
+  });
+
+  if(isSame){
+    selectedBaseOption = null;
+    el.classList.remove('active');
+  }else{
+    selectedBaseOption = { name, price };
+    el.classList.add('active');
+  }
+
+  updateFloatingTotal();
+  updateFormText();
+}
+
+function toggleAddonOption(el, name, price){
+  const idx = selectedAddonOptions.findIndex(o => o.name === name);
+
+  if(idx > -1){
+    selectedAddonOptions.splice(idx, 1);
+    el.classList.remove('active');
+  }else{
+    selectedAddonOptions.push({ name, price });
+    el.classList.add('active');
+  }
+
+  updateFloatingTotal();
+  updateFormText();
 }
 
 function copyText() {
-  updateFormOption();
-  const baseText = document.getElementById("inputText").value;
-  navigator.clipboard.writeText(baseText);
-  alert("복사 완료! 문의란에 붙여넣어 주세요 ( ◜ᴗ◝ )♡");
+  navigator.clipboard.writeText(document.getElementById('inputText').value);
+  alert('복사 완료! 문의란에 붙여넣어 주세요 ( ◜ᴗ◝ )♡');
 }
 
 let current = 0;
 const images = [
-  "sina_sample_collage.png",
-  "rararu_sample_collage.png",
-  "koya_sample_collage.png",
-  "raruka_sample_collage.png",
-  "B_sample_collage.png"
+  'sina_sample_collage.png',
+  'rararu_sample_collage.png',
+  'koya_sample_collage.png',
+  'raruka_sample_collage.png',
+  'B_sample_collage.png'
 ];
+
+function showGallery(index){
+  current = index;
+  document.getElementById('galleryImg').src = images[current];
+  updateSampleThumbBorder();
+}
+function selectSample(index){
+  showGallery(index);
+}
+function updateSampleThumbBorder(){
+  const thumbs = document.querySelectorAll('#sampleThumbGrid img');
+  thumbs.forEach((thumb, index) => {
+    thumb.style.border = index === current ? '2px solid var(--pink-deep)' : '2px solid transparent';
+  });
+}
 
 let faceCurrent = 0;
 const faceImages = [
-  "raruka_face_types.png",
-  "koya_face_9types.png",
-  "sia_face_types.png"
+  'raruka_face_types.png',
+  'koya_face_9types.png',
+  'sia_face_types.png'
 ];
 const faceDescriptions = [
-  "라루카님 표정 샘플",
-  "네무키 코야님 표정 샘플",
-  "시로유키 시아님 1.0 표정 샘플"
+  '라루카님 표정 샘플',
+  '네무키 코야님 표정 샘플',
+  '시로유키 시아님 1.0 표정 샘플'
 ];
+
+function showFace(index){
+  faceCurrent = index;
+  document.getElementById('faceGallery').src = faceImages[faceCurrent];
+  document.getElementById('faceDesc').innerHTML = faceDescriptions[faceCurrent];
+  updateFaceDots();
+}
+function nextFace(){
+  showFace((faceCurrent + 1) % faceImages.length);
+}
+function prevFace(){
+  showFace((faceCurrent - 1 + faceImages.length) % faceImages.length);
+}
+function updateFaceDots(){
+  document.getElementById('faceDots').innerText = faceImages.map((_, i) => i === faceCurrent ? '●' : '○').join(' ');
+}
 
 let styleCurrent = 0;
 const styleImages = [
-  "style_01.png",
-  "style_02.png",
-  "style_03.png",
-  "style_04.png"
+  'style_01.png',
+  'style_02.png',
+  'style_03.png',
+  'style_04.png'
 ];
 
-let selectedOptions = [];
-let totalPrice = 0;
-const basePackageNames = ['전신 패키지', '반신 패키지'];
-
-function updateGallery(){
-  const img = document.getElementById("galleryImg");
-  setFadingImage(img, images[current]);
-  updateSampleThumbBorder();
-}
-
-function selectSample(index){
-  current = index;
-  updateGallery();
-}
-
-function updateSampleThumbBorder(){
-  const thumbs = document.querySelectorAll("#sampleThumbGrid img");
-  thumbs.forEach((thumb, index) => {
-    thumb.style.border = index === current ? "2px solid var(--pink-deep)" : "2px solid transparent";
-    thumb.style.boxSizing = "border-box";
-  });
-}
-
-function updateFace(){
-  const img = document.getElementById("faceGallery");
-  const desc = document.getElementById("faceDesc");
-  setFadingImage(img, faceImages[faceCurrent]);
-  desc.innerHTML = faceDescriptions[faceCurrent];
-  updateFaceDots();
-}
-
-function nextFace(){
-  faceCurrent = (faceCurrent + 1) % faceImages.length;
-  updateFace();
-}
-
-function prevFace(){
-  faceCurrent = (faceCurrent - 1 + faceImages.length) % faceImages.length;
-  updateFace();
-}
-
-function updateFaceDots(){
-  let dots = "";
-  for(let i = 0; i < faceImages.length; i++){
-    dots += (i === faceCurrent) ? "● " : "○ ";
-  }
-  document.getElementById("faceDots").innerText = dots.trim();
-}
-
-function updateStyle(){
-  const img = document.getElementById("styleGallery");
-  setFadingImage(img, styleImages[styleCurrent]);
+function showStyle(index){
+  styleCurrent = index;
+  document.getElementById('styleGallery').src = styleImages[styleCurrent];
   updateStyleDots();
 }
-
 function nextStyle(){
-  styleCurrent = (styleCurrent + 1) % styleImages.length;
-  updateStyle();
+  showStyle((styleCurrent + 1) % styleImages.length);
 }
-
 function prevStyle(){
-  styleCurrent = (styleCurrent - 1 + styleImages.length) % styleImages.length;
-  updateStyle();
+  showStyle((styleCurrent - 1 + styleImages.length) % styleImages.length);
 }
-
 function updateStyleDots(){
-  let dots = "";
-  for(let i = 0; i < styleImages.length; i++){
-    dots += (i === styleCurrent) ? "● " : "○ ";
-  }
-  document.getElementById("styleDots").innerText = dots.trim();
+  document.getElementById('styleDots').innerText = styleImages.map((_, i) => i === styleCurrent ? '●' : '○').join(' ');
 }
 
-function updateTotalPrice(){
-  totalPrice = selectedOptions.reduce((sum, item) => sum + item.price, 0);
-  document.getElementById("totalPriceText").innerText = totalPrice.toLocaleString() + "원";
+function openModal(src){
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  modalImg.src = src;
+  modal.style.display = 'flex';
 }
 
-function updateFormOption(){
-  const textarea = document.getElementById("inputText");
-  const lines = textarea.value.split("\n");
-  const optionText = selectedOptions
-    .map(o => `${o.name} (+${o.price.toLocaleString()}원)`)
-    .join(", ");
-
-  let found = false;
-  for(let i = 0; i < lines.length; i++){
-    if(lines[i].startsWith("7. 추가 옵션")){
-      lines[i] = "7. 추가 옵션 : " + optionText;
-      found = true;
-      break;
-    }
-  }
-
-  if(!found){
-    lines.push("");
-    lines.push("7. 추가 옵션 : " + optionText);
-  }
-
-  textarea.value = lines.join("\n");
-  updateTotalPrice();
+function closeModal(){
+  document.getElementById('modal').style.display = 'none';
 }
 
-function setActiveOptionState(name, active){
-  document.querySelectorAll('.price-item').forEach(el => {
-    const text = el.getAttribute('onclick') || '';
-    if(text.includes(`'${name}'`)){
-      el.classList.toggle('active', active);
-    }
-  });
-}
+preloadImages(images);
+preloadImages(faceImages);
+preloadImages(styleImages);
 
-function toggleOption(el, name, price){
-  const index = selectedOptions.findIndex(o => o.name === name);
-  const isBase = basePackageNames.includes(name);
-
-  if(index > -1){
-    selectedOptions.splice(index, 1);
-    el.classList.remove("active");
-  } else {
-    if(isBase){
-      selectedOptions = selectedOptions.filter(o => !basePackageNames.includes(o.name));
-      document.querySelectorAll('.price-item.active').forEach(activeEl => {
-        const onclick = activeEl.getAttribute('onclick') || '';
-        if(onclick.includes("'전신 패키지'") || onclick.includes("'반신 패키지'")){
-          activeEl.classList.remove('active');
-        }
-      });
-    }
-    selectedOptions.push({name, price});
-    el.classList.add("active");
-  }
-
-  updateFormOption();
-  updateTotalPrice();
-  console.log("총 가격:", totalPrice);
-}
-
-function initPage(){
-  preloadImages(images);
-  preloadImages(faceImages);
-  preloadImages(styleImages);
-
-  updateGallery();
-  updateFaceDots();
-  updateStyleDots();
-  updateFormOption();
-  updateTotalPrice();
-
-  setTimeout(() => {
-    updateSampleThumbBorder();
-  }, 0);
-}
-
-initPage();
+document.addEventListener('DOMContentLoaded', () => {
+  showGallery(0);
+  showFace(0);
+  showStyle(0);
+  updateFloatingTotal();
+  updateFormText();
+});
 </script>
+
+</body>
+</html>

@@ -736,6 +736,158 @@ textarea{
   .copy-btn-large{height:74px;font-size:20px;}
   .copy-emoji{font-size:24px;}
 }
+
+.selection-summary{
+  margin-top:16px;
+  background:linear-gradient(180deg, #fff4f8 0%, #fffafc 100%);
+  border:1px solid #f1c9d7;
+  border-radius:28px;
+  padding:22px 20px 18px;
+  box-shadow:0 10px 25px rgba(235, 131, 159, 0.11);
+}
+.selection-summary-title{
+  font-size:26px;
+  font-weight:700;
+  color:#5f4f57;
+  letter-spacing:-0.03em;
+  margin-bottom:18px;
+}
+.selection-summary-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.selection-summary-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:16px;
+  line-height:1.5;
+  color:#6e5c64;
+}
+.selection-summary-item .left{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:0;
+}
+.selection-summary-item .name{
+  font-size:17px;
+  font-weight:700;
+  color:#665059;
+}
+.selection-summary-item .sub{
+  font-size:14px;
+  color:#947482;
+}
+.selection-summary-item .right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+  font-size:16px;
+  color:#8a6d79;
+}
+.selection-summary-item .remove-btn{
+  width:48px;
+  height:48px;
+  border-radius:999px;
+  border:1px solid #e5c7d2;
+  background:#fff;
+  color:#c67a96;
+  font-size:28px;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.selection-summary-divider{
+  height:2px;
+  background:#ebd1db;
+  margin:18px 0 14px;
+}
+.selection-summary-totals{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.selection-summary-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:18px;
+  color:#735c66;
+}
+.selection-summary-row span{
+  font-size:20px;
+}
+.selection-summary-row strong{
+  font-size:20px;
+  font-weight:700;
+}
+.selection-summary-row.total span,
+.selection-summary-row.total strong{
+  font-size:24px;
+  font-weight:700;
+  color:var(--pink);
+}
+details.option-box summary{
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:8px;
+}
+.summary-caret{
+  font-size:24px;
+  line-height:1;
+  color:var(--pink-deep);
+  font-weight:700;
+}
+.option-guide{
+  display:none;
+  margin-top:10px;
+  background:#fff;
+  border:1px dashed var(--line);
+  color:#8b7c81;
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:12px;
+  line-height:1.7;
+}
+details.option-box[open] .option-guide{
+  display:block;
+}
+.option-stack{
+  display:grid;
+  gap:10px;
+  margin-top:10px;
+}
+details.option-box .price-box + .price-box{
+  margin-top:0;
+}
+.basic-included{
+  margin-top:12px;
+  padding:12px;
+  border-radius:14px;
+  background:#fffdfd;
+  border:1px solid #f4e8ec;
+}
+.basic-included-title{
+  color:#b899a4;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.basic-included-text{
+  color:#8b7c81;
+  font-size:13px;
+  line-height:1.85;
+}
+
 </style>
 </head>
 
@@ -783,31 +935,31 @@ textarea{
         <div class="price-box">
           <div class="price-head">기본 모델</div>
           <div class="price-list">
-            <div class="price-item" onclick="toggleBaseOption(this, '전신 패키지', 600000)">
+            <div class="price-item base-option-item" onclick="toggleBaseOption(this, '전신 패키지', 600000)">
               Live2D 전신 패키지 +600,000원
             </div>
-            <div class="price-item" onclick="toggleBaseOption(this, '반신 패키지', 500000)">
+            <div class="price-item base-option-item" onclick="toggleBaseOption(this, '반신 패키지', 500000)">
               Live2D 반신 패키지 +500,000원
             </div>
           </div>
-        </div>
 
-        <div class="price-box included-box">
-          <div class="price-head">포함 사항</div>
-          <div class="price-list">
-            - 기본 파츠분리 일러스트<br>
-            - 캐릭터 디자인 시안<br>
-            - 기본 표정 (전신 5종, 반신 3종)<br>
-            - PSD 파일 제공
+          <div class="basic-included">
+            <div class="basic-included-title">포함 사항</div>
+            <div class="basic-included-text">
+              - 기본 파츠분리 일러스트<br>
+              - 캐릭터 디자인 시안<br>
+              - 기본 표정 (전신 5종, 반신 3종)<br>
+              - PSD 파일 제공
+            </div>
           </div>
         </div>
       </div>
 
       <details class="option-box">
-        <summary><span>추가 옵션</span><span class="summary-caret">▼</span></summary>
+        <summary><span>추가옵션</span><span class="summary-caret">▼</span></summary>
         <div class="option-guide">옵션 구성이 어려운 경우, 선택 전 문의 주시면 상세히 안내해 드릴게요!</div>
 
-        <div class="price-group">
+        <div class="option-stack">
 
           <div class="price-box">
             <div class="price-head">✨ 표정 <span class="plain-note">(맞춤형 표정은 의뢰자님만을 위한 주문제작 파츠입니다!)</span></div>
@@ -864,20 +1016,20 @@ textarea{
           <div class="price-box">
             <div class="price-head">✨ 소품</div>
             <div class="price-list">
-              <div class="price-item addon-item" data-addon-name="마이크, 게임기 등" onclick="toggleAddonOption(this, '마이크, 게임기 등', 20000)">
-                <span class="addon-label">마이크, 게임기 등 +20,000원</span>
+              <div class="price-item addon-item" data-addon-name="마이크" onclick="toggleAddonOption(this, '마이크', 35000)">
+                <span class="addon-label">마이크 +35,000원</span>
                 <span class="qty-controls" onclick="event.stopPropagation()">
-                  <button type="button" onclick="changeAddonQty('마이크, 게임기 등', -1);event.stopPropagation();">−</button>
-                  <span class="qty-value" data-qty-for="마이크, 게임기 등">1</span>
-                  <button type="button" onclick="changeAddonQty('마이크, 게임기 등', 1);event.stopPropagation();">+</button>
+                  <button type="button" onclick="changeAddonQty('마이크', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="마이크">1</span>
+                  <button type="button" onclick="changeAddonQty('마이크', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
-              <div class="price-item addon-item" data-addon-name="소품을 잡는 손 파츠" onclick="toggleAddonOption(this, '소품을 잡는 손 파츠', 15000)">
-                <span class="addon-label">소품을 잡는 손 파츠 +15,000원</span>
+              <div class="price-item addon-item" data-addon-name="게임기" onclick="toggleAddonOption(this, '게임기', 35000)">
+                <span class="addon-label">게임기 +35,000원</span>
                 <span class="qty-controls" onclick="event.stopPropagation()">
-                  <button type="button" onclick="changeAddonQty('소품을 잡는 손 파츠', -1);event.stopPropagation();">−</button>
-                  <span class="qty-value" data-qty-for="소품을 잡는 손 파츠">1</span>
-                  <button type="button" onclick="changeAddonQty('소품을 잡는 손 파츠', 1);event.stopPropagation();">+</button>
+                  <button type="button" onclick="changeAddonQty('게임기', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="게임기">1</span>
+                  <button type="button" onclick="changeAddonQty('게임기', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
             </div>
@@ -924,8 +1076,8 @@ textarea{
           <div class="price-box">
             <div class="price-head">✨ 기타</div>
             <div class="price-list">
-              <div class="price-item addon-item" data-addon-name="간단 펫" onclick="toggleAddonOption(this, '간단 펫', 30000)">
-                <span class="addon-label">간단 펫 +30,000원</span>
+              <div class="price-item addon-item" data-addon-name="간단 펫" onclick="toggleAddonOption(this, '간단 펫', 35000)">
+                <span class="addon-label">간단 펫 +35,000원</span>
                 <span class="qty-controls" onclick="event.stopPropagation()">
                   <button type="button" onclick="changeAddonQty('간단 펫', -1);event.stopPropagation();">−</button>
                   <span class="qty-value" data-qty-for="간단 펫">1</span>
@@ -986,7 +1138,7 @@ textarea{
       </div>
 
       <div class="viewer">
-        <img id="galleryImg" src="sina_sample_collage.png" alt="실제 커미션 샘플" loading="eager" decoding="async" onclick="openModal(this.src)">
+        <img id="galleryImg" src="sina_sample_collage.png" alt="실제 커미션 샘플" loading="eager" decoding="async">
       </div>
 
       <div class="thumb-grid" id="sampleThumbGrid">
@@ -1019,7 +1171,7 @@ textarea{
 
     <div style="margin-top:10px;">
       <div class="style-viewer">
-        <img id="faceGallery" src="raruka_face_types.png" alt="표정 샘플" loading="eager" decoding="async" onclick="openModal(this.src)">
+        <img id="faceGallery" src="raruka_face_types.png" alt="표정 샘플" loading="eager" decoding="async">
         <button type="button" class="circle-nav left" onclick="prevFace()">❮</button>
         <button type="button" class="circle-nav right" onclick="nextFace()">❯</button>
       </div>
@@ -1093,7 +1245,7 @@ textarea{
       <div class="info-text">좌우 버튼으로 그림체 참고 이미지를 넘길 수 있습니다.</div>
 
       <div class="style-viewer">
-        <img id="styleGallery" src="style_01.png" alt="그림체 참고" loading="eager" decoding="async" onclick="openModal(this.src)" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
+        <img id="styleGallery" src="style_01.png" alt="그림체 참고" loading="eager" decoding="async" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
         <button type="button" class="circle-nav left" onclick="prevStyle()">❮</button>
         <button type="button" class="circle-nav right" onclick="nextStyle()">❯</button>
       </div>
@@ -1134,7 +1286,7 @@ textarea{
 9. 작가에게 전할 말 : (기타 문의 및 요청)</textarea>
 
     <div class="selection-summary" id="selectionSummary">
-      <div class="selection-summary-title">선택 내역</div>
+      <div class="selection-summary-title">. ₊‧˳⁺ ꒰ঌ 선택 내역 ໒꒱ ⁺˳‧₊ </div>
       <div class="selection-summary-list" id="selectionSummaryList"></div>
       <div class="selection-summary-divider"></div>
       <div class="selection-summary-totals">
@@ -1143,7 +1295,7 @@ textarea{
           <strong id="summaryBasePrice">미선택</strong>
         </div>
         <div class="selection-summary-row">
-          <span>옵션 합계</span>
+          <span>추가옵션</span>
           <strong id="summaryAddonPrice">0원</strong>
         </div>
         <div class="selection-summary-row total">
@@ -1158,11 +1310,7 @@ textarea{
 
 </div>
 
-<div id="modal" onclick="closeModal()">
-  <img id="modalImg" alt="확대 이미지">
-</div>
 
-</div>
 
 <script>
 function preloadImages(list){
@@ -1192,12 +1340,39 @@ function getBaseOptionItems(){
 }
 
 function findAddonElement(name){
-  return document.querySelector(`.addon-item[data-addon-name="${CSS.escape(name)}"]`);
+  return Array.from(document.querySelectorAll('.addon-item')).find(el => el.dataset.addonName === name) || null;
 }
 
 function setQtyValue(name, qty){
-  const el = document.querySelector(`[data-qty-for="${CSS.escape(name)}"]`);
+  const el = Array.from(document.querySelectorAll('[data-qty-for]')).find(el => el.dataset.qtyFor === name);
   if(el) el.textContent = String(qty);
+}
+
+function hasFoldedArmSelected(){
+  return selectedAddonOptions.some(o => o.name === '접힌팔 (소매X)' || o.name === '접힌팔 (소매O)');
+}
+
+function isArmRequiredAddon(name){
+  return name === '인형 안기' || name === '마이크' || name === '게임기';
+}
+
+function syncDependentAddons(){
+  if(hasFoldedArmSelected()) return;
+
+  const blocked = ['인형 안기', '마이크', '게임기'];
+  let changed = false;
+
+  blocked.forEach(name => {
+    const idx = selectedAddonOptions.findIndex(o => o.name === name);
+    if(idx > -1){
+      selectedAddonOptions.splice(idx, 1);
+      const el = findAddonElement(name);
+      if(el) el.classList.remove('active');
+      changed = true;
+    }
+  });
+
+  if(changed) updateUI();
 }
 
 function updateSelectionSummary(){
@@ -1254,7 +1429,8 @@ function updateSelectionSummary(){
 
 function updateFormText(){
   const textarea = document.getElementById('inputText');
-  const lines = textarea.value.split('\\n');
+  const lines = textarea.value.split('
+');
 
   const baseText = selectedBaseOption
     ? `7. 버츄얼 패키지 : ${selectedBaseOption.name} (+${formatPrice(selectedBaseOption.price)}원)`
@@ -1266,7 +1442,8 @@ function updateFormText(){
 
   replaceLineByPrefix(lines, '7. 버츄얼 패키지', baseText);
   replaceLineByPrefix(lines, '8. 추가 옵션', addonText);
-  textarea.value = lines.join('\\n');
+  textarea.value = lines.join('
+');
 }
 
 function updateUI(){
@@ -1292,22 +1469,28 @@ function toggleBaseOption(el, name, price){
 
 function toggleAddonOption(el, name, price){
   const idx = selectedAddonOptions.findIndex(o => o.name === name);
+
   if(idx > -1){
     selectedAddonOptions.splice(idx, 1);
     el.classList.remove('active');
-  }else{
-    selectedAddonOptions.push({ name, price, qty: 1 });
-    el.classList.add('active');
-    setQtyValue(name, 1);
+    updateUI();
+    return;
   }
+
+  if(isArmRequiredAddon(name) && !hasFoldedArmSelected()){
+    alert("이 옵션을 선택하려면 먼저 ‘접힌 팔’ 파츠를 골라주세요.");
+    return;
+  }
+
+  selectedAddonOptions.push({ name, price, qty: 1 });
+  el.classList.add('active');
+  setQtyValue(name, 1);
   updateUI();
 }
 
 function changeAddonQty(name, delta){
   const option = selectedAddonOptions.find(o => o.name === name);
-  if(!option){
-    return;
-  }
+  if(!option) return;
 
   option.qty += delta;
   if(option.qty <= 0){
@@ -1409,17 +1592,6 @@ function updateStyleDots(){
   document.getElementById('styleDots').innerText = styleImages.map((_, i) => i === styleCurrent ? '●' : '○').join(' ');
 }
 
-function openModal(src){
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modalImg');
-  modalImg.src = src;
-  modal.style.display = 'flex';
-}
-
-function closeModal(){
-  document.getElementById('modal').style.display = 'none';
-}
-
 preloadImages(images);
 preloadImages(faceImages);
 preloadImages(styleImages);
@@ -1436,6 +1608,7 @@ document.addEventListener('DOMContentLoaded', () => {
   showFace(0);
   showStyle(0);
   updateUI();
+  syncDependentAddons();
 });
 </script>
 

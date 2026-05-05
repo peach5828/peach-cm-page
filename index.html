@@ -531,17 +531,20 @@ textarea{
         <div class="price-box">
           <div class="price-head">기본 모델</div>
           <div class="price-list">
-            Live2D 파츠분리 전신 + 디자인 + 표정 7종 패키지 : 60만원<br>
-            Live2D 파츠분리 반신 (허리까지) + 디자인 + 표정 3종 패키지 : 50만원
-          </div>
-        </div>
+            <div class="price-item" onclick="toggleOption('Live2D 파츠분리 전신 + 디자인 + 표정 7종 패키지')">
+Live2D 파츠분리 전신 + 디자인 + 표정 7종 패키지 +600,000원<br>
+              <div class="price-item" onclick="toggleOption('Live2D 파츠분리 반신 (배꼽 위까지) + 디자인 + 표정 3종 패키지')">
+Live2D 파츠분리 반신 (허리까지) + 디자인 + 표정 3종 패키지 : +500,000원
+            </div>
+      </div>
+</div>
 
         <div class="price-box">
           <div class="price-head">포함 사항</div>
           <div class="price-list">
             - 기본 파츠분리 일러스트<br>
-            - 캐릭터 디자인<br>
-            - 기본 표정 (눈물+초롱초롱, 당황눈, 반짝눈, 하트눈, 빙글눈, 화남마크, 얼굴 그림자)<br>
+            - 캐릭터 디자인 시안<br>
+            - 기본 표정 (눈물+초롱초롱, 당황눈, 반짝눈, 하트눈, 빙글눈, 화남마크, 얼굴 그림자 등)<br>
             - PSD 파일 제공
           </div>
         </div>
@@ -549,18 +552,22 @@ textarea{
 
       <div class="price-box">
         <div class="price-head">삼면도</div>
-        <div class="price-list">
-          - 캐릭터 시트(삼면도) : 11만원
+<div class="price-item" onclick="toggleOption('캐릭터 시트(삼면도)')">
+캐릭터 시트(삼면도) +110,000원
+</div>
         </div>
       </div>
 
-      <div class="price-box">
+            <div class="price-box">
         <div class="price-head">작업물 공개</div>
-        <div class="price-list">
-          - 작업과정 비공개 : 4만원<br>
-          - 1개월 작업물 비공개 : 2만원 (최대 4개월 가능)
-        </div>
-      </div>
+<div class="price-item" onclick="toggleOption('작업과정 비공개')">
+작업과정 비공개 +40,000
+</div>
+
+<div class="price-item" onclick="toggleOption('1개월 작업물 비공개')">
+1개월 작업물 비공개 (최대 4개월 가능) : +20,000
+</div>
+    
 
       <details class="option-box">
         <summary>추가 옵션</summary>
@@ -708,7 +715,7 @@ textarea{
       <div class="info-text">좌우 버튼으로 그림체 참고 이미지를 넘길 수 있습니다.</div>
 
       <div class="style-viewer">
-        <img id="styleGallery" src="style_01.png" style="cursor:default;" transition:opacity 0.25s ease; opacity:1;" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
+        <img id="styleGallery" src="style_01.png" style="cursor:기본;" transition:opacity 0.25s ease; opacity:1;" onerror="if(this.dataset.fallback!=='1'){this.dataset.fallback='1';this.src='style_1.png';}">
         <button 입력="button" class="circle-nav left" onclick="prevStyle()">❮</button>
         <button 입력="button" class="circle-nav right" onclick="nextStyle()">❯</button>
       </div>
@@ -758,15 +765,17 @@ textarea{
 </div>
 
 <script>
-    function preloadImages(arr){
-  arr.forEach(src => {
-    const img = new Image();
-    img.src = src;
-  });
-}
 function copyText() {
-  const text = document.getElementById("inputText").value;
-  navigator.clipboard.writeText(text);
+  const baseText = document.getElementById("inputText").value;
+
+  let optionText = "";
+  if(selectedOptions.length > 0){
+    optionText = "\n\n[선택 옵션]\n" + selectedOptions.join("\n");
+  }
+
+  const finalText = baseText + optionText;
+
+  navigator.clipboard.writeText(finalText);
   alert("복사 완료! 문의란에 붙여넣어 주세요 ( ◜ᴗ◝ )♡");
 }
 

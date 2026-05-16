@@ -104,8 +104,10 @@ body{
   font-weight:700;
 }
 
-.hero-main-copy.small .em {
-  font-size: 0.85em; /* 이것만 적어두면 색상과 굵기는 위에서 자동으로 이어받습니다 */
+.hero-main-copy.small,
+.small {
+  font-size: 0.65em;  /* 기존 글자 크기(0.85em)보다 약 1.5배 더 작게 조절 */
+  opacity: 0.5;       /* 투명도를 50%로 설정 (0이 투명, 1이 불투명) */
 }
     
 .hero-desc .soft{

@@ -1882,7 +1882,6 @@ function updateSampleThumbBorder(){
   });
 }
 
-// 💡 표정 샘플용 변수는 바로 이어서 아래에 선언해 줍니다.
 let faceCurrent = 0;
 const faceImages = [
   'raruka_face_types.png',
@@ -1911,7 +1910,10 @@ function prevFace(){
 }
 
 function updateFaceDots(){
-  document.getElementById('faceDots').innerText = faceImages.map((_, i) => i === faceCurrent ? '●' : '○').join(' ');
+  const dotsEl = document.getElementById('faceDots');
+  if(dotsEl) {
+    dotsEl.innerText = faceImages.map((_, i) => i === faceCurrent ? '●' : '○').join(' ');
+  }
 }
 
 let styleCurrent = 0;
@@ -1937,33 +1939,43 @@ function prevStyle(){
 }
 
 function updateStyleDots(){
-  document.getElementById('styleDots').innerText = styleImages.map((_, i) => i === styleCurrent ? '●' : '○').join(' ');
+  const dotsEl = document.getElementById('styleDots');
+  if(dotsEl) {
+    dotsEl.innerText = styleImages.map((_, i) => i === styleCurrent ? '●' : '○').join(' ');
+  }
 }
 
-preloadImages(images);
-preloadImages(faceImages);
-preloadImages(styleImages);
+// 💡 안전한 실행을 위해 모든 함수가 준비된 후 이미지 프리로드 및 초기화 실행
+if(typeof preloadImages === 'function'){
+  preloadImages(images);
+  preloadImages(faceImages);
+  preloadImages(styleImages);
+}
 
 document.addEventListener('click', (event) => {
   const btn = event.target.closest('.remove-btn');
-  if(btn){
+  if(btn && typeof removeAddon === 'function'){
     removeAddon(btn.dataset.remove);
   }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  showGallery(0);
-  showFace(0);
-  showStyle(0);
-  updateUI();
+  if(document.getElementById('galleryImg')) showGallery(0);
+  if(document.getElementById('faceGallery')) showFace(0);
+  if(document.getElementById('styleGallery')) showStyle(0);
+  
+  if(typeof updateUI === 'function'){
+    updateUI();
+  }
 
   const textarea = document.getElementById('inputText');
-  if(textarea){
+  if(textarea && typeof autoResizeTextarea === 'function'){
     autoResizeTextarea();
     textarea.addEventListener('input', autoResizeTextarea);
   }
 });
 </script>
+
 
 </body>
 </html>

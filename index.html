@@ -1854,8 +1854,6 @@ function copyText() {
       temp.remove();
     }
   }
-}
-
 let current = 0;
 const images = [
   '93_sample_collage.png',
@@ -1884,36 +1882,7 @@ function updateSampleThumbBorder(){
   });
 }
 
-let faceCurrent = 0;
-
-let current = 0;
-const images = [
-  '93_sample_collage.png',
-  'sina_sample_collage.png',
-  'rararu_sample_collage.png',
-  'koya_sample_collage.png',
-  'raruka_sample_collage.png',
-  'B_sample_collage.png'
-];
-
-function showGallery(index){
-  current = index;
-  const img = document.getElementById('galleryImg');
-  img.src = images[current];
-  updateSampleThumbBorder();
-}
-
-function selectSample(index){
-  showGallery(index);
-}
-
-function updateSampleThumbBorder(){
-  const thumbs = document.querySelectorAll('#sampleThumbGrid img');
-  thumbs.forEach((thumb, index) => {
-    thumb.style.border = index === current ? '2px solid var(--pink-deep)' : '2px solid transparent';
-  });
-}
-
+// 💡 표정 샘플용 변수는 바로 이어서 아래에 선언해 줍니다.
 let faceCurrent = 0;
 const faceImages = [
   'raruka_face_types.png',

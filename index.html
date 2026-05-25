@@ -348,8 +348,14 @@ details.option-box[open] .option-guide{
   border-radius:16px;
   display:block;
   background:#fff;
-  transition: opacity 0.18s ease;
+  transition: opacity 0.35s ease;
   opacity:1;
+}
+
+.viewer img.fading,
+#faceGallery.fading,
+#styleGallery.fading{
+  opacity:0;
 }
 
 .thumb-grid{
@@ -434,6 +440,7 @@ details.option-box[open] .option-guide{
   width:100%;
   max-height:420px;
   object-fit:contain;
+  transition: opacity 0.35s ease;
 }
 
 .desc-box{
@@ -575,8 +582,19 @@ textarea{
   box-shadow:0 10px 24px rgba(0,0,0,0.25);
 }
 
-.addon-item{
-  display:flex;
+.addon-item.inquiry-item{
+  border-top:1px dashed var(--line);
+  margin-top:6px;
+  padding-top:6px;
+  opacity:0.75;
+}
+.addon-item.inquiry-item .addon-label{
+  font-style:italic;
+}
+.addon-item.inquiry-item.active{
+  opacity:1;
+}
+
   align-items:center;
   justify-content:space-between;
   gap:10px;
@@ -1318,6 +1336,14 @@ textarea{
                   <button type="button" onclick="changeAddonQty('맞춤형 표정', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
+              <div class="price-item addon-item inquiry-item" data-addon-name="표정 별도문의" onclick="toggleAddonOption(this, '표정 별도문의', 0)">
+                <span class="addon-label">⯎ 별도 문의 ⯎</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('표정 별도문의', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="표정 별도문의">1</span>
+                  <button type="button" onclick="changeAddonQty('표정 별도문의', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -1338,6 +1364,14 @@ textarea{
                   <button type="button" onclick="changeAddonQty('추가 소매 파츠', -1);event.stopPropagation();">−</button>
                   <span class="qty-value" data-qty-for="추가 소매 파츠">1</span>
                   <button type="button" onclick="changeAddonQty('추가 소매 파츠', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item inquiry-item" data-addon-name="팔포즈 별도문의" onclick="toggleAddonOption(this, '팔포즈 별도문의', 0)">
+                <span class="addon-label">⯎ 별도 문의 ⯎</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('팔포즈 별도문의', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="팔포즈 별도문의">1</span>
+                  <button type="button" onclick="changeAddonQty('팔포즈 별도문의', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
             </div>
@@ -1369,6 +1403,14 @@ textarea{
                   <button type="button" onclick="changeAddonQty('끌어안는 인형', -1);event.stopPropagation();">−</button>
                   <span class="qty-value" data-qty-for="끌어안는 인형">1</span>
                   <button type="button" onclick="changeAddonQty('끌어안는 인형', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item inquiry-item" data-addon-name="소품 별도문의" onclick="toggleAddonOption(this, '소품 별도문의', 0)">
+                <span class="addon-label">⯎ 별도 문의 ⯎</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('소품 별도문의', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="소품 별도문의">1</span>
+                  <button type="button" onclick="changeAddonQty('소품 별도문의', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
             </div>
@@ -1407,6 +1449,14 @@ textarea{
                   <button type="button" onclick="changeAddonQty('헤어 바리에이션', -1);event.stopPropagation();">−</button>
                   <span class="qty-value" data-qty-for="헤어 바리에이션">1</span>
                   <button type="button" onclick="changeAddonQty('헤어 바리에이션', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
+              <div class="price-item addon-item inquiry-item" data-addon-name="의상헤어 별도문의" onclick="toggleAddonOption(this, '의상헤어 별도문의', 0)">
+                <span class="addon-label">⯎ 별도 문의 ⯎</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('의상헤어 별도문의', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="의상헤어 별도문의">1</span>
+                  <button type="button" onclick="changeAddonQty('의상헤어 별도문의', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
             </div>
@@ -1455,6 +1505,14 @@ textarea{
                   <button type="button" onclick="changeAddonQty('작업물 비공개 1개월', 1);event.stopPropagation();">+</button>
                 </span>
               </div>
+              <div class="price-item addon-item inquiry-item" data-addon-name="기타 별도문의" onclick="toggleAddonOption(this, '기타 별도문의', 0)">
+                <span class="addon-label">⯎ 별도 문의 ⯎</span>
+                <span class="qty-controls" onclick="event.stopPropagation()">
+                  <button type="button" onclick="changeAddonQty('기타 별도문의', -1);event.stopPropagation();">−</button>
+                  <span class="qty-value" data-qty-for="기타 별도문의">1</span>
+                  <button type="button" onclick="changeAddonQty('기타 별도문의', 1);event.stopPropagation();">+</button>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -1485,23 +1543,23 @@ textarea{
           <div class="thumb-label">93</div>
         </div>
         <div class="thumb-item">
-          <img src="sina_sample_collage.png" alt="시나" loading="eager" decoding="async" onclick="selectSample(1)">
+          <img src="sina_sample_collage.png" alt="시나" loading="lazy" decoding="async" onclick="selectSample(1)">
           <div class="thumb-label">시나</div>
         </div>
         <div class="thumb-item">
-          <img src="rararu_sample_collage.png" alt="라라루" loading="eager" decoding="async" onclick="selectSample(2)">
+          <img src="rararu_sample_collage.png" alt="라라루" loading="lazy" decoding="async" onclick="selectSample(2)">
           <div class="thumb-label">라라루</div>
         </div>
         <div class="thumb-item">
-          <img src="koya_sample_collage.png" alt="네무키 코야" loading="eager" decoding="async" onclick="selectSample(3)">
+          <img src="koya_sample_collage.png" alt="네무키 코야" loading="lazy" decoding="async" onclick="selectSample(3)">
           <div class="thumb-label">네무키 코야</div>
         </div>
         <div class="thumb-item">
-          <img src="raruka_sample_collage.png" alt="라루카" loading="eager" decoding="async" onclick="selectSample(4)">
+          <img src="raruka_sample_collage.png" alt="라루카" loading="lazy" decoding="async" onclick="selectSample(4)">
           <div class="thumb-label">라루카</div>
         </div>
         <div class="thumb-item">
-          <img src="B_sample_collage.png" alt="양 수인" loading="eager" decoding="async" onclick="selectSample(5)">
+          <img src="B_sample_collage.png" alt="양 수인" loading="lazy" decoding="async" onclick="selectSample(5)">
           <div class="thumb-label">양 수인</div>
         </div>
       </div>
@@ -1703,15 +1761,16 @@ function updateSelectionSummary(){
     const subtotal = option.price * option.qty;
     addonTotal += subtotal;
 
+    const isInquiry = option.price === 0;
     const item = document.createElement('div');
     item.className = 'selection-summary-item';
     item.innerHTML = `
       <div class="left">
-        <div class="name">${option.name}</div>
-        <div class="sub">${option.qty}개 (+${formatPrice(option.price)}원)</div>
+        <div class="name">${isInquiry ? option.name.replace(' 별도문의','') : option.name}</div>
+        <div class="sub">${isInquiry ? '별도 문의' : `${option.qty}개 (+${formatPrice(option.price)}원)`}</div>
       </div>
       <div class="right">
-        <strong>${formatPrice(subtotal)}원</strong>
+        <strong>${isInquiry ? '문의' : formatPrice(subtotal)+'원'}</strong>
         <button type="button" class="remove-btn" data-remove="${option.name}" aria-label="${option.name} 제거">×</button>
       </div>
     `;
@@ -1738,7 +1797,7 @@ function updateFormText(){
     : '7. 버츄얼 패키지 : ';
 
   const addonText = selectedAddonOptions.length
-    ? `8. 추가 옵션 : ${selectedAddonOptions.map(o => `${o.name} x${o.qty} (+${formatPrice(o.price * o.qty)}원)`).join(', ')}`
+    ? `8. 추가 옵션 : ${selectedAddonOptions.map(o => o.price === 0 ? `${o.name.replace(' 별도문의', '')} (별도 문의)` : `${o.name} x${o.qty} (+${formatPrice(o.price * o.qty)}원)`).join(', ')}`
     : '8. 추가 옵션 : ';
 
   replaceLineByPrefix(lines, '7. 버츄얼 패키지', baseText);
@@ -1866,10 +1925,23 @@ const images = [
   'B_sample_collage.png'
 ];
 
+function fadeSwap(imgEl, newSrc, callback){
+  imgEl.classList.add('fading');
+  setTimeout(() => {
+    imgEl.src = newSrc;
+    imgEl.onload = () => {
+      imgEl.classList.remove('fading');
+      if(callback) callback();
+    };
+    // fallback: remove fading even if onload fires late
+    setTimeout(() => imgEl.classList.remove('fading'), 500);
+  }, 260);
+}
+
 function showGallery(index){
   current = index;
   const img = document.getElementById('galleryImg');
-  img.src = images[current];
+  fadeSwap(img, images[current], updateSampleThumbBorder);
   updateSampleThumbBorder();
 }
 
@@ -1898,8 +1970,12 @@ const faceDescriptions = [
 
 function showFace(index){
   faceCurrent = index;
-  document.getElementById('faceGallery').src = faceImages[faceCurrent];
-  document.getElementById('faceDesc').innerHTML = faceDescriptions[faceCurrent];
+  const img = document.getElementById('faceGallery');
+  const desc = document.getElementById('faceDesc');
+  fadeSwap(img, faceImages[faceCurrent], () => {
+    desc.innerHTML = faceDescriptions[faceCurrent];
+    updateFaceDots();
+  });
   updateFaceDots();
 }
 
@@ -1928,7 +2004,8 @@ const styleImages = [
 
 function showStyle(index){
   styleCurrent = index;
-  document.getElementById('styleGallery').src = styleImages[styleCurrent];
+  const img = document.getElementById('styleGallery');
+  fadeSwap(img, styleImages[styleCurrent], updateStyleDots);
   updateStyleDots();
 }
 

@@ -1885,6 +1885,39 @@ function updateSampleThumbBorder(){
 }
 
 let faceCurrent = 0;
+<!-- 기존에 끊겨 있던 스크립트 블록을 지우고, 아래 완성된 코드를 넣으세요 -->
+<script>
+// ... (앞부분 생략) ...
+
+let current = 0;
+const images = [
+  '93_sample_collage.png',
+  'sina_sample_collage.png',
+  'rararu_sample_collage.png',
+  'koya_sample_collage.png',
+  'raruka_sample_collage.png',
+  'B_sample_collage.png'
+];
+
+function showGallery(index){
+  current = index;
+  const img = document.getElementById('galleryImg');
+  img.src = images[current];
+  updateSampleThumbBorder();
+}
+
+function selectSample(index){
+  showGallery(index);
+}
+
+function updateSampleThumbBorder(){
+  const thumbs = document.querySelectorAll('#sampleThumbGrid img');
+  thumbs.forEach((thumb, index) => {
+    thumb.style.border = index === current ? '2px solid var(--pink-deep)' : '2px solid transparent';
+  });
+}
+
+let faceCurrent = 0;
 const faceImages = [
   'raruka_face_types.png',
   'koya_face_9types.png',
@@ -1965,7 +1998,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
 
 </body>
 </html>

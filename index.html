@@ -1186,8 +1186,93 @@ details.option-box summary{
   font-size:22px;
 }
 
-textarea{
-  min-height:520px !important;
+/* ===== 상단 네비게이션 ===== */
+/* ===== 워크플로우 카드 ===== */
+.workflow-card{
+  background:linear-gradient(135deg,#fff0f5 0%,#fff7fa 100%);
+  border:1.5px solid #f2c4d4;
+  border-radius:22px;
+  padding:20px 20px 22px;
+  margin-bottom:14px;
+  box-shadow:0 4px 18px rgba(235,131,159,0.12);
+}
+
+.workflow-label{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  color:var(--pink);
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.workflow-title{
+  font-size:21px;
+  font-weight:700;
+  color:#2e1a26;
+  margin:0 0 16px;
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.wf-title-icon{
+  font-size:20px;
+}
+
+.wf-title-note{
+  font-size:12px;
+  font-weight:400;
+  color:#b08898;
+  margin-left:2px;
+}
+
+.wf-flow-box{
+  background:white;
+  border-radius:16px;
+  padding:18px 16px;
+  border:1px solid #f2c4d4;
+}
+
+.wf-flow-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 6px;
+}
+
+.wf-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:white;
+  border:1.5px solid var(--pink);
+  color:var(--pink-deep);
+  border-radius:999px;
+  padding:7px 18px;
+  font-size:13.5px;
+  font-weight:600;
+  white-space:nowrap;
+  font-family:'Paperozi',sans-serif;
+  line-height:1.2;
+}
+
+.wf-pill.accent{
+  background:var(--pink);
+  color:white;
+  border-color:var(--pink-deep);
+}
+
+.wf-sep{
+  color:#e08aab;
+  font-size:14px;
+  font-weight:700;
+  flex-shrink:0;
+  padding:0 1px;
+}
+
+
   height:520px;
   overflow:hidden;
   resize:none;
@@ -1199,6 +1284,7 @@ textarea{
 <body>
 
 <div class="container">
+
 
   <div class="hero">
     <div class="hero-badge">Live2D Model Illustration Commission</div>
@@ -1214,20 +1300,19 @@ textarea{
 </p>
   </div>
 
-  <div class="card">
+<div class="card" id="sec-slot">
     <div class="title">📅 작업 슬롯 현황</div>
     <div class="section-sub">예약 가능한 슬롯은 <span class="available">♥</span>, 작업 펑크로 인해 생긴 빈 슬롯은 <span class="empty-slot">♥</span>로 표기합니다.</div>
     <div class="slot">
-<p>4월 : 중간고사 ( 작업 x )</p>
-<p>5월 : <span class="closed">마감</span> / <span class="closed">마감</span></p>
-<p>6월 : 기말고사 ( 작업 x )</p>
-<p>7월 : <span class="closed">마감</span> / <span class="closed">마감</span>
-<p>8월 : <span class="closed">마감</span> / <span class="closed">마감</span>
-<p>9월 : <span class="available">♥</span> / <span class="available">♥</span></p>
-<!-- <span class="empty-slot">♥</span></p> --> 
-<!-- <span class="closed">마감</span> --> 
-<!-- <span class="available">♥</span></p> --> 
+        <p>4월 : 중간고사 ( 작업 x )</p>
+        <p>5월 : <span class="closed">마감</span> / <span class="closed">마감</span></p>
+        <p>6월 : 기말고사 ( 작업 x )</p>
+        <p>7월 : <span class="closed">마감</span> / <span class="closed">마감</span></p>
+        <p>8월 : <span class="closed">마감</span> / <span class="closed">마감</span></p>
+        <p>9월 : <span class="available">♥</span> / <span class="available">♥</span></p>
     </div>
+</div>
+
     <div class="slot-notice">
       <strong>2026년 상반기 예약이 마감되었습니다.</strong><br>
       9월 첫번째 슬롯부터 예약 가능합니다.<br><br>
@@ -1237,7 +1322,7 @@ textarea{
     </div>
   </div>
 
-  <details class="card">
+  <details class="card" id="sec-notice">
     <summary>⚠️ 주의사항</summary>
     <div class="notice-box">
       ❥ 일러스트 출처 표기는 필수입니다.<br>
@@ -1281,7 +1366,7 @@ textarea{
     </div>
   </details>
 
-  <div class="card price-card-open">
+  <div class="card price-card-open" id="sec-price">
     <div class="title">💰 가격표</div>
     <div class="section-sub">기본 패키지 및 추가 옵션 안내</div>
 
@@ -1522,7 +1607,7 @@ textarea{
     </div>
   </div>
 
-  <div class="card static-card">
+  <div class="card static-card" id="sec-sample">
     <div class="title">🖌️ 실제 커미션 샘플</div>
     <div class="sample-intro">
       <span class="highlight">공장식으로 일러스트를 뽑아내는 작업방식 NO!!</span><br>
@@ -1566,6 +1651,52 @@ textarea{
     </div>
   </div>
     
+  <!-- 디자인 과정 -->
+  <div class="workflow-card">
+    <div class="workflow-label">Work Process</div>
+    <div class="workflow-title">
+      <span class="wf-title-icon">✏️</span> 디자인 과정
+      <span class="wf-title-note">※ 상황에 따라 상의 후 컨펌 일정이 조정될 수 있습니다.</span>
+    </div>
+    <div class="wf-flow-box">
+      <div class="wf-flow-row">
+        <span class="wf-pill">상담</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill">시안 3장</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill">컨펌</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill">시안 3장</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill accent">마지막 컨펌</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill accent">최종 디자인 결정</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 본작업 과정 -->
+  <div class="workflow-card">
+    <div class="workflow-label">Work Process</div>
+    <div class="workflow-title">
+      <span class="wf-title-icon">🎨</span> 본작업 과정
+      <span class="wf-title-note">💗 웬만하면 컨펌은 더 자주 자주 드리고 있습니다!</span>
+    </div>
+    <div class="wf-flow-box">
+      <div class="wf-flow-row">
+        <span class="wf-pill">파츠분리 및 일러스트 제작</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill">50% 완성 1차 컨펌</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill">90% 완성 2차 컨펌</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill accent">마지막 3차 컨펌</span>
+        <span class="wf-sep">→</span>
+        <span class="wf-pill accent">완성</span>
+      </div>
+    </div>
+  </div>
+
   <div class="card static-card">
     <div class="title">💖 표정 샘플</div>
     <div style="margin-top:10px;">
@@ -1581,7 +1712,7 @@ textarea{
   </div>
 
 
-  <div class="card static-card">
+  <div class="card static-card" id="sec-collab">
     <div class="title">🤝 협업 작가</div>
     <div class="collab-grid">
       <a class="collab-link" href="https://artmug.kr/index.php?channel=view&uid=42826" target="_blank" rel="noopener noreferrer"><div class="collab-item"><span class="collab-name">다중 작가님</span><br>일러 5만원 + 리깅 5만원 할인<br><span class="collab-arrow">클릭하여 페이지 이동 ↗</span></div></a>
@@ -1597,7 +1728,7 @@ textarea{
     </div>
   </div>
 
-  <div class="card static-card">
+  <div class="card static-card" id="sec-style">
     <div class="title">🎨 그림체 참고</div>
     <div style="margin-top:10px;">
       <div class="info-text">좌우 버튼으로 그림체 참고 이미지를 넘길 수 있습니다.</div>
@@ -1612,7 +1743,7 @@ textarea{
     </div>
   </div>
 
-  <div class="card static-card">
+  <div class="card static-card" id="sec-form">
     <div class="title">📄 신청서</div>
     <div class="form-top-note">
       해당하는 부분만 적어주시면 됩니다. 괄호 안의 글씨는 삭제하고 작성해 주세요!
@@ -1929,12 +2060,18 @@ function fadeSwap(imgEl, newSrc, callback){
   imgEl.classList.add('fading');
   setTimeout(() => {
     imgEl.src = newSrc;
-    imgEl.onload = () => {
+    const finish = () => {
       imgEl.classList.remove('fading');
       if(callback) callback();
     };
-    // fallback: remove fading even if onload fires late
-    setTimeout(() => imgEl.classList.remove('fading'), 500);
+    if(imgEl.complete && imgEl.naturalWidth){
+      // 캐시된 이미지는 onload 안 터짐 → 즉시 실행
+      finish();
+    } else {
+      imgEl.onload = finish;
+      imgEl.onerror = finish;
+      setTimeout(finish, 600); // 최종 안전장치
+    }
   }, 260);
 }
 

@@ -48,17 +48,26 @@
 }
 
 *{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+
+/* ✅ 1. 배경색 + 2. 이중 스크롤 방지 */
+html{
+  scroll-behavior:smooth;
+  background:#fff5fa !important;
+  height:auto !important;
+  overflow-y:visible !important;
+}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}}
 
 body{
   margin:0;
   font-family:'Paperozi',sans-serif;
-  background:white;
+  background:#fff5fa;
   color:var(--text);
   overflow-x:hidden;
   word-break:keep-all;
   overflow-wrap:break-word;
+  height:auto !important;
+  overflow-y:visible !important;
 }
 
 /* ✅ 전체 너비 확장 (max-width 제거, 비율 패딩 적용) */
@@ -202,6 +211,30 @@ summary::-webkit-details-marker{display:none;}
 .option-box-title{font-size:16px;font-weight:400;color:var(--pink);font-family:'RomanticGumi',sans-serif;}
 details:not([open]) > *:not(summary){display:none;}
 .option-guide{margin-top:10px;background:#fff;border:1px dashed var(--line);color:#8b7c81;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.7;font-family:'IsYun',sans-serif;}
+
+/* ✅ 3. 기본 모델 박스 - 추가옵션과 동일한 연분홍 배경 */
+.basic-model-box{
+  background: var(--pink-bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+}
+/* ✅ 3. 기본 모델 내부 항목은 흰색 박스 + 간격 */
+.basic-model-box .price-item{
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+    /* ✅ 추가 */
+.basic-model-box .price-item.active{
+  background: var(--pink);
+  color: #fff;
+  font-weight: 700;
+}
+.basic-model-box .price-item:last-child{
+  margin-bottom: 0;
+}
 
 /* ✅ CSS Grid + 독립 열 */
 .option-stack{
@@ -390,9 +423,8 @@ textarea{width:100%;min-height:390px;max-height:500px;padding:16px;border-radius
 .form-mini-row-half{grid-template-columns:1fr 1fr;}
 .form-mini-col{background:var(--pink-bg);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;}
 .form-mini-col-tall{flex:1;min-height:320px;overflow:hidden;}
-.form-mini-col-tall .form-mini-body{flex:1;min-height:0;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:var(--pink) var(--pink-bg);}
-.form-mini-col-tall .form-mini-body::-webkit-scrollbar{width:6px;}
-.form-mini-col-tall .form-mini-body::-webkit-scrollbar-thumb{background:var(--pink);border-radius:999px;}
+/* ✅ 2. 내부 스크롤 제거 */
+.form-mini-col-tall .form-mini-body{flex:1;min-height:0;overflow-y:visible;padding-right:4px;}
 .form-mini-head{font-weight:600;color:var(--pink-deep);font-size:13.5px;word-break:keep-all;flex-shrink:0;font-family:'IsYun',sans-serif;}
 .form-mini-body{display:flex;flex-direction:column;gap:8px;}
 .form-mini-empty{border:1px dashed var(--line);border-radius:12px;padding:16px 8px;text-align:center;color:#b9a3ac;font-size:13px;line-height:1.6;background:#fffdfe;font-family:'IsYun',sans-serif;}
@@ -410,9 +442,11 @@ textarea{width:100%;min-height:390px;max-height:500px;padding:16px;border-radius
 .mini-chip .qty-value{font-size:12px;}
 
 .form-quad-right{display:flex;flex-direction:column;height:100%;}
-.selection-summary{flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:auto;}
+/* ✅ 2. 내부 스크롤 제거 */
+.selection-summary{flex:1;min-height:0;display:flex;flex-direction:column;overflow-y:visible;}
 .selection-summary-list{flex:1;}
-.copy-btn-large{flex-shrink:0;margin-top:auto;}
+/* ✅ 4. 복사 버튼 여백 20px */
+.copy-btn-large{flex-shrink:0;margin-top:20px;}
 
 @media (min-width:900px){.form-quad-bottom{grid-template-columns:1.05fr 1fr;}}
 
@@ -481,6 +515,7 @@ textarea{width:100%;min-height:390px;max-height:500px;padding:16px;border-radius
 .usage-card-badge{display:inline-block;font-size:11px;font-weight:600;color:#b899a4;background:#fff0f5;border:1px solid var(--line);border-radius:999px;padding:3px 10px;line-height:1.4;white-space:nowrap;font-family:'IsYun',sans-serif;}
 .usage-card.selected .usage-card-badge{color:var(--pink-deep);background:#ffe8ef;border-color:#f4b8cb;}
 .usage-check-btn{width:50px;height:50px;flex-shrink:0;border-radius:13px;border:2px solid var(--line);background:white;display:flex;align-items:center;justify-content:center;font-size:24px;color:#ddbece;transition:border-color .2s ease, background .2s ease, color .2s ease;pointer-events:none;}
+.usage-check-btn svg{width:24px;height:24px;display:block;}
 .usage-card.selected .usage-check-btn{border-color:var(--pink);background:linear-gradient(160deg, #eb839f 0%, #d86c89 100%);color:white;animation:checkPop .3s cubic-bezier(.22,1,.36,1);}
 @media (prefers-reduced-motion: reduce){.usage-card.selected .usage-check-btn{animation:none;}}
 .usage-card-divider{height:1px;background:var(--line);margin-bottom:14px;border-radius:999px;}
@@ -520,6 +555,7 @@ textarea{width:100%;min-height:390px;max-height:500px;padding:16px;border-radius
   .usage-card-title{font-size:16px;}
   .usage-card-badge{font-size:9.5px;padding:2px 7px;}
   .usage-check-btn{width:32px;height:32px;font-size:16px;border-radius:9px;}
+  .usage-check-btn svg{width:18px;height:18px;}
   .usage-card-divider{margin-bottom:9px;}
   .usage-list{font-size:12.5px;line-height:1.55;}
   .usage-list-item{padding:4px 3px;gap:5px;}
@@ -637,22 +673,20 @@ textarea{width:100%;min-height:390px;max-height:500px;padding:16px;border-radius
     <div class="title">💰 가격표</div>
     <div class="section-sub">기본 패키지 및 추가 옵션 안내</div>
     <div class="price-grid">
-      <div class="price-group">
-        <div class="price-box">
-          <div class="price-head">기본 모델</div>
-          <div class="price-list">
-            <div class="price-item base-option-item" onclick="toggleBaseOption(this, '전신 패키지', 800000)">Live2D 전신 패키지 +800,000원</div>
-            <div class="price-item base-option-item" onclick="toggleBaseOption(this, '반신 패키지', 500000)">Live2D 반신 패키지 +500,000원</div>
-          </div>
-          <div class="basic-included">
-            <div class="basic-included-title">포함 사항</div>
-            <div class="basic-included-text">
-              - 기본 파츠분리 일러스트<br>
-              - 캐릭터 디자인 시안<br>
-              - 전신 기본 표정 : 하트눈(+홍조), 반짝눈, 정색(+빠직 마크), 눈물, 초롱초롱<br>
-              - 반신 기본 표정 : 하트눈(+홍조), 반짝눈, 정색(+빠직 마크)<br>
-              - PSD 파일 제공
-            </div>
+      <div class="price-box basic-model-box">
+        <div class="price-head">기본 모델</div>
+        <div class="price-list">
+          <div class="price-item base-option-item" onclick="toggleBaseOption(this, '전신 패키지', 800000)">Live2D 전신 패키지 +800,000원</div>
+          <div class="price-item base-option-item" onclick="toggleBaseOption(this, '반신 패키지', 500000)">Live2D 반신 패키지 +500,000원</div>
+        </div>
+        <div class="basic-included">
+          <div class="basic-included-title">포함 사항</div>
+          <div class="basic-included-text">
+            - 기본 파츠분리 일러스트<br>
+            - 캐릭터 디자인 시안<br>
+            - 전신 기본 표정 : 하트눈(+홍조), 반짝눈, 정색(+빠직 마크), 눈물, 초롱초롱<br>
+            - 반신 기본 표정 : 하트눈(+홍조), 반짝눈, 정색(+빠직 마크)<br>
+            - PSD 파일 제공
           </div>
         </div>
       </div>
@@ -800,7 +834,7 @@ textarea{width:100%;min-height:390px;max-height:500px;padding:16px;border-radius
     <div class="section-sub" style="margin-top:6px;">해당하는 사용 범위를 선택해 주세요.</div>
     <div class="usage-grid">
       <div class="usage-card selected" id="usageCardNon" onclick="selectUsage('non')">
-        <div class="usage-card-header"><div class="usage-card-title-wrap"><div class="usage-card-title">비상업용</div><div class="usage-card-badge">저작권 구매 X</div></div><div class="usage-check-btn" id="usageCheckNon">✔</div></div>
+        <div class="usage-card-header"><div class="usage-card-title-wrap"><div class="usage-card-title">비상업용</div><div class="usage-card-badge">저작권 구매 X</div></div><div class="usage-check-btn" id="usageCheckNon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6.5" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
         <div class="usage-card-divider"></div>
         <div class="usage-list">
           <div class="usage-list-item ok"><span class="usage-icon">○</span><span>방송 스트리밍 및 후원 수익 창출</span></div>
@@ -813,7 +847,7 @@ textarea{width:100%;min-height:390px;max-height:500px;padding:16px;border-radius
         </div>
       </div>
       <div class="usage-card" id="usageCardCom" onclick="selectUsage('com')">
-        <div class="usage-card-header"><div class="usage-card-title-wrap"><div class="usage-card-title">상업용</div><div class="usage-card-badge">저작권 구매 ○</div></div><div class="usage-check-btn" id="usageCheckCom">✔</div></div>
+        <div class="usage-card-header"><div class="usage-card-title-wrap"><div class="usage-card-title">상업용</div><div class="usage-card-badge">저작권 구매 ○</div></div><div class="usage-check-btn" id="usageCheckCom"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6.5" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
         <div class="usage-card-divider"></div>
         <div class="usage-list">
           <div class="usage-list-item ok"><span class="usage-icon">○</span><span>비상업용의 모든 사용권</span></div>
@@ -924,7 +958,7 @@ function selectUsage(type){
   updateUI();
 }
 
-// ▶ 협업 작가 데이터 (감자야 작가 제거)
+// ▶ 협업 작가 데이터
 const collabArtists = [
   { name:'Eryn 작가님', desc:'일러 5만원 + 리깅 5만원 할인', href:'https://artmug.kr/index.php?channel=view&uid=51881' },
   { name:'욤 작가님', desc:'일러 3만원 할인+리깅 5만원 할인/볼빵빵 무료', href:'https://artmug.kr/index.php?channel=view&uid=56616' },
@@ -1347,7 +1381,7 @@ function syncSummaryHeight(){
   if(!addonBox || !summaryBox || !copyBtn) return;
 
   const addonHeight = addonBox.offsetHeight;
-  const totalHeight = addonHeight - copyBtn.offsetHeight - 16;
+  const totalHeight = addonHeight - copyBtn.offsetHeight - 20;
   summaryBox.style.minHeight = Math.max(totalHeight, 200) + 'px';
   summaryBox.style.height = 'auto';
 }
@@ -1404,7 +1438,7 @@ function activateArmPoseRipple(){
   });
 }
 
-// ▶ 아코디언 애니메이션 (빈공간 없이 동작)
+// ▶ 아코디언 애니메이션
 function setupAccordionAnimation(){
   const detailsList = document.querySelectorAll('details.price-box');
   if(!detailsList.length) return;
@@ -1574,10 +1608,10 @@ function fadeSwap(imgEl, newSrc, callback){
   changeGalleryImage(imgEl, newSrc, callback);
 }
 
-// ▶ 갤러리 (최신작이 맨 앞에 오도록 reverse 처리)
+// ▶ 갤러리
 let current = 0;
 const images = [
-  'images/ralralra_sample_collage.png',   // ✅ 최신작을 맨 앞으로
+  'images/ralralra_sample_collage.png',
   'images/Cheriko_sample_collage.png',
   'images/93_sample_collage.png',
   'images/sina_sample_collage.png',
@@ -1587,7 +1621,6 @@ const images = [
   'images/B_sample_collage.png'
 ];
 
-// 샘플 이름 매핑
 const sampleLabels = {
   'Cheriko_sample_collage.png': '체리코',
   '93_sample_collage.png': '93',
@@ -1603,12 +1636,10 @@ function getSampleLabel(src){
   return sampleLabels[src.split('/').pop()] || '샘플';
 }
 
-// 썸네일 렌더링 (최신작이 맨 앞에 오도록 reverse)
 function renderSampleThumbs(){
   const grid = document.getElementById('sampleThumbGrid');
   if(!grid) return;
   
-  // 배열이 이미 최신순이므로 그대로 사용
   grid.innerHTML = images.map((imgSrc, i) => {
     const label = getSampleLabel(imgSrc);
     
@@ -1849,7 +1880,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
 
   try{
-    renderSampleThumbs();  // ✅ 썸네일 동적 렌더링
+    renderSampleThumbs();
     if(document.getElementById('galleryImg')) showGallery(0);
     if(document.getElementById('faceGallery')) showFace(0);
     if(document.getElementById('styleGallery')) showStyle(0);
